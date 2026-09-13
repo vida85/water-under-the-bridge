@@ -17,6 +17,7 @@ class_name Magnet extends Node2D
 @onready var magnet_area: Area2D = %MagnetArea
 @onready var hand_position: Marker2D = %HandPosition
 
+const MAX_LINE_LENGTH: float = 5.0
 
 var pos: Vector2
 var prev_pos: Vector2
@@ -39,10 +40,11 @@ func cast(_strength: float, _direction: Vector2) -> void:
 func _physics_process(delta: float) -> void:
 	if cast_line:
 		var velocity: Vector2 = pos - prev_pos
-		prev_pos = pos
-		pos = pos + velocity + _gravity * delta * delta
-		magnet_area.position = pos
-		queue_redraw()
+		if velocity.length() < MAX_LINE_LENGTH:
+			prev_pos = pos
+			pos = pos + velocity + _gravity * delta * delta
+			magnet_area.position = pos
+			queue_redraw()
 
 
 func _draw() -> void:
