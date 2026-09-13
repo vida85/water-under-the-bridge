@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cy57xutg2kj7w"]
+
+[ext_resource type="Theme" uid="uid://cst0ttagts4k6" path="res://resources/game_theme.tres" id="1_c7oo3"]
+[ext_resource type="Script" uid="uid://b12eteptwcg63" path="res://scenes/main menu/main_menu.gd" id="1_v04ij"]
+[ext_resource type="AudioStream" uid="uid://swhakeudhv8u" path="res://shared assets/audio/music/stranger-things-124008.mp3" id="3_sg7ab"]
+
+[node name="MainMenu" type="Control" unique_id=1547466342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c7oo3")
+script = ExtResource("1_v04ij")
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="." unique_id=254385866]
+stream = ExtResource("3_sg7ab")
+autoplay = true
+bus = &"Music"
+
+[node name="BGTextureRect" type="TextureRect" parent="." unique_id=2101692380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1997605265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1850961834]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2059346895]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=974679523]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="OptionVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=663454287]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/OptionVolumeContainer" unique_id=174786940]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolumeHSlider" type="HSlider" parent="MarginContainer/VBoxContainer/OptionVolumeContainer" unique_id=1329709352]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="OptionSfxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1783557686]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 23
+
+[node name="SfxLabel" type="Label" parent="MarginContainer/VBoxContainer/OptionSfxContainer" unique_id=1895001312]
+layout_mode = 2
+text = "Sfx"
+
+[node name="SfxHSlider" type="HSlider" parent="MarginContainer/VBoxContainer/OptionSfxContainer" unique_id=1876577420]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.7

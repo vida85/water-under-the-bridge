@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://brkaifraddpx4"]
+
+[ext_resource type="Script" uid="uid://dh31pk7i8en66" path="res://scenes/bridges/main_game.gd" id="1_hbod5"]
+[ext_resource type="PackedScene" path="res://scenes/game ui/GameUi.tscn" id="2_2csi4"]
+[ext_resource type="PackedScene" uid="uid://bp58d3xjjj58x" path="res://scenes/popups/Popups.tscn" id="3_xdeye"]
+[ext_resource type="PackedScene" path="res://scenes/main camera/MainCamera.tscn" id="5_2wl6j"]
+[ext_resource type="Texture2D" uid="uid://cnm2hd5vq5j8p" path="res://scenes/bridges/textures/background.png" id="6_hujvb"]
+[ext_resource type="PackedScene" uid="uid://b86xoenolr8kv" path="res://scenes/player/Player.tscn" id="6_iovqx"]
+[ext_resource type="Texture2D" uid="uid://xnor1krhsgl2" path="res://scenes/bridges/textures/bridge.png" id="7_hbod5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_176rl"]
+size = Vector2(96, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr2el"]
+size = Vector2(12, 42)
+
+[node name="MainGame" type="Node2D" unique_id=1874786984 node_paths=PackedStringArray("player")]
+script = ExtResource("1_hbod5")
+player = NodePath("Player")
+
+[node name="GameUi" parent="." unique_id=424944302 node_paths=PackedStringArray("popup") instance=ExtResource("2_2csi4")]
+unique_name_in_owner = true
+popup = NodePath("Popups")
+
+[node name="Popups" parent="GameUi" unique_id=2144600210 instance=ExtResource("3_xdeye")]
+
+[node name="MainCamera" parent="." unique_id=1132060896 instance=ExtResource("5_2wl6j")]
+
+[node name="Player" parent="." unique_id=1516898991 instance=ExtResource("6_iovqx")]
+
+[node name="HomeBridge" type="StaticBody2D" parent="." unique_id=1131055364]
+
+[node name="LevelBG" type="Sprite2D" parent="HomeBridge" unique_id=1864412477]
+unique_name_in_owner = true
+z_index = -10
+texture = ExtResource("6_hujvb")
+
+[node name="LevelFG" type="Sprite2D" parent="HomeBridge" unique_id=652894707]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(0, 8)
+texture = ExtResource("7_hbod5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeBridge" unique_id=554408698]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_176rl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HomeBridge" unique_id=887504809]
+position = Vector2(-54, -11)
+shape = SubResource("RectangleShape2D_pr2el")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HomeBridge" unique_id=2084817223]
+position = Vector2(54, -11)
+shape = SubResource("RectangleShape2D_pr2el")

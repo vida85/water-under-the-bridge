@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://swhakeudhv8u"
+path="res://.godot/imported/stranger-things-124008.mp3-094ef1429b1588819aa48d66f151bf2c.mp3str"
+
+[deps]
+
+source_file="res://shared assets/audio/music/stranger-things-124008.mp3"
+dest_files=["res://.godot/imported/stranger-things-124008.mp3-094ef1429b1588819aa48d66f151bf2c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

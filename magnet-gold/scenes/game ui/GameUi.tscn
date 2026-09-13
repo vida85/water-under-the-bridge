@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://pa0rqd1h86yq" path="res://scenes/game ui/game_ui.gd" id="1_1caaf"]
+
+[node name="GameUi" type="CanvasLayer"]
+script = ExtResource("1_1caaf")

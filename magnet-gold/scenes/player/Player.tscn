@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://b86xoenolr8kv"]
+
+[ext_resource type="Script" uid="uid://2vel5m0jevel" path="res://scenes/player/player.gd" id="1_alepy"]
+[ext_resource type="Script" uid="uid://cegwxif5430ph" path="res://components/platformer input component/platformer_input_component.gd" id="2_s4vxx"]
+[ext_resource type="Script" uid="uid://q4cenmnxjao" path="res://components/platformer movement 2D/platformer_movement_2d.gd" id="3_pa6wy"]
+[ext_resource type="Texture2D" uid="uid://dfgreumex2mkv" path="res://scenes/player/textures/pedro_animation.png" id="4_c3xxp"]
+[ext_resource type="PackedScene" uid="uid://co13tsg6ogpdk" path="res://scenes/magnet/Magnet.tscn" id="4_tpg5x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpg5x"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3xxp"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5stf6"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_180ig"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20koh"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov1oi"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn7t0"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npwbq"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v42im"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn6s4"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oing"]
+atlas = ExtResource("4_c3xxp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_176rl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpg5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3xxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5stf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_180ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20koh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov1oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn7t0")
+}],
+"loop": 0,
+"name": &"cast_line",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npwbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v42im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn6s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oing")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_176rl"]
+
+[node name="Player" type="CharacterBody2D" unique_id=2127658247 node_paths=PackedStringArray("magnet", "platformer_input_component", "platformer_movement_2d")]
+script = ExtResource("1_alepy")
+magnet = NodePath("Magnet")
+platformer_input_component = NodePath("PlatformerInputComponent")
+platformer_movement_2d = NodePath("PlatformerMovement2D")
+
+[node name="PlatformerInputComponent" type="Node" parent="." unique_id=1565816887]
+script = ExtResource("2_s4vxx")
+
+[node name="PlatformerMovement2D" type="Node" parent="." unique_id=510930513 node_paths=PackedStringArray("body", "input")]
+script = ExtResource("3_pa6wy")
+body = NodePath("..")
+input = NodePath("../PlatformerInputComponent")
+max_speed = 33.0
+acceleration = 150.0
+friction = 170.0
+gravity = 600.0
+jump_force = 95.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=833276254]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_176rl")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.46108782
+
+[node name="Magnet" parent="." unique_id=1294902513 instance=ExtResource("4_tpg5x")]
+position = Vector2(0, -8)
+gravity = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=241001325]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_176rl")

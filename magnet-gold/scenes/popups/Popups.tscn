@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bp58d3xjjj58x"]
+
+[ext_resource type="Script" uid="uid://rghe8vdkrxd" path="res://scenes/popups/pop_ups.gd" id="1_ticgj"]
+[ext_resource type="Texture2D" uid="uid://u4do5nue77xa" path="res://icon.svg" id="2_311g3"]
+
+[node name="Popups" type="Control" unique_id=629519763]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ticgj")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2039678765]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -54.0
+offset_right = 54.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1591093506]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=230708089]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PopupLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1903965129]
+layout_mode = 2
+text = "You Caught Something!!!"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2121547145]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_311g3")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=250027697]
+layout_mode = 2
+
+[node name="ShopButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1110219871]
+layout_mode = 2
+text = "Go to Shop"
+
+[node name="KeepFishingButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1743896258]
+layout_mode = 2
+text = "Keep Fishing"
