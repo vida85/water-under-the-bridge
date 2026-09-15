@@ -2,12 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_onjwb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_176rl"]
-
 [node name="Item" type="Area2D" unique_id=1436597317]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_onjwb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=224723908]
-shape = SubResource("CircleShape2D_176rl")

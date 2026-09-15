@@ -2,6 +2,9 @@ class_name Magnet extends Node2D
 
 signal return_started
 signal return_finished
+signal ready_for_minigame(items: Array)
+signal display_timer(time: int)
+
 
 @export_group("Rope")
 @export var rope_color: Color
@@ -9,11 +12,17 @@ signal return_finished
 @export var rope_highlight_color: Color
 @export var hand_position: Marker2D
 
+@export_group("Magnet")
+@export var magnet_resource: MagnetResource
+
 
 @onready var cast_line_timer: Timer = %CastLineTimer
 @onready var line: Line2D = $Line2D
+
 @onready var magnet_area: Area2D = %MagnetArea
 @onready var magnet_sprite: Sprite2D = %MagnetSprite
+@onready var magnet_shape: CollisionShape2D = %MagnetShape
+
 @onready var splash: GPUParticles2D = %Splash
 
 
@@ -34,6 +43,12 @@ var is_returning: bool = false
 var default_position: Vector2
 
 
+var attracted_items: Array:
+	set(val):
+		attracted_items = val
+		ready_for_minigame.emit(attracted_items)
+
+
 
 func _ready() -> void:
 	cast_line_timer.timeout.connect(_on_cast_timer_timeout)
@@ -43,6 +58,8 @@ func _ready() -> void:
 	pos = hand_position.position
 	prev_pos = hand_position.position
 	magnet_area.position = hand_position.position
+
+	update_magnet_type()
 
 
 func _physics_process(delta: float) -> void:
@@ -57,6 +74,7 @@ func _physics_process(delta: float) -> void:
 			if magnet_sprite.visible:
 				splash.emitting = true
 				magnet_sprite.visible = false
+				attracted_items = magnet_area.get_overlapping_areas()
 	else:
 		var velocity: Vector2 = prev_pos - pos
 		if velocity.length() > 1.0:
@@ -66,7 +84,6 @@ func _physics_process(delta: float) -> void:
 			prev_pos = prev_pos + velocity + _gravity * delta * delta
 			magnet_area.position = prev_pos
 			queue_redraw()
-			print("Velocity: ", velocity.length())
 		else:
 			if is_returning:
 				is_returning = false
@@ -74,17 +91,6 @@ func _physics_process(delta: float) -> void:
 			if z_index != ORDER_INDEX_DEFAULT:
 				z_index = ORDER_INDEX_DEFAULT
 
-
-func cast(strength: float, _min: float, _max: float) -> void:
-	z_index = ORDER_INDEX_LINECAST
-
-	cast_strength = remap(strength, _min, _max, MIN_LINE_LENGTH, MAX_LINE_LENGTH)
-	print()
-	print("strength: ", strength)
-	print("cast_strength: ", cast_strength)
-	cast_line = true
-	is_returning = false
-	cast_line_timer.start()
 
 
 func _draw() -> void:
@@ -94,13 +100,29 @@ func _draw() -> void:
 
 
 func _on_cast_timer_timeout() -> void:
-	print("BEGIN PULL")
 	cast_line = false
 	is_returning = true
 	return_started.emit()
 
 
 func _on_area_enter(area: Area2D) -> void:
-	print(area)
 	if area is Item:
-		print(area.name)
+		pass
+
+
+func cast(strength: float, _min: float, _max: float) -> void:
+	z_index = ORDER_INDEX_LINECAST
+
+	cast_strength = remap(strength, _min, _max, MIN_LINE_LENGTH, MAX_LINE_LENGTH)
+	cast_line = true
+	is_returning = false
+
+	strength = clamp(abs(strength), abs(_min + 1), abs(_max))
+	display_timer.emit(int(strength if strength >= 2.0 else 3.0))
+	cast_line_timer.wait_time = strength if strength >= 2.0 else 3.0
+	cast_line_timer.start()
+
+
+func update_magnet_type() -> void:
+	magnet_sprite.texture = magnet_resource.magnet_textures[GameState.current_magnet]
+	magnet_shape.shape.radius = magnet_resource.magnet_influence[GameState.current_magnet]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dcyfbv16ndmhr"]
+
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_ej846"]
+[ext_resource type="Resource" uid="uid://o1706aurn8eg" path="res://resources/item_resources/knife.tres" id="2_ej846"]
+
+[node name="KnifeItem" unique_id=1436597317 instance=ExtResource("1_ej846")]
+item_resource = ExtResource("2_ej846")

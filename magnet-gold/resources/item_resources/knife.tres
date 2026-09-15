@@ -12,5 +12,5 @@ value = 8.5
 combo_bonus_value = 4.0
 combo_item_id = &"knife"
 combo_item_ids = Array[StringName]([&"fork", &"spoon"])
-caught_radius = 10.0
+caught_radius = 5.0
 metadata/_custom_type_script = "uid://qmywehrbkm6d"

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://gs8a2y3mtplm"]
+
+[ext_resource type="Script" uid="uid://c4vvcgeg1gmjc" path="res://scenes/mini game/mini_game.gd" id="1_yxh4d"]
+[ext_resource type="Resource" uid="uid://crh5dh2gulls8" path="res://scenes/magnet/magnet_resource.tres" id="2_8airk"]
+
+[node name="MiniGame" type="Control" unique_id=1263479057]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yxh4d")
+magnet_resource = ExtResource("2_8airk")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=872581253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=897194007]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1568290498]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Magnet" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1387538939]
+unique_name_in_owner = true
+layout_mode = 2
+flip_v = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MarginContainer/PanelContainer/MarginContainer/Magnet" unique_id=745589151]
+unique_name_in_owner = true
+rect = Rect2(-10, -8, 20, 5)
+
+[node name="SpawnArea" type="ReferenceRect" parent="." unique_id=862551752]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 130.0
+offset_bottom = 105.0

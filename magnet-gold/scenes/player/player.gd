@@ -10,9 +10,8 @@ signal set_cast_bar
 @export var platformer_input_component: PlatformerInputComponent = null
 @export var platformer_movement_2d: PlatformerMovement2D = null
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite: Sprite2D = %Sprite2D
-@onready var ap: AnimationPlayer = %AnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 var _strength: float = .5
 var is_line_cast: bool = false
@@ -23,6 +22,8 @@ var throwing = false
 var pulling = false
 var fishing = false
 
+
+
 func _ready() -> void:
 	set_cast_bar.connect(cast_bar_ui.pause_cast_bar)
 	cast_line_timeout.connect(cast_bar_ui.resume_cast_bar)
@@ -31,40 +32,47 @@ func _ready() -> void:
 	magnet.return_started.connect(pull)
 	magnet.return_finished.connect(end_pull)
 
+
 func aim():
 	aiming = true
-	ap.play("aim")
+	animation_player.play("aim")
+
 
 func throw():
 	aiming = false
 	throwing = true
 
+
 func end_throw():
 	throwing = false
 	fishing = true
 
+
 func end_pull():
 	pulling = false
+
 
 func pull():
 	fishing = false
 	pulling = true
 
+
 func determine_anim(move_direction: float) -> void:
 	if move_direction < 0:
-		ap.play("walk_left")
+		animation_player.play("walk_left")
 	elif move_direction > 0:
-		ap.play("walk_right")
+		animation_player.play("walk_right")
 	elif aiming:
-		ap.play("aim")
+		animation_player.play("aim")
 	elif throwing:
-		ap.play("throw")
+		animation_player.play("throw")
 	elif pulling:
-		ap.play("pull")
+		animation_player.play("pull")
 	elif fishing:
-		ap.play("fish")
+		animation_player.play("fish")
 	else:
-		ap.play("idle")
+		animation_player.play("idle")
+
 
 func _on_cast_line_request() -> void:
 	platformer_input_component.turn_all_mobility_inputs_off()
@@ -75,31 +83,35 @@ func _on_cast_line_request() -> void:
 		play_cast_line_animation()
 		throw()
 
-	if cast_bar_ui.visible == false:
+	elif cast_bar_ui.visible == false:
 		aim()
 		cast_bar_ui.visible = true
 
-func play_cast_line_animation():
-	if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
-		animated_sprite.animation_finished.connect(_on_animation_finished)
-	animated_sprite.play("cast_line")
 
-func _on_animation_finished() -> void:
+func play_cast_line_animation():
+	if not animation_player.animation_finished.is_connected(_on_animation_finished):
+		animation_player.animation_finished.connect(_on_animation_finished)
+	animation_player.play("throw")
+
+
+func _on_animation_finished(_animation: String) -> void:
 	is_line_cast = true
-	animated_sprite.animation_finished.disconnect(_on_animation_finished)
+	animation_player.animation_finished.disconnect(_on_animation_finished)
 
 	magnet.cast(_strength, cast_bar_ui.BOTTOM, cast_bar_ui.TOP)
-
 	cast_line.emit() # whomever needs to know (UI)
 
 
 func _on_cast_line_timeout() -> void:
-	platformer_input_component.turn_all_mobility_inputs_on()
-
 	is_line_cast = false
 	cast_bar_ui.hide()
 	cast_line_timeout.emit() # whomever needs to know (UI)
 
+	# wait for quick "pull" animation to finish
+	# before allowing character movement
+	await get_tree().create_timer(.75).timeout
+	platformer_input_component.turn_all_mobility_inputs_on()
 
-func on_item_area_entered(area: Area2D) -> void:
+
+func on_item_area_entered(_area: Area2D) -> void:
 	pass

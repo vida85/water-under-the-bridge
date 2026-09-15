@@ -10,5 +10,5 @@ item_description = "These look really nice, wow not even dirty! "
 texture = ExtResource("2_76jmk")
 value = 6.45
 combo_item_id = &"scissors"
-caught_radius = 10.0
+caught_radius = 8.0
 metadata/_custom_type_script = "uid://qmywehrbkm6d"

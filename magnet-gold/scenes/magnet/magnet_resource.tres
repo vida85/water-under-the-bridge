@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MagnetResource" format=3 uid="uid://crh5dh2gulls8"]
+
+[ext_resource type="Texture2D" uid="uid://dy5i2a32umsmu" path="res://scenes/magnet/textures/magnet-1.png" id="1_gaxjk"]
+[ext_resource type="Texture2D" uid="uid://wuosyex7re2q" path="res://scenes/magnet/textures/magnet-2.png" id="2_xenhq"]
+[ext_resource type="Texture2D" uid="uid://b5lkgq8wmbl3m" path="res://scenes/magnet/textures/magnet-3.png" id="3_vyri4"]
+[ext_resource type="Script" uid="uid://bneq7a7weyotw" path="res://resources/magnet_resource.gd" id="4_song0"]
+
+[resource]
+script = ExtResource("4_song0")
+magnet_influence = Dictionary[int, int]({
+0: 4,
+1: 8,
+2: 12
+})
+magnet_textures = Dictionary[int, Texture2D]({
+0: ExtResource("1_gaxjk"),
+1: ExtResource("2_xenhq"),
+2: ExtResource("3_vyri4")
+})
+metadata/_custom_type_script = "uid://bneq7a7weyotw"
