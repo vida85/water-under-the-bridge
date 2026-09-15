@@ -21,6 +21,8 @@ class_name PlatformerMovement2D extends Node
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 
+@onready var ap: AnimationPlayer = %AnimationPlayer
+
 
 func _physics_process(delta: float) -> void:
 	apply_horizontal_movement(delta)
@@ -33,6 +35,7 @@ func _physics_process(delta: float) -> void:
 
 func apply_horizontal_movement(delta: float) -> void:
 	var move_direction: float = input.movement_direction
+	determine_anim(move_direction)
 	if move_direction == 0.0:
 		body.velocity.x = move_toward(body.velocity.x, 0.0, friction * delta)
 		return
@@ -74,3 +77,12 @@ func try_cut_jump_short() -> void:
 		return
 
 	body.velocity.y *= short_jump_multiplier
+
+func determine_anim(move_direction):
+	print(move_direction)
+	if move_direction < 0:
+		ap.play("walk_left")
+	elif move_direction > 0:
+		ap.play("walk_right")
+	else:
+		ap.play("idle")

@@ -9,6 +9,8 @@ signal cast_line_timeout
 @export var platformer_movement_2d: PlatformerMovement2D = null
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: Sprite2D = %Sprite2D
+@onready var ap: AnimationPlayer = %AnimationPlayer
 
 var _line_has_been_cast: bool = false
 var _strength: float
