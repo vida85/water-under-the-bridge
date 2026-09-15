@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bipqjc5funl2e"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_ij5fu"]
+[ext_resource type="Resource" uid="uid://cbii5qiaaxiko" path="res://objects/item_resources/hammer.tres" id="2_a4d2r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4d2r"]
+
+[node name="HammerItem" type="Node2D" unique_id=1073427827]
+script = ExtResource("1_ij5fu")
+item_resource = ExtResource("2_a4d2r")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=1423501495]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=873262522]
+shape = SubResource("CircleShape2D_a4d2r")

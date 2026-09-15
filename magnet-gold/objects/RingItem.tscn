@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://df71vhw70tfli"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_wg0ek"]
+[ext_resource type="Resource" uid="uid://bbxnb6h6vjtt4" path="res://objects/item_resources/ring.tres" id="2_q4s1g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4s1g"]
+
+[node name="RingItem" type="Node2D" unique_id=608053765]
+script = ExtResource("1_wg0ek")
+item_resource = ExtResource("2_q4s1g")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=23471266]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=419598684]
+shape = SubResource("CircleShape2D_q4s1g")

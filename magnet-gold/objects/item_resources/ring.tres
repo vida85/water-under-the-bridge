@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bbxnb6h6vjtt4"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_p8u1c"]
+[ext_resource type="Texture2D" uid="uid://bjxghrc7oqp3c" path="res://shared assets/images/textures/ring.png" id="3_ff5oc"]
+
+[resource]
+script = ExtResource("1_p8u1c")
+name = "A simple ring"
+item_description = "Darn it, this is not my Heirloom... but hey, it's gotta be worth something."
+texture = ExtResource("3_ff5oc")
+value = 15.0
+combo_bonus_value = 7.5
+combo_item_id = &"ring"
+combo_item_ids = Array[StringName]([&"heirloom"])
+caught_radius = 15.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

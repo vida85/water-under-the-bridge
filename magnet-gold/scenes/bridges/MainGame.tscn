@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://dh31pk7i8en66" path="res://scenes/bridges/main_game.gd" id="1_hbod5"]
 [ext_resource type="PackedScene" path="res://scenes/game ui/GameUi.tscn" id="2_2csi4"]
 [ext_resource type="PackedScene" uid="uid://bp58d3xjjj58x" path="res://scenes/popups/Popups.tscn" id="3_xdeye"]
+[ext_resource type="Script" uid="uid://d2s7dyvd1hbjf" path="res://components/item spawn component/item_spawn_component.gd" id="4_hbod5"]
 [ext_resource type="PackedScene" path="res://scenes/main camera/MainCamera.tscn" id="5_2wl6j"]
+[ext_resource type="PackedScene" uid="uid://dxtn2uaofbsdw" path="res://objects/item/CoinAItem.tscn" id="5_xdeye"]
 [ext_resource type="Texture2D" uid="uid://cnm2hd5vq5j8p" path="res://scenes/bridges/textures/background.png" id="6_hujvb"]
 [ext_resource type="PackedScene" uid="uid://b86xoenolr8kv" path="res://scenes/player/Player.tscn" id="6_iovqx"]
+[ext_resource type="PackedScene" uid="uid://b1cxxu1auayoy" path="res://objects/item/CoinBItem.tscn" id="6_xs7pp"]
 [ext_resource type="Texture2D" uid="uid://xnor1krhsgl2" path="res://scenes/bridges/textures/bridge.png" id="7_hbod5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_176rl"]
@@ -17,12 +20,27 @@ size = Vector2(12, 42)
 [node name="MainGame" type="Node2D" unique_id=1874786984 node_paths=PackedStringArray("player")]
 script = ExtResource("1_hbod5")
 player = NodePath("Player")
+metadata/_edit_horizontal_guides_ = [32.0]
 
 [node name="GameUi" parent="." unique_id=424944302 node_paths=PackedStringArray("popup") instance=ExtResource("2_2csi4")]
 unique_name_in_owner = true
 popup = NodePath("Popups")
 
 [node name="Popups" parent="GameUi" unique_id=2144600210 instance=ExtResource("3_xdeye")]
+
+[node name="ItemSpawnComponent" type="Node" parent="." unique_id=1785452676 node_paths=PackedStringArray("player", "item_spawn_area")]
+unique_name_in_owner = true
+script = ExtResource("4_hbod5")
+player = NodePath("../Player")
+item_spawn_area = NodePath("ItemSpawnArea")
+items = Array[PackedScene]([ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp")])
+
+[node name="ItemSpawnArea" type="ReferenceRect" parent="ItemSpawnComponent" unique_id=1123986912]
+unique_name_in_owner = true
+offset_left = -56.0
+offset_top = 33.0
+offset_right = 55.0
+offset_bottom = 72.0
 
 [node name="MainCamera" parent="." unique_id=1132060896 instance=ExtResource("5_2wl6j")]
 
@@ -39,10 +57,11 @@ texture = ExtResource("6_hujvb")
 [node name="LevelFG" type="Sprite2D" parent="HomeBridge" unique_id=652894707]
 unique_name_in_owner = true
 z_index = 10
+position = Vector2(0, 7)
 texture = ExtResource("7_hbod5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomeBridge" unique_id=554408698]
-position = Vector2(0, -3)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_176rl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HomeBridge" unique_id=887504809]

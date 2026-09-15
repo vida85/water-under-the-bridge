@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://o1706aurn8eg"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_dw51t"]
+[ext_resource type="Texture2D" uid="uid://brxjgkr81qmlt" path="res://shared assets/images/textures/knife.png" id="3_4ysdr"]
+
+[resource]
+script = ExtResource("1_dw51t")
+name = "A Knife!"
+item_description = "Awww, something unsettling about finding a knife. Whatever the last thing this cut was, you don't want to know!"
+texture = ExtResource("3_4ysdr")
+value = 8.5
+combo_bonus_value = 4.0
+combo_item_id = &"knife"
+combo_item_ids = Array[StringName]([&"fork", &"spoon"])
+caught_radius = 10.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

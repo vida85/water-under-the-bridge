@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bbkww7ou58dgp"]
+
+[ext_resource type="Script" uid="uid://dlktwx0i4ix8" path="res://scenes/cast bar/cast_bar.gd" id="1_bqfgk"]
+[ext_resource type="Texture2D" uid="uid://cnm2hd5vq5j8p" path="res://scenes/bridges/textures/background.png" id="2_ocww5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tqw2m"]
+load_path = "res://.godot/imported/background.png-b2f3321042121479590236b49fd51ee6.ctex"
+
+[node name="CastBar" type="Node2D" unique_id=1325819392]
+script = ExtResource("1_bqfgk")
+
+[node name="BarBackground" type="Sprite2D" parent="." unique_id=636419336]
+position = Vector2(0, -7.25)
+scale = Vector2(1, 0.9705882)
+texture = ExtResource("2_ocww5")
+region_enabled = true
+region_rect = Rect2(55, 51, 7, 15)
+
+[node name="Bar" type="Sprite2D" parent="." unique_id=1511623994]
+unique_name_in_owner = true
+position = Vector2(0, -14)
+scale = Vector2(1.5, 0.48529503)
+texture = SubResource("CompressedTexture2D_tqw2m")
+centered = false
+offset = Vector2(-2, -1)
+region_enabled = true
+region_rect = Rect2(59, 74, 4, 1)

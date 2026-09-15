@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bli0cest66v7b"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_l2llx"]
+[ext_resource type="Resource" uid="uid://doh85gebucnq7" path="res://objects/item_resources/key.tres" id="2_l2llx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2llx"]
+
+[node name="KeyItem" type="Node2D" unique_id=608053765]
+script = ExtResource("1_l2llx")
+item_resource = ExtResource("2_l2llx")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=1012942889]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=1692502738]
+shape = SubResource("CircleShape2D_l2llx")

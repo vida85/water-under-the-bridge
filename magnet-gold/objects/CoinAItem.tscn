@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c7trnuxvtb88d"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_6428h"]
+[ext_resource type="Resource" uid="uid://cdsx2ejgyn820" path="res://objects/item_resources/coin_a.tres" id="2_l4u7g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_176rl"]
+
+[node name="CoinAItem" type="Node2D" unique_id=1073427827]
+script = ExtResource("1_6428h")
+item_resource = ExtResource("2_l4u7g")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=871239108]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=1342033561]
+shape = SubResource("CircleShape2D_176rl")

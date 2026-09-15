@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cegu7idpclco5"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_xde4y"]
+[ext_resource type="Texture2D" uid="uid://dlslvsn7utr0t" path="res://shared assets/images/textures/heirloom.png" id="3_rajjb"]
+
+[resource]
+script = ExtResource("1_xde4y")
+name = "Heirloom Ring!"
+item_description = "At last, you found your great grandmas ring!! Pretend nothing happened and go propose to her!"
+texture = ExtResource("3_rajjb")
+value = 110.0
+combo_bonus_value = 25.0
+combo_item_id = &"heirloom"
+combo_item_ids = Array[StringName]([&"ring"])
+caught_radius = 2.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

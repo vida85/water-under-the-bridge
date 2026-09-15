@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bmr1f0vefawfc"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_pihvp"]
+[ext_resource type="Resource" uid="uid://crd3tp61mequl" path="res://objects/item_resources/fork.tres" id="2_8hxdr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hxdr"]
+
+[node name="ForkItem" type="Node2D" unique_id=1073427827]
+script = ExtResource("1_pihvp")
+item_resource = ExtResource("2_8hxdr")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=54411997]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=1204969060]
+shape = SubResource("CircleShape2D_8hxdr")

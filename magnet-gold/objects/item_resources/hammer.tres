@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cbii5qiaaxiko"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_ct8be"]
+[ext_resource type="Texture2D" uid="uid://c8c2u0qstos3n" path="res://shared assets/images/textures/hammer.png" id="3_uae5v"]
+
+[resource]
+script = ExtResource("1_ct8be")
+name = "Old Hammer"
+item_description = "Hammer from another era! Geez, this has to be worth something to someone...?"
+texture = ExtResource("3_uae5v")
+value = 12.3
+combo_bonus_value = 6.0
+combo_item_id = &"hammer"
+combo_item_ids = Array[StringName]([&"wrench"])
+caught_radius = 2.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

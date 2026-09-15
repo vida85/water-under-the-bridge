@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://crd3tp61mequl"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_21sbv"]
+[ext_resource type="Texture2D" uid="uid://dhwj6t4om5iii" path="res://shared assets/images/textures/fork.png" id="3_mney7"]
+
+[resource]
+script = ExtResource("1_21sbv")
+name = "Fancy Fork"
+item_description = "What a fork! Look like someone had a fancy dinner... long ago."
+texture = ExtResource("3_mney7")
+value = 2.5
+combo_bonus_value = 2.0
+combo_item_id = &"fork"
+combo_item_ids = Array[StringName]([&"knife", &"spoon"])
+caught_radius = 10.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"
