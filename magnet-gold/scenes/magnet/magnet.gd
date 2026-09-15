@@ -1,5 +1,8 @@
 class_name Magnet extends Node2D
 
+signal return_started
+signal return_finished
+
 @export_group("Rope")
 @export var rope_color: Color
 @export var rope_outline_color: Color
@@ -27,6 +30,7 @@ var prev_pos: Vector2
 var _gravity: Vector2 = Vector2(0, 600)
 
 var cast_line: bool = false
+var is_returning: bool = false
 var default_position: Vector2
 
 
@@ -64,6 +68,9 @@ func _physics_process(delta: float) -> void:
 			queue_redraw()
 			print("Velocity: ", velocity.length())
 		else:
+			if is_returning:
+				is_returning = false
+				return_finished.emit()
 			if z_index != ORDER_INDEX_DEFAULT:
 				z_index = ORDER_INDEX_DEFAULT
 
@@ -76,6 +83,7 @@ func cast(strength: float, _min: float, _max: float) -> void:
 	print("strength: ", strength)
 	print("cast_strength: ", cast_strength)
 	cast_line = true
+	is_returning = false
 	cast_line_timer.start()
 
 
@@ -86,7 +94,10 @@ func _draw() -> void:
 
 
 func _on_cast_timer_timeout() -> void:
+	print("BEGIN PULL")
 	cast_line = false
+	is_returning = true
+	return_started.emit()
 
 
 func _on_area_enter(area: Area2D) -> void:

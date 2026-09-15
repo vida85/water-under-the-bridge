@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cegwxif5430ph" path="res://components/platformer input component/platformer_input_component.gd" id="2_s4vxx"]
 [ext_resource type="Script" uid="uid://q4cenmnxjao" path="res://components/platformer movement 2D/platformer_movement_2d.gd" id="3_pa6wy"]
 [ext_resource type="Texture2D" uid="uid://dfgreumex2mkv" path="res://scenes/player/textures/pedro_animation.png" id="4_c3xxp"]
+[ext_resource type="Texture2D" uid="uid://duwqltdc2dcsq" path="res://scenes/player/textures/fisherman-Sheet.png" id="4_npwbq"]
 [ext_resource type="PackedScene" uid="uid://co13tsg6ogpdk" path="res://scenes/magnet/Magnet.tscn" id="4_tpg5x"]
 [ext_resource type="PackedScene" uid="uid://bbkww7ou58dgp" path="res://scenes/cast bar/CastBar.tscn" id="6_c3xxp"]
 
@@ -101,6 +102,183 @@ animations = [{
 radius = 6.0
 height = 20.0
 
+[sub_resource type="Animation" id="Animation_c3xxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_180ig"]
+resource_name = "aim"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_5stf6"]
+resource_name = "fish"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.4000001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_tpg5x"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.4000001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_7oing"]
+resource_name = "pull"
+length = 0.39999999999999997
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_pn6s4"]
+resource_name = "throw"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.4000001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_throw"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v42im"]
+resource_name = "walk_left"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.39999998, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 5, 4, 7]
+}
+
+[sub_resource type="Animation" id="Animation_npwbq"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3xxp"]
+_data = {
+&"RESET": SubResource("Animation_c3xxp"),
+&"aim": SubResource("Animation_180ig"),
+&"fish": SubResource("Animation_5stf6"),
+&"idle": SubResource("Animation_tpg5x"),
+&"pull": SubResource("Animation_7oing"),
+&"throw": SubResource("Animation_pn6s4"),
+&"walk_left": SubResource("Animation_v42im"),
+&"walk_right": SubResource("Animation_npwbq")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=2127658247 node_paths=PackedStringArray("magnet", "cast_bar_ui", "platformer_input_component", "platformer_movement_2d")]
 script = ExtResource("1_alepy")
 magnet = NodePath("Magnet")
@@ -121,17 +299,27 @@ friction = 170.0
 gravity = 600.0
 jump_force = 95.0
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=896165731]
+unique_name_in_owner = true
+texture = ExtResource("4_npwbq")
+offset = Vector2(0, -16)
+hframes = 20
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=833276254]
+visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_176rl")
-animation = &"idle"
+animation = &"cast_line"
 autoplay = "idle"
-frame_progress = 0.46108782
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=241001325]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_c3xxp")
 debug_color = Color(0, 0.6, 0.69803923, 0.1764706)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=726682002]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_c3xxp")
 
 [node name="Magnet" parent="." unique_id=1294902513 node_paths=PackedStringArray("hand_position") instance=ExtResource("4_tpg5x")]
 position = Vector2(0, -10)

@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 
 func apply_horizontal_movement(delta: float) -> void:
 	var move_direction: float = input.movement_direction
+	body.determine_anim(move_direction)
 	if move_direction == 0.0:
 		body.velocity.x = move_toward(body.velocity.x, 0.0, friction * delta)
 		return
