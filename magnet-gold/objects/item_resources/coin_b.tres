@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dgar8ic505hkk"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_4mn7o"]
+[ext_resource type="Texture2D" uid="uid://c5ln8c1qgw7r" path="res://shared assets/images/textures/coin-2.png" id="2_60kyw"]
+
+[resource]
+script = ExtResource("1_4mn7o")
+name = "Large Coin"
+item_description = "An interesting coin, dirty but nice... might be gold!"
+texture = ExtResource("2_60kyw")
+value = 0.5
+combo_bonus_value = 0.2
+combo_item_id = &"coin_b"
+combo_item_ids = Array[StringName]([&"coin_a"])
+caught_radius = 15.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

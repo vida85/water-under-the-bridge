@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b0vh3wygcbsev"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_my8qa"]
+[ext_resource type="Resource" uid="uid://o1706aurn8eg" path="res://objects/item_resources/knife.tres" id="2_bnok3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnok3"]
+
+[node name="KnifeItem" type="Node2D" unique_id=608053765]
+script = ExtResource("1_my8qa")
+item_resource = ExtResource("2_bnok3")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=898535218]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=2039733106]
+shape = SubResource("CircleShape2D_bnok3")

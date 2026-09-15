@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://56ptxq7ysoag"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_phagh"]
+[ext_resource type="Texture2D" uid="uid://dl1elwb40vq5q" path="res://shared assets/images/textures/scissors.png" id="2_76jmk"]
+
+[resource]
+script = ExtResource("1_phagh")
+name = "Large Scissors"
+item_description = "These look really nice, wow not even dirty! "
+texture = ExtResource("2_76jmk")
+value = 6.45
+combo_item_id = &"scissors"
+caught_radius = 10.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

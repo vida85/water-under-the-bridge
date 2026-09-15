@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://q4cenmnxjao" path="res://components/platformer movement 2D/platformer_movement_2d.gd" id="3_pa6wy"]
 [ext_resource type="Texture2D" uid="uid://dfgreumex2mkv" path="res://scenes/player/textures/pedro_animation.png" id="4_c3xxp"]
 [ext_resource type="PackedScene" uid="uid://co13tsg6ogpdk" path="res://scenes/magnet/Magnet.tscn" id="4_tpg5x"]
+[ext_resource type="PackedScene" uid="uid://bbkww7ou58dgp" path="res://scenes/cast bar/CastBar.tscn" id="6_c3xxp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpg5x"]
 atlas = ExtResource("4_c3xxp")
@@ -96,11 +97,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_176rl"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3xxp"]
+radius = 6.0
+height = 20.0
 
-[node name="Player" type="CharacterBody2D" unique_id=2127658247 node_paths=PackedStringArray("magnet", "platformer_input_component", "platformer_movement_2d")]
+[node name="Player" type="CharacterBody2D" unique_id=2127658247 node_paths=PackedStringArray("magnet", "cast_bar_ui", "platformer_input_component", "platformer_movement_2d")]
 script = ExtResource("1_alepy")
 magnet = NodePath("Magnet")
+cast_bar_ui = NodePath("CastBarUI")
 platformer_input_component = NodePath("PlatformerInputComponent")
 platformer_movement_2d = NodePath("PlatformerMovement2D")
 
@@ -124,10 +128,17 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.46108782
 
-[node name="Magnet" parent="." unique_id=1294902513 instance=ExtResource("4_tpg5x")]
-position = Vector2(0, -8)
-gravity = 600.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=241001325]
 position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_176rl")
+shape = SubResource("CapsuleShape2D_c3xxp")
+debug_color = Color(0, 0.6, 0.69803923, 0.1764706)
+
+[node name="Magnet" parent="." unique_id=1294902513 node_paths=PackedStringArray("hand_position") instance=ExtResource("4_tpg5x")]
+position = Vector2(0, -10)
+hand_position = NodePath("HandPosition")
+
+[node name="HandPosition" type="Marker2D" parent="Magnet" unique_id=1191970866]
+unique_name_in_owner = true
+
+[node name="CastBarUI" parent="." unique_id=1325819392 instance=ExtResource("6_c3xxp")]
+position = Vector2(24, -17)

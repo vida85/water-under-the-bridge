@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cdqr43lte34ke"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_on61p"]
+[ext_resource type="Resource" uid="uid://dr2xrji8oj54d" path="res://objects/item_resources/spoon.tres" id="2_yxjor"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxjor"]
+
+[node name="SpoonItem" type="Node2D" unique_id=608053765]
+script = ExtResource("1_on61p")
+item_resource = ExtResource("2_yxjor")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=699449170]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=318814877]
+shape = SubResource("CircleShape2D_yxjor")

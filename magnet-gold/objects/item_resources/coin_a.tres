@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cdsx2ejgyn820"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_li7q4"]
+[ext_resource type="Texture2D" uid="uid://b3wy7qrylf5h0" path="res://shared assets/images/textures/coin-1.png" id="2_vebjy"]
+
+[resource]
+script = ExtResource("1_li7q4")
+name = "Small Coin"
+item_description = "An old Coin..."
+texture = ExtResource("2_vebjy")
+value = 0.25
+combo_bonus_value = 0.1
+combo_item_id = &"coin_a"
+combo_item_ids = Array[StringName]([&"coin_b"])
+caught_radius = 15.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

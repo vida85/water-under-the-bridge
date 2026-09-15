@@ -23,20 +23,17 @@ func gather_input() -> void:
 	is_jump_just_released = Input.is_action_just_released("jump")
 
 
-func turn_input_off() -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("cast_line"):
+		cast_magnet_request.emit()
+
+
+func turn_all_mobility_inputs_off() -> void:
 	set_physics_process(false)
 	movement_direction = 0.0
 	is_jump_just_pressed = false
 	is_jump_just_released = false
 
 
-func turn_input_on() -> void:
+func turn_all_mobility_inputs_on() -> void:
 	set_physics_process(true)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	strength_amount = 0.0
-	if event.is_action_pressed("cast_line"):
-		strength_amount += .1
-		print(strength_amount)
-		cast_magnet_request.emit()

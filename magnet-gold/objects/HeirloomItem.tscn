@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bql5tewyhq5ib"]
+
+[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_qiqno"]
+[ext_resource type="Resource" uid="uid://cegu7idpclco5" path="res://objects/item_resources/heriloom.tres" id="2_2x7ij"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2x7ij"]
+
+[node name="HeirloomItem" type="Node2D" unique_id=1073427827]
+script = ExtResource("1_qiqno")
+item_resource = ExtResource("2_2x7ij")
+
+[node name="ItemArea2D" type="Area2D" parent="." unique_id=1212901328]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=114850675]
+shape = SubResource("CircleShape2D_2x7ij")

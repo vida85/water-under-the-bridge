@@ -2,44 +2,63 @@ class_name Player extends CharacterBody2D
 
 signal cast_line
 signal cast_line_timeout
+signal set_cast_bar
 
-
+@export_group("Dependencies")
 @export var magnet: Magnet
+@export var cast_bar_ui: CastBar
 @export var platformer_input_component: PlatformerInputComponent = null
 @export var platformer_movement_2d: PlatformerMovement2D = null
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var _line_has_been_cast: bool = false
-var _strength: float
-
-const ORDER_INDEX_DEFAULT: int = 1
-const ORDER_INDEX_LINECAST: int = 20
+var _strength: float = .5
+var is_line_cast: bool = false
+var potential_items_attracted: Array[Item] = []
 
 
 
 func _ready() -> void:
+	set_cast_bar.connect(cast_bar_ui.pause_cast_bar)
+	cast_line_timeout.connect(cast_bar_ui.resume_cast_bar)
 	platformer_input_component.cast_magnet_request.connect(_on_cast_line_request)
 	magnet.cast_line_timer.timeout.connect(_on_cast_line_timeout)
 
 
 func _on_cast_line_request() -> void:
-	print("Cast Line Requested")
+	platformer_input_component.turn_all_mobility_inputs_off()
+
+	if cast_bar_ui.is_processing() and cast_bar_ui.visible:
+		set_cast_bar.emit()
+		_strength = cast_bar_ui.get_cast_bar_set_position()
+		play_cast_line_animation()
+
+	if cast_bar_ui.visible == false:
+		cast_bar_ui.visible = true
+
+
+func play_cast_line_animation():
 	if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
 		animated_sprite.animation_finished.connect(_on_animation_finished)
 	animated_sprite.play("cast_line")
 
 
 func _on_animation_finished() -> void:
-	if not _line_has_been_cast:
-		magnet.z_index = ORDER_INDEX_LINECAST
-		_line_has_been_cast = true
-		animated_sprite.animation_finished.disconnect(_on_animation_finished)
-		magnet.cast(.5, global_position)
-		cast_line.emit()
+	is_line_cast = true
+	animated_sprite.animation_finished.disconnect(_on_animation_finished)
+
+	magnet.cast(_strength, cast_bar_ui.BOTTOM, cast_bar_ui.TOP)
+
+	cast_line.emit() # whomever needs to know (UI)
 
 
 func _on_cast_line_timeout() -> void:
-	magnet.z_index = ORDER_INDEX_DEFAULT
-	_line_has_been_cast = false
-	cast_line_timeout.emit()
+	platformer_input_component.turn_all_mobility_inputs_on()
+
+	is_line_cast = false
+	cast_bar_ui.hide()
+	cast_line_timeout.emit() # whomever needs to know (UI)
+
+
+func on_item_area_entered(area: Area2D) -> void:
+	pass

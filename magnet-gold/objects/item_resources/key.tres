@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://doh85gebucnq7"]
+
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_7gqo7"]
+[ext_resource type="Texture2D" uid="uid://bu5o5emedxr6m" path="res://shared assets/images/textures/key.png" id="2_bp02r"]
+
+[resource]
+script = ExtResource("1_7gqo7")
+name = "An old Key"
+item_description = "A key, I wonder what this was used for? Maybe a hidden Treasure chest!"
+texture = ExtResource("2_bp02r")
+value = 4.75
+combo_item_id = &"old_key"
+caught_radius = 10.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

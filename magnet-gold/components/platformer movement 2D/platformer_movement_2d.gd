@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	update_grace_timers(delta)
 	try_jump()
 	try_cut_jump_short()
+
 	body.move_and_slide()
 
 
