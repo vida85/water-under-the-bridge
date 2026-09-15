@@ -57,11 +57,10 @@ texture = ExtResource("6_hujvb")
 [node name="LevelFG" type="Sprite2D" parent="HomeBridge" unique_id=652894707]
 unique_name_in_owner = true
 z_index = 10
-position = Vector2(0, 7)
 texture = ExtResource("7_hbod5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomeBridge" unique_id=554408698]
-position = Vector2(0, 4)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_176rl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HomeBridge" unique_id=887504809]
