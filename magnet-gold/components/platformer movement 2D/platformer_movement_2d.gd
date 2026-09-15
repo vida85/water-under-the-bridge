@@ -84,5 +84,11 @@ func determine_anim(move_direction):
 		ap.play("walk_left")
 	elif move_direction > 0:
 		ap.play("walk_right")
+	elif body.throwing:
+		ap.play("throw")
+	elif body.pulling:
+		ap.play("pull")
+	elif body.fishing:
+		ap.play("fish")
 	else:
 		ap.play("idle")

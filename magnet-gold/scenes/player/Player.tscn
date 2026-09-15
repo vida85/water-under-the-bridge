@@ -114,6 +114,24 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_5stf6"]
+resource_name = "fish"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.4000001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
 [sub_resource type="Animation" id="Animation_tpg5x"]
 resource_name = "idle"
 length = 0.8
@@ -130,6 +148,70 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_7oing"]
+resource_name = "pull"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-5.9604645e-08, 0.19999993, 0.39999998, 0.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 10, 9, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_pull"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pn6s4"]
+resource_name = "throw"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.4000001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_throw"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_v42im"]
@@ -171,7 +253,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c3xxp"]
 _data = {
 &"RESET": SubResource("Animation_c3xxp"),
+&"fish": SubResource("Animation_5stf6"),
 &"idle": SubResource("Animation_tpg5x"),
+&"pull": SubResource("Animation_7oing"),
+&"throw": SubResource("Animation_pn6s4"),
 &"walk_left": SubResource("Animation_v42im"),
 &"walk_right": SubResource("Animation_npwbq")
 }
@@ -199,7 +284,7 @@ jump_force = 95.0
 unique_name_in_owner = true
 texture = ExtResource("4_npwbq")
 offset = Vector2(0, -16)
-hframes = 8
+hframes = 16
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=833276254]
 visible = false

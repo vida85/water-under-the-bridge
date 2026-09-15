@@ -18,7 +18,9 @@ var _strength: float
 const ORDER_INDEX_DEFAULT: int = 1
 const ORDER_INDEX_LINECAST: int = 20
 
-
+var throwing = false
+var pulling = false
+var fishing = false
 
 func _ready() -> void:
 	platformer_input_component.cast_magnet_request.connect(_on_cast_line_request)
@@ -30,6 +32,7 @@ func _on_cast_line_request() -> void:
 	if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
 		animated_sprite.animation_finished.connect(_on_animation_finished)
 	animated_sprite.play("cast_line")
+	throw()
 
 
 func _on_animation_finished() -> void:
@@ -45,3 +48,17 @@ func _on_cast_line_timeout() -> void:
 	magnet.z_index = ORDER_INDEX_DEFAULT
 	_line_has_been_cast = false
 	cast_line_timeout.emit()
+
+func throw():
+	throwing = true
+
+func end_throw():
+	throwing = false
+	fishing = true
+
+func end_pull():
+	pulling = false
+
+func pull():
+	fishing = false
+	pulling = true
