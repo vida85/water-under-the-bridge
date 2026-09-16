@@ -36,6 +36,7 @@ var default_position: Vector2
 
 
 func _ready() -> void:
+	hide()
 	cast_line_timer.timeout.connect(_on_cast_timer_timeout)
 	magnet_area.area_entered.connect(_on_area_enter)
 	z_index = ORDER_INDEX_DEFAULT
@@ -71,12 +72,14 @@ func _physics_process(delta: float) -> void:
 			if is_returning:
 				is_returning = false
 				return_finished.emit()
+				hide()
 			if z_index != ORDER_INDEX_DEFAULT:
 				z_index = ORDER_INDEX_DEFAULT
 
 
 func cast(strength: float, _min: float, _max: float) -> void:
 	z_index = ORDER_INDEX_LINECAST
+	show()
 
 	cast_strength = remap(strength, _min, _max, MIN_LINE_LENGTH, MAX_LINE_LENGTH)
 	print()
@@ -88,9 +91,10 @@ func cast(strength: float, _min: float, _max: float) -> void:
 
 
 func _draw() -> void:
-	draw_line(hand_position.position, pos, rope_highlight_color, 1.75)
-	draw_line(hand_position.position, pos, rope_outline_color, 1.2)
-	draw_line(hand_position.position, pos, rope_color, .6)
+	draw_line(hand_position.position, pos, rope_highlight_color, 2.0)
+	#draw_line(hand_position.position, pos, rope_highlight_color, 1.75)
+	#draw_line(hand_position.position, pos, rope_outline_color, 1.2)
+	#draw_line(hand_position.position, pos, rope_color, .6)
 
 
 func _on_cast_timer_timeout() -> void:

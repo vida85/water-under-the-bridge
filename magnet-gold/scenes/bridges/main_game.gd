@@ -5,6 +5,7 @@ class_name MagnetFishing extends Node2D
 
 
 func _ready() -> void:
+	Engine.time_scale = 0.1
 	pass
 
 
