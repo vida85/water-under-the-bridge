@@ -17,7 +17,7 @@ func setup(item: Item) -> void:
 	shape.radius = item_resource.caught_radius
 	collision2D.shape = shape
 	item_sprite.texture = item_resource.texture
-	item_sprite.scale = Vector2(.25, .25)
+	item_sprite.scale = Vector2(.33, .33)
 	name = item_resource.name
 
 	item.set_collision_layer_value(COLLISION_ITEM_LAYER, true)

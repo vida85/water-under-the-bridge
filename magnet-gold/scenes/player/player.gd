@@ -4,6 +4,7 @@ signal cast_line
 signal cast_line_timeout
 signal set_cast_bar
 
+
 @export_group("Dependencies")
 @export var magnet: Magnet
 @export var cast_bar_ui: CastBar

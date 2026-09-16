@@ -25,25 +25,27 @@ size = Vector2(96, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pr2el"]
 size = Vector2(12, 42)
 
-[node name="MainGame" type="Node2D" unique_id=1874786984 node_paths=PackedStringArray("player")]
+[node name="MainGame" type="Node2D" unique_id=1874786984 node_paths=PackedStringArray("player", "item_spawn_component")]
 script = ExtResource("1_hbod5")
 player = NodePath("Player")
+item_spawn_component = NodePath("ItemSpawnComponent")
 metadata/_edit_horizontal_guides_ = [32.0]
 
-[node name="GameUi" parent="." unique_id=424944302 node_paths=PackedStringArray("popup") instance=ExtResource("2_2csi4")]
+[node name="GameUi" parent="." unique_id=424944302 node_paths=PackedStringArray("popup_items_caught") instance=ExtResource("2_2csi4")]
 unique_name_in_owner = true
-popup = NodePath("Popups")
+popup_items_caught = NodePath("Popups")
 
 [node name="Popups" parent="GameUi" unique_id=2144600210 instance=ExtResource("3_xdeye")]
+debug = false
 
 [node name="ItemSpawnComponent" type="Node" parent="." unique_id=1785452676 node_paths=PackedStringArray("player", "item_spawn_area")]
 unique_name_in_owner = true
 script = ExtResource("4_hbod5")
 player = NodePath("../Player")
-item_spawn_area = NodePath("ItemSpawnArea")
+item_spawn_area = NodePath("../ItemSpawnArea")
 items = Array[PackedScene]([ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("7_w83us"), ExtResource("8_yespv"), ExtResource("9_x5csy"), ExtResource("10_leei0"), ExtResource("11_n4b7y"), ExtResource("12_3q0ny"), ExtResource("13_2bkwo"), ExtResource("14_yespv")])
 
-[node name="ItemSpawnArea" type="ReferenceRect" parent="ItemSpawnComponent" unique_id=1123986912]
+[node name="ItemSpawnArea" type="ReferenceRect" parent="." unique_id=1123986912]
 unique_name_in_owner = true
 offset_left = -56.0
 offset_top = 33.0

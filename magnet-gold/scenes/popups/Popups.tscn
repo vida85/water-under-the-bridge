@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ticgj")
+debug = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2039678765]
 layout_mode = 1
@@ -25,6 +26,7 @@ offset_right = 54.5
 offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1591093506]
 layout_mode = 2
@@ -57,9 +59,11 @@ expand_mode = 1
 layout_mode = 2
 
 [node name="ShopButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1110219871]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Go to Shop"
 
 [node name="KeepFishingButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1743896258]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Keep Fishing"

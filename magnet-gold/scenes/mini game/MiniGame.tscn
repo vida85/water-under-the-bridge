@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c4vvcgeg1gmjc" path="res://scenes/mini game/mini_game.gd" id="1_yxh4d"]
 [ext_resource type="Resource" uid="uid://crh5dh2gulls8" path="res://scenes/magnet/magnet_resource.tres" id="2_8airk"]
+[ext_resource type="Texture2D" uid="uid://dy5i2a32umsmu" path="res://scenes/magnet/textures/magnet-1.png" id="3_jhlcp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_176rl"]
 
 [node name="MiniGame" type="Control" unique_id=1263479057]
 layout_mode = 3
@@ -34,11 +37,23 @@ size_flags_vertical = 8
 [node name="Magnet" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1387538939]
 unique_name_in_owner = true
 layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("3_jhlcp")
 flip_v = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MarginContainer/PanelContainer/MarginContainer/Magnet" unique_id=745589151]
 unique_name_in_owner = true
-rect = Rect2(-10, -8, 20, 5)
+rect = Rect2(8, 7, 17, 4)
+
+[node name="MagnetArea" type="Area2D" parent="MarginContainer/PanelContainer/MarginContainer/Magnet" unique_id=428026554]
+unique_name_in_owner = true
+position = Vector2(16, 22)
+collision_layer = 0
+collision_mask = 4
+
+[node name="MagnetCollisionShape" type="CollisionShape2D" parent="MarginContainer/PanelContainer/MarginContainer/Magnet/MagnetArea" unique_id=1650454960]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_176rl")
 
 [node name="SpawnArea" type="ReferenceRect" parent="." unique_id=862551752]
 unique_name_in_owner = true
@@ -46,4 +61,4 @@ layout_mode = 0
 offset_left = 30.0
 offset_top = 5.0
 offset_right = 130.0
-offset_bottom = 105.0
+offset_bottom = 81.0
