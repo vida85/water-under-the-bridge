@@ -115,6 +115,7 @@ func _on_area_enter(area: Area2D) -> void:
 
 func cast(strength: float, _min: float, _max: float) -> void:
 	z_index = ORDER_INDEX_LINECAST
+	show()
 
 	cast_strength = remap(strength, _min, _max, MIN_LINE_LENGTH, MAX_LINE_LENGTH)
 	cast_line = true
@@ -127,5 +128,5 @@ func cast(strength: float, _min: float, _max: float) -> void:
 
 
 func update_magnet_type() -> void:
-	magnet_sprite.texture = magnet_resource.magnet_textures[GameState.current_magnet]
+	#magnet_sprite.texture = magnet_resource.magnet_textures[GameState.current_magnet]
 	magnet_shape.shape.radius = magnet_resource.magnet_influence[GameState.current_magnet]
