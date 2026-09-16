@@ -47,6 +47,7 @@ func throw():
 func end_throw():
 	throwing = false
 	fishing = true
+	player_cast()
 
 
 func end_pull():
@@ -81,26 +82,28 @@ func _on_cast_line_request() -> void:
 	if cast_bar_ui.is_processing() and cast_bar_ui.visible:
 		set_cast_bar.emit()
 		_strength = cast_bar_ui.get_cast_bar_set_position()
-		play_cast_line_animation()
+		#play_cast_line_animation()
 		throw()
 
 	elif cast_bar_ui.visible == false:
 		aim()
 		cast_bar_ui.visible = true
 
-
-func play_cast_line_animation():
-	if not animation_player.animation_finished.is_connected(_on_animation_finished):
-		animation_player.animation_finished.connect(_on_animation_finished)
-	animation_player.play("throw")
-
-
-func _on_animation_finished(_animation: String) -> void:
+func player_cast():
 	is_line_cast = true
-	animation_player.animation_finished.disconnect(_on_animation_finished)
-
 	magnet.cast(_strength, cast_bar_ui.BOTTOM, cast_bar_ui.TOP)
 	cast_line.emit() # whomever needs to know (UI)
+
+#func play_cast_line_animation():
+	#if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
+		#animated_sprite.animation_finished.connect(_on_animation_finished)
+	#animated_sprite.play("cast_line")
+
+#func _on_animation_finished() -> void:
+	#is_line_cast = true
+	#animated_sprite.animation_finished.disconnect(_on_animation_finished)
+	#magnet.cast(_strength, cast_bar_ui.BOTTOM, cast_bar_ui.TOP)
+	#cast_line.emit() # whomever needs to know (UI)
 
 
 func _on_cast_line_timeout() -> void:
