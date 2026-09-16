@@ -13,9 +13,8 @@ func _spawn_items() -> void:
 	for _item: PackedScene in items:
 		var item: Item = _item.instantiate()
 		item.global_position = get_random_spawn_position()
-		#item.item_area.area_entered.connect(player.magnet)
 		add_child(item)
-		item.setup.call_deferred()
+		item.setup.call_deferred(item)
 
 
 func get_random_spawn_position() -> Vector2:

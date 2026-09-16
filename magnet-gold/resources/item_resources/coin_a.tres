@@ -12,5 +12,5 @@ value = 0.25
 combo_bonus_value = 0.1
 combo_item_id = &"coin_a"
 combo_item_ids = Array[StringName]([&"coin_b"])
-caught_radius = 15.0
+caught_radius = 5.0
 metadata/_custom_type_script = "uid://qmywehrbkm6d"

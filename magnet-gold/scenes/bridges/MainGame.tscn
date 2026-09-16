@@ -5,11 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://bp58d3xjjj58x" path="res://scenes/popups/Popups.tscn" id="3_xdeye"]
 [ext_resource type="Script" uid="uid://d2s7dyvd1hbjf" path="res://components/item spawn component/item_spawn_component.gd" id="4_hbod5"]
 [ext_resource type="PackedScene" path="res://scenes/main camera/MainCamera.tscn" id="5_2wl6j"]
-[ext_resource type="PackedScene" uid="uid://dxtn2uaofbsdw" path="res://objects/item/CoinAItem.tscn" id="5_xdeye"]
+[ext_resource type="PackedScene" uid="uid://dxtn2uaofbsdw" path="res://objects/CoinAItem.tscn" id="5_xdeye"]
 [ext_resource type="Texture2D" uid="uid://cnm2hd5vq5j8p" path="res://scenes/bridges/textures/background.png" id="6_hujvb"]
 [ext_resource type="PackedScene" uid="uid://b86xoenolr8kv" path="res://scenes/player/Player.tscn" id="6_iovqx"]
-[ext_resource type="PackedScene" uid="uid://b1cxxu1auayoy" path="res://objects/item/CoinBItem.tscn" id="6_xs7pp"]
+[ext_resource type="PackedScene" uid="uid://b1cxxu1auayoy" path="res://objects/CoinBItem.tscn" id="6_xs7pp"]
 [ext_resource type="Texture2D" uid="uid://xnor1krhsgl2" path="res://scenes/bridges/textures/bridge.png" id="7_hbod5"]
+[ext_resource type="PackedScene" uid="uid://b4e04yjwdbeji" path="res://objects/ForkItem.tscn" id="7_w83us"]
+[ext_resource type="PackedScene" uid="uid://cy85w0j0tdnqe" path="res://objects/KeyItem.tscn" id="8_yespv"]
+[ext_resource type="PackedScene" uid="uid://dcyfbv16ndmhr" path="res://objects/Knife.tscn" id="9_x5csy"]
+[ext_resource type="PackedScene" uid="uid://b0v4wstxydqvd" path="res://objects/RingItem.tscn" id="10_leei0"]
+[ext_resource type="PackedScene" uid="uid://djkm7o4bbprwc" path="res://objects/ScissorsItem.tscn" id="11_n4b7y"]
+[ext_resource type="PackedScene" uid="uid://cqk8h6lb38f0c" path="res://objects/SpoonItem.tscn" id="12_3q0ny"]
+[ext_resource type="PackedScene" uid="uid://dcxdb2hed253r" path="res://objects/WrenchItem.tscn" id="13_2bkwo"]
+[ext_resource type="PackedScene" uid="uid://dytv4fb7hrbkp" path="res://objects/HammerItem.tscn" id="14_yespv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_176rl"]
 size = Vector2(96, 10)
@@ -33,7 +41,7 @@ unique_name_in_owner = true
 script = ExtResource("4_hbod5")
 player = NodePath("../Player")
 item_spawn_area = NodePath("ItemSpawnArea")
-items = Array[PackedScene]([ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp")])
+items = Array[PackedScene]([ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("5_xdeye"), ExtResource("6_xs7pp"), ExtResource("7_w83us"), ExtResource("8_yespv"), ExtResource("9_x5csy"), ExtResource("10_leei0"), ExtResource("11_n4b7y"), ExtResource("12_3q0ny"), ExtResource("13_2bkwo"), ExtResource("14_yespv")])
 
 [node name="ItemSpawnArea" type="ReferenceRect" parent="ItemSpawnComponent" unique_id=1123986912]
 unique_name_in_owner = true

@@ -8,6 +8,7 @@ const TOP: float = -14.0
 const BOTTOM: float = 0.0
 
 var step: float = .1 # how fast the bar moves up and down
+var turn_process_back_on: bool = false
 var _cast_bar_set_position: int
 
 

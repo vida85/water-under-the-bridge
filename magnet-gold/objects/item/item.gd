@@ -3,14 +3,24 @@ class_name Item extends Area2D
 
 @export var item_resource: ItemResource
 
+# Item needs to exits in Layer 3
+const COLLISION_ITEM_LAYER: int = 3
 
-func setup() -> void:
-	var item_sprite: Sprite2D = Sprite2D.new()
-	var collision: CollisionShape2D = CollisionShape2D.new()
-	var _shape: Shape2D = CircleShape2D.new()
+var item_sprite: Sprite2D
 
-	_shape.radius = item_resource.caught_radius
-	collision.shape = CircleShape2D.new()
+func setup(item: Item) -> void:
+	item_sprite = Sprite2D.new()
+	var collision2D: CollisionShape2D = CollisionShape2D.new()
+	var shape: CircleShape2D = CircleShape2D.new()
+	#var shape: CircleShape2D = item_collision.shape
+
+	shape.radius = item_resource.caught_radius
+	collision2D.shape = shape
 	item_sprite.texture = item_resource.texture
+	item_sprite.scale = Vector2(.25, .25)
 	name = item_resource.name
-	add_child(item_sprite)
+
+	item.set_collision_layer_value(COLLISION_ITEM_LAYER, true)
+
+	item.add_child(collision2D)
+	item.add_child(item_sprite)

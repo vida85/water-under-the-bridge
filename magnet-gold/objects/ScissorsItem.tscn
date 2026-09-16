@@ -1,18 +1,7 @@
-[gd_scene format=3 uid="uid://coiye4hb2mf46"]
+[gd_scene format=3 uid="uid://djkm7o4bbprwc"]
 
-[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_ecg05"]
-[ext_resource type="Resource" uid="uid://56ptxq7ysoag" path="res://objects/item_resources/scissors.tres" id="2_ecg05"]
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_l217g"]
+[ext_resource type="Resource" uid="uid://56ptxq7ysoag" path="res://resources/item_resources/scissors.tres" id="2_2ytv3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ecg05"]
-
-[node name="ScissorsItem" type="Node2D" unique_id=608053765]
-script = ExtResource("1_ecg05")
-item_resource = ExtResource("2_ecg05")
-
-[node name="ItemArea2D" type="Area2D" parent="." unique_id=1188474473]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=1873539541]
-shape = SubResource("CircleShape2D_ecg05")
+[node name="SiccorsItem" unique_id=1436597317 instance=ExtResource("1_l217g")]
+item_resource = ExtResource("2_2ytv3")

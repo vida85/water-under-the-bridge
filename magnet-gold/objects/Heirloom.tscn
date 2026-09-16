@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://s86oaas1h0ye"]
+
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_ji0t2"]
+[ext_resource type="Resource" uid="uid://cegu7idpclco5" path="res://resources/item_resources/heirloom.tres" id="2_ji0t2"]
+
+[node name="HeirloomItem" unique_id=1436597317 instance=ExtResource("1_ji0t2")]
+item_resource = ExtResource("2_ji0t2")

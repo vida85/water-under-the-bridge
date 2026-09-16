@@ -1,18 +1,7 @@
-[gd_scene format=3 uid="uid://cpyml4gy35j2i"]
+[gd_scene format=3 uid="uid://b1cxxu1auayoy"]
 
-[ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_5vk2a"]
-[ext_resource type="Resource" uid="uid://dgar8ic505hkk" path="res://objects/item_resources/coin_b.tres" id="2_1xgn8"]
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_yqfkb"]
+[ext_resource type="Resource" uid="uid://dgar8ic505hkk" path="res://resources/item_resources/coin_b.tres" id="2_gep4t"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1xgn8"]
-
-[node name="CoinBItem" type="Node2D" unique_id=1446701663]
-script = ExtResource("1_5vk2a")
-item_resource = ExtResource("2_1xgn8")
-
-[node name="ItemArea2D" type="Area2D" parent="." unique_id=734758815]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D" unique_id=219958483]
-shape = SubResource("CircleShape2D_1xgn8")
+[node name="CoinBItem" unique_id=1436597317 instance=ExtResource("1_yqfkb")]
+item_resource = ExtResource("2_gep4t")
