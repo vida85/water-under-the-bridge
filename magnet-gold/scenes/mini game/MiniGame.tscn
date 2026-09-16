@@ -37,12 +37,9 @@ size_flags_vertical = 8
 [node name="Magnet" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1387538939]
 unique_name_in_owner = true
 layout_mode = 2
-<<<<<<< HEAD
 offset_transform_enabled = true
 texture = ExtResource("3_jhlcp")
 flip_v = true
-=======
->>>>>>> 9567ee28d8b51cbcb5512dc3613a7ebcea8fdfab
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MarginContainer/PanelContainer/MarginContainer/Magnet" unique_id=745589151]
 unique_name_in_owner = true
