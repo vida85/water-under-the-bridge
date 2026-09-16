@@ -39,7 +39,6 @@ unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
 texture = ExtResource("3_jhlcp")
-flip_v = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MarginContainer/PanelContainer/MarginContainer/Magnet" unique_id=745589151]
 unique_name_in_owner = true
