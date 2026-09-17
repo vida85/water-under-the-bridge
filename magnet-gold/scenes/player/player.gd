@@ -29,6 +29,7 @@ func _ready() -> void:
 	platformer_input_component.cast_magnet_request.connect(_on_cast_line_request)
 	magnet.return_started.connect(pull)
 	magnet.return_finished.connect(end_pull)
+	magnet.splash_emitted.connect(cast_bar_ui.hide)
 
 
 func aim():
@@ -96,7 +97,6 @@ func player_cast():
 
 func on_cast_line_pull_up() -> void:
 	is_line_cast = false
-	cast_bar_ui.hide()
 	magnet.triger_return_magnet_animation()
 
 
