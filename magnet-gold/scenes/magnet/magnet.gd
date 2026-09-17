@@ -2,6 +2,7 @@ class_name Magnet extends Node2D
 
 signal return_started
 signal return_finished
+signal splash_emitted
 signal ready_for_minigame(items: Array)
 signal display_timer(time: int)
 
@@ -16,7 +17,7 @@ signal display_timer(time: int)
 @export var magnet_resource: MagnetResource
 
 
-@onready var cast_line_timer: Timer = %CastLineTimer
+#@onready var cast_line_timer: Timer = %CastLineTimer
 @onready var line: Line2D = $Line2D
 
 @onready var magnet_area: Area2D = %MagnetArea
@@ -52,7 +53,6 @@ var attracted_items: Array:
 
 func _ready() -> void:
 	hide()
-	cast_line_timer.timeout.connect(_on_cast_timer_timeout)
 	magnet_area.area_entered.connect(_on_area_enter)
 	z_index = ORDER_INDEX_DEFAULT
 
@@ -74,7 +74,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			if magnet_sprite.visible:
 				splash.emitting = true
+				splash_emitted.emit()
 				magnet_sprite.visible = false
+
+				await get_tree().create_timer(.85).timeout
 				attracted_items = magnet_area.get_overlapping_areas()
 	else:
 		var velocity: Vector2 = prev_pos - pos
@@ -90,19 +93,16 @@ func _physics_process(delta: float) -> void:
 				is_returning = false
 				return_finished.emit()
 				hide()
-			if z_index != ORDER_INDEX_DEFAULT:
-				z_index = ORDER_INDEX_DEFAULT
+				if z_index != ORDER_INDEX_DEFAULT:
+					z_index = ORDER_INDEX_DEFAULT
 
 
 
 func _draw() -> void:
 	draw_line(hand_position.position, pos, rope_highlight_color, 2.0)
-	#draw_line(hand_position.position, pos, rope_highlight_color, 1.75)
-	#draw_line(hand_position.position, pos, rope_outline_color, 1.2)
-	#draw_line(hand_position.position, pos, rope_color, .6)
 
 
-func _on_cast_timer_timeout() -> void:
+func triger_return_magnet_animation() -> void:
 	cast_line = false
 	is_returning = true
 	return_started.emit()
@@ -123,8 +123,6 @@ func cast(strength: float, _min: float, _max: float) -> void:
 
 	strength = clamp(abs(strength), abs(_min + 1), abs(_max))
 	display_timer.emit(int(strength if strength >= 2.0 else 3.0))
-	cast_line_timer.wait_time = strength if strength >= 2.0 else 3.0
-	cast_line_timer.start()
 
 
 func update_magnet_type() -> void:

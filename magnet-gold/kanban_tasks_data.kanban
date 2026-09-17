@@ -10,7 +10,10 @@
 		{
 			"uuid": "3dcc42be-9d14-440c-8904-bf66c139dc01",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"f8a4b730-f9c3-4712-8459-f1c35acfebf5",
+				"1d122373-25a4-42b0-95fd-582254483df2"
+			]
 		},
 		{
 			"uuid": "82a95543-d7f5-4647-84eb-4d2408b41dac",
@@ -20,10 +23,66 @@
 		{
 			"uuid": "d0187720-38e8-4f07-b8e2-68650260b4c7",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"dd8c97c8-ab54-4c82-8adb-3884994d0ed2",
+				"5b20c99e-41c9-4a62-b32e-75f33d0db14a",
+				"a6d53671-e038-4727-8f31-128f9c066f85",
+				"7a1fd060-0fdc-47c0-b558-5ee1b73620d6",
+				"d7052f2e-e26f-4462-b18a-edeefada1b0a"
+			]
 		}
 	],
-	"tasks": [],
+	"tasks": [
+		{
+			"uuid": "5b20c99e-41c9-4a62-b32e-75f33d0db14a",
+			"title": "Press down button and quickly raise magnet 'W' or 'Q'",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "a6d53671-e038-4727-8f31-128f9c066f85",
+			"title": "End minigame when magnet reaches the top of the screen",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "dd8c97c8-ab54-4c82-8adb-3884994d0ed2",
+			"title": "add sprite line all the way up magnet",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "f8a4b730-f9c3-4712-8459-f1c35acfebf5",
+			"title": "combo sprite for items that are added",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "d7052f2e-e26f-4462-b18a-edeefada1b0a",
+			"title": "add small shake to items verse static coins",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "7a1fd060-0fdc-47c0-b558-5ee1b73620d6",
+			"title": "PopUp caught items only show() after pull up animation",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "1d122373-25a4-42b0-95fd-582254483df2",
+			"title": "Fix Items Attraction Calculations",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		}
+	],
 	"layout": {
 		"columns": [
 			[

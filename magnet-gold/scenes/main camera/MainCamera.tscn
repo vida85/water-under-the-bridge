@@ -1,12 +1,18 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://um0yp4oxdqh2"]
 
 [ext_resource type="Script" uid="uid://c47e5vqoo6dq7" path="res://components/camera shake/camera_shake.gd" id="1_cj9wf"]
+[ext_resource type="Script" uid="uid://duoog3g0p43e8" path="res://scenes/main camera/main_camera.gd" id="1_dwdr7"]
 [ext_resource type="Script" uid="uid://b7e32f6nrj4ep" path="res://components/camera zoom/camera_zoom.gd" id="2_zt8bq"]
 
-[node name="MainCamera" type="Camera2D"]
+[node name="MainCamera" type="Camera2D" unique_id=2140820870 node_paths=PackedStringArray("camera_shake", "camera_zoom")]
+script = ExtResource("1_dwdr7")
+camera_shake = NodePath("CameraShake")
+camera_zoom = NodePath("CameraZoom")
 
-[node name="CameraShake" type="Node" parent="."]
+[node name="CameraShake" type="Node" parent="." unique_id=795325041 node_paths=PackedStringArray("camera_node")]
 script = ExtResource("1_cj9wf")
+camera_node = NodePath("..")
 
-[node name="CameraZoom" type="Node" parent="."]
+[node name="CameraZoom" type="Node" parent="." unique_id=583966695 node_paths=PackedStringArray("camera_node")]
 script = ExtResource("2_zt8bq")
+camera_node = NodePath("..")

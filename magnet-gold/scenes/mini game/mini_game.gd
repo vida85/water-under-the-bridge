@@ -1,8 +1,9 @@
 class_name MiniGame extends Control
 
-signal magnet_is_off_screen
+
 signal all_items_acquired(items: Array[Item])
 signal minigame_ended
+
 
 @export_group("Magnet")
 @export var magnet_resource: MagnetResource
@@ -14,6 +15,8 @@ signal minigame_ended
 
 @onready var spawn_area: ReferenceRect = %SpawnArea
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
+@onready var item_container: Control = %ItemContainer
+
 
 var items: Array
 var items_original_locations: Array[Array]
@@ -24,11 +27,10 @@ var current_position: Vector2
 var new_position: Vector2
 
 var items_acquired: Array[Item]
-
+var magnet_speed: float = 10.0
 
 const COIN_A_ITEM = preload("uid://dxtn2uaofbsdw")
 const COIN_B_ITEM = preload("uid://b1cxxu1auayoy")
-
 
 
 func _ready() -> void:
@@ -40,7 +42,7 @@ func _ready() -> void:
 		spawn_coins()
 
 	spawn_items.call_deferred()
-	
+
 
 func update_magnet_type() -> void:
 	var radius: float = magnet_resource.magnet_influence[GameState.current_magnet]
@@ -52,9 +54,12 @@ func update_magnet_type() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Item:
+		area.monitoring = false
+		area.monitoring = false
+		area.reparent.call_deferred(magnet_area)
+		area.magnet_area_active = false
 		items_acquired.append(area)
 		print("|----------> Item caught ", area)
-
 
 
 func _process(delta: float) -> void:
@@ -65,13 +70,11 @@ func _process(delta: float) -> void:
 		current_position = new_position
 		new_position.x += .1
 
-	magnet.position.y -= 10 * delta
+	if Input.is_action_pressed("pull_up_quickly"):
+		magnet_speed += 10
+
+	magnet.position.y -= magnet_speed * delta
 	magnet.position.x = lerp(current_position.x, new_position.x, .25)
-
-
-func _on_screen_exited() -> void:
-	all_items_acquired.emit(items_acquired)
-	magnet_is_off_screen.emit()
 
 
 func spawn_coins() -> void:
@@ -80,9 +83,10 @@ func spawn_coins() -> void:
 	coin.setup(coin)
 	coin.item_sprite.scale = Vector2.ONE
 
+	coin.magnet_area = magnet_area
 	item_control.global_position = get_random_spawn_position()
 	item_control.add_child(coin)
-	add_child(item_control)
+	item_container.add_child(item_control)
 
 
 func spawn_items() -> void:
@@ -99,11 +103,14 @@ func spawn_items() -> void:
 			items_original_parent = item.get_parent()
 		items_original_locations.append([item, item.global_position])
 
+		# dependency inject -- property injection
+		item.magnet_area = magnet_area
+		item.shake_item()
 		item.reparent(item_control, false)
 		item.item_sprite.scale = Vector2.ONE
 		item_control.global_position = get_random_spawn_position()
 
-		add_child(item_control)
+		item_container.add_child(item_control)
 		print("Spawned Item: ", item)
 	print("Spawned Total: ", items.size())
 	print("+++++++++++++++++++++++++")
@@ -116,9 +123,12 @@ func get_random_spawn_position() -> Vector2:
 	return spawn_area.global_position + Vector2(x, y)
 
 
-func _exit_tree() -> void:
-	minigame_ended.emit()
+func _on_screen_exited() -> void:
 	all_items_acquired.emit(items_acquired)
+	minigame_ended.emit()
+
+
+func _exit_tree() -> void:
 	# compare all items not acquired to the ones acquired 
 	# return non acquired items back to the main game.
 	print("=========================")
@@ -135,6 +145,7 @@ func _exit_tree() -> void:
 
 			item.reparent(items_original_parent, false)
 			item.global_position = item_location
+			item.magnet_area = null
 			item.item_sprite.scale = Vector2(.33, .33)
 
 			print("Item returning: ", item)

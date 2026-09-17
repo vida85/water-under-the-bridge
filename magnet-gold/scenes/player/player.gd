@@ -1,7 +1,6 @@
 class_name Player extends CharacterBody2D
 
 signal cast_line
-signal cast_line_timeout
 signal set_cast_bar
 
 
@@ -27,9 +26,7 @@ var fishing = false
 
 func _ready() -> void:
 	set_cast_bar.connect(cast_bar_ui.pause_cast_bar)
-	cast_line_timeout.connect(cast_bar_ui.resume_cast_bar)
 	platformer_input_component.cast_magnet_request.connect(_on_cast_line_request)
-	magnet.cast_line_timer.timeout.connect(_on_cast_line_timeout)
 	magnet.return_started.connect(pull)
 	magnet.return_finished.connect(end_pull)
 
@@ -77,45 +74,43 @@ func determine_anim(move_direction: float) -> void:
 
 
 func _on_cast_line_request() -> void:
-	platformer_input_component.turn_all_mobility_inputs_off()
+	turn_off_player_mobility()
 
 	if cast_bar_ui.is_processing() and cast_bar_ui.visible:
 		set_cast_bar.emit()
 		_strength = cast_bar_ui.get_cast_bar_set_position()
-		#play_cast_line_animation()
 		throw()
+		_toggle_cast_button()
 
 	elif cast_bar_ui.visible == false:
 		aim()
 		cast_bar_ui.visible = true
+		cast_bar_ui.resume_cast_bar()
+
 
 func player_cast():
 	is_line_cast = true
 	magnet.cast(_strength, cast_bar_ui.BOTTOM, cast_bar_ui.TOP)
 	cast_line.emit() # whomever needs to know (UI)
 
-#func play_cast_line_animation():
-	#if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
-		#animated_sprite.animation_finished.connect(_on_animation_finished)
-	#animated_sprite.play("cast_line")
 
-#func _on_animation_finished() -> void:
-	#is_line_cast = true
-	#animated_sprite.animation_finished.disconnect(_on_animation_finished)
-	#magnet.cast(_strength, cast_bar_ui.BOTTOM, cast_bar_ui.TOP)
-	#cast_line.emit() # whomever needs to know (UI)
-
-
-func _on_cast_line_timeout() -> void:
+func on_cast_line_pull_up() -> void:
 	is_line_cast = false
 	cast_bar_ui.hide()
-	cast_line_timeout.emit() # whomever needs to know (UI)
-
-	# wait for quick "pull" animation to finish
-	# before allowing character movement
-	await get_tree().create_timer(.75).timeout
-	platformer_input_component.turn_all_mobility_inputs_on()
+	magnet.triger_return_magnet_animation()
 
 
 func on_item_area_entered(_area: Area2D) -> void:
 	pass
+
+
+func turn_off_player_mobility() -> void:
+	platformer_input_component.turn_all_mobility_inputs_off()
+
+
+func turn_on_player_mobility() -> void:
+	platformer_input_component.turn_all_mobility_inputs_on()
+
+
+func _toggle_cast_button() -> void:
+	platformer_input_component.toggle_cast_button()

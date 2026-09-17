@@ -1,5 +1,6 @@
 class_name PlatformerInputComponent extends Node
 
+
 signal cast_magnet_request
 
 
@@ -10,7 +11,7 @@ var is_jump_just_released: bool
 var strength_amount: float = 0.0
 var max_strength_amount: float = 5.0
 
-
+var _can_cast_magnet: bool = true
 
 func _physics_process(_delta: float) -> void:
 	gather_input()
@@ -24,7 +25,7 @@ func gather_input() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("cast_line"):
+	if _can_cast_magnet and event.is_action_pressed("cast_line"):
 		cast_magnet_request.emit()
 
 
@@ -37,3 +38,7 @@ func turn_all_mobility_inputs_off() -> void:
 
 func turn_all_mobility_inputs_on() -> void:
 	set_physics_process(true)
+
+
+func toggle_cast_button() -> void:
+	_can_cast_magnet = not _can_cast_magnet

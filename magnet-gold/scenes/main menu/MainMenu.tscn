@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cst0ttagts4k6" path="res://resources/game_theme.tres" id="1_c7oo3"]
 [ext_resource type="Script" uid="uid://b12eteptwcg63" path="res://scenes/main menu/main_menu.gd" id="1_v04ij"]
-[ext_resource type="AudioStream" uid="uid://swhakeudhv8u" path="res://shared assets/audio/music/stranger-things-124008.mp3" id="3_sg7ab"]
+[ext_resource type="AudioStream" uid="uid://dqjmlemu4qmy8" path="res://shared assets/audio/music/first_song.mp3" id="3_4nwu2"]
 
 [node name="MainMenu" type="Control" unique_id=1547466342]
 layout_mode = 3
@@ -15,7 +15,7 @@ theme = ExtResource("1_c7oo3")
 script = ExtResource("1_v04ij")
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="." unique_id=254385866]
-stream = ExtResource("3_sg7ab")
+stream = ExtResource("3_4nwu2")
 autoplay = true
 bus = &"Music"
 

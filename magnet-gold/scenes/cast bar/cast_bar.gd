@@ -12,11 +12,16 @@ var turn_process_back_on: bool = false
 var _cast_bar_set_position: int
 
 
+
 func _ready() -> void:
 	hide()
 
 
 func _process(_delta: float) -> void:
+	if turn_process_back_on:
+		bar.position.y = BOTTOM
+		turn_process_back_on = false
+
 	if round(bar.position.y) == BOTTOM:
 		step = -.1
 	elif round(bar.position.y) == TOP:
@@ -35,6 +40,7 @@ func pause_cast_bar() -> void:
 
 func resume_cast_bar() -> void:
 	set_process(true)
+	turn_process_back_on = true
 
 
 func get_cast_bar_set_position() -> float:

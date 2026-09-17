@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://np78i2pfbxxq"]
 
 [ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_onjwb"]
+[ext_resource type="Script" uid="uid://c47e5vqoo6dq7" path="res://components/camera shake/camera_shake.gd" id="2_cwgc5"]
 
-[node name="Item" type="Area2D" unique_id=1436597317]
+[node name="Item" type="Area2D" unique_id=1436597317 node_paths=PackedStringArray("item_shake")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_onjwb")
+item_shake = NodePath("ItemShake")
+
+[node name="ItemShake" type="Node" parent="." unique_id=884848709 node_paths=PackedStringArray("camera_node")]
+script = ExtResource("2_cwgc5")
+camera_node = NodePath("..")
+duration = 8.0

@@ -3,7 +3,7 @@ class_name CameraShake extends Node
 signal shake_finished()
 
 @export_group("Setup")
-@export var camera_node: Camera2D
+@export var camera_node: Node2D
 
 @export_group("Shake")
 ## Peak offset in pixels at full trauma.
@@ -16,6 +16,7 @@ signal shake_finished()
 @export_range(1, 4) var trauma_power: int = 2
 ## How fast the shake oscillates.
 @export var shake_speed: float = 28.0
+
 
 var _trauma: float = 0.0
 var _time: float = 0.0
@@ -35,12 +36,15 @@ func _ready() -> void:
 			printerr("Assign a Camera2D to camera_node.")
 			return
 
-	_offset_default = camera_node.offset
-	_rotation_default = camera_node.rotation
-
+	if camera_node is Camera2D:
+		_offset_default = camera_node.offset
+		_rotation_default = camera_node.rotation
+	else:
+		_offset_default = camera_node.position
+		_rotation_default = camera_node.rotation
 
 ## Adds to any shake already running. 0.4 for a footstep, 1.0 for an explosion.
-func add_trauma(amount: float) -> void:
+func add_trauma(amount: float = 4.0) -> void:
 	if camera_node == null or amount <= 0.0:
 		return
 
@@ -64,13 +68,21 @@ func _process(delta: float) -> void:
 
 	var shake: float = pow(_trauma, trauma_power)
 
-	# Using fancy noise texture coordinates for greater random action within a given noise axis.
-	camera_node.offset.x = _offset_default.x + (max_offset.x * shake * _noise.get_noise_2d(_time, 0.0))
-	camera_node.offset.y = _offset_default.y + (max_offset.y * shake * _noise.get_noise_2d(_time, 100.0))
-	camera_node.rotation = _rotation_default + (max_roll * shake * _noise.get_noise_2d(_time, 200.0))
+	if camera_node is Camera2D:
+		# Using fancy noise texture coordinates for greater random action within a given noise axis.
+		camera_node.offset.x = _offset_default.x + (max_offset.x * shake * _noise.get_noise_2d(_time, 0.0))
+		camera_node.offset.y = _offset_default.y + (max_offset.y * shake * _noise.get_noise_2d(_time, 100.0))
+		camera_node.rotation = _rotation_default + (max_roll * shake * _noise.get_noise_2d(_time, 200.0))
+	else:
+		camera_node.position.x = _offset_default.x + (max_offset.x * shake * _noise.get_noise_2d(_time, 0.0))
+		camera_node.position.y = _offset_default.y + (max_offset.y * shake * _noise.get_noise_2d(_time, 100.0))
+		camera_node.rotation = _rotation_default + (max_roll * shake * _noise.get_noise_2d(_time, 200.0))
 
 	if is_zero_approx(_trauma):
-		camera_node.offset = _offset_default
+		if camera_node is Camera2D:
+			camera_node.offset = _offset_default
+		else:
+			camera_node.position = _offset_default
 		camera_node.rotation = _rotation_default
 		set_process(false)
 		shake_finished.emit()
