@@ -23,7 +23,7 @@ func get_random_spawn_position() -> Vector2:
 	var x: float = randf_range(0,  item_spawn_area.size.x)
 	var y: float = randf_range(0, item_spawn_area.size.y)
 
-	return item_spawn_area.global_position + Vector2(x, y)
+	return item_spawn_area.position + Vector2(x, y)
 
 
 func _on_ready_for_minigame(attracted_items: Array) -> void:

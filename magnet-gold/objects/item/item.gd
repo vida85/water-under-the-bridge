@@ -30,7 +30,7 @@ func setup(item: Item) -> void:
 
 
 func shake_item() -> void:
-	item_shake.add_trauma(.25)
+	pass
 
 
 func _input(event: InputEvent) -> void:

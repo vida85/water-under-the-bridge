@@ -11,8 +11,10 @@
 			"uuid": "3dcc42be-9d14-440c-8904-bf66c139dc01",
 			"title": "Todo",
 			"tasks": [
-				"f8a4b730-f9c3-4712-8459-f1c35acfebf5",
-				"1d122373-25a4-42b0-95fd-582254483df2"
+				"d825a01d-40b8-4b28-b2f6-c6f918b89951",
+				"36c9389c-a7d2-476a-bc85-6635061e5d7e",
+				"707a7622-554b-4d90-9aa5-b05ab42cbeef",
+				"f8a4b730-f9c3-4712-8459-f1c35acfebf5"
 			]
 		},
 		{
@@ -28,7 +30,8 @@
 				"5b20c99e-41c9-4a62-b32e-75f33d0db14a",
 				"a6d53671-e038-4727-8f31-128f9c066f85",
 				"7a1fd060-0fdc-47c0-b558-5ee1b73620d6",
-				"d7052f2e-e26f-4462-b18a-edeefada1b0a"
+				"d7052f2e-e26f-4462-b18a-edeefada1b0a",
+				"1d122373-25a4-42b0-95fd-582254483df2"
 			]
 		}
 	],
@@ -78,6 +81,27 @@
 		{
 			"uuid": "1d122373-25a4-42b0-95fd-582254483df2",
 			"title": "Fix Items Attraction Calculations",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "d825a01d-40b8-4b28-b2f6-c6f918b89951",
+			"title": "Fix Music Loop",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "36c9389c-a7d2-476a-bc85-6635061e5d7e",
+			"title": "Check CastLine Calculations are accurate after several throws",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "707a7622-554b-4d90-9aa5-b05ab42cbeef",
+			"title": "Remove individual coins, add them all up",
 			"description": "",
 			"category": "60738252-781c-4faf-93f4-99405380a96d",
 			"steps": []

@@ -32,7 +32,9 @@ func _on_keep_fishing_pressed() -> void:
 
 
 func populate_scroll_container(items: Array) -> void:
-	for item: Item in items:
+	GameState.update_items(items.duplicate())
+
+	for item_resource: ItemResource in GameState.inventory:
 		var item_box_slot:= HBoxContainer.new()
 		var item_texture_rect:= TextureRect.new()
 		var item_label:= Label.new()
@@ -41,12 +43,12 @@ func populate_scroll_container(items: Array) -> void:
 		item_box_slot.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		item_box_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
-		item_texture_rect.texture = item.item_resource.texture
+		item_texture_rect.texture = item_resource.texture
 		item_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 		item_texture_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		item_texture_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
-		item_label.text = item.item_resource.name
+		item_label.text = item_resource.name
 
 		item_box_slot.add_child(item_texture_rect)
 		item_box_slot.add_child(item_label)

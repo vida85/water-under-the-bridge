@@ -18,6 +18,8 @@ signal minigame_ended
 @onready var item_container: Node2D = %ItemContainer
 @onready var magnet_start_position: Marker2D = %MagnetStartPosition
 
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
 
 var items: Array
 var items_original_locations: Array[Array]
@@ -35,9 +37,9 @@ const COIN_B_ITEM = preload("uid://b1cxxu1auayoy")
 
 ## drag is a divider which controls the coin's acceleration and the time it takes
 ## to change direction. A higher value makes it less reactive.
-const DRAG: float = 45.0
-var drag: float = 45.0
-var max_speed: float = 200.0
+const DRAG: float = 25.0
+var drag: float = DRAG
+var max_speed: float = 300.0
 var _velocity: Vector2 = Vector2.ZERO
 var _quick_pull: bool = false
 
@@ -46,26 +48,31 @@ func _ready() -> void:
 	magnet_area.global_position = magnet_start_position.global_position
 	magnet_area.area_exited.connect(_on_area_exited)
 	magnet_area.area_entered.connect(_on_area_entered)
-	visible_on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
 	update_magnet_type()
+	animation_player.play("popup")
 
-	for _freebies in range(10):
-		spawn_coins()
+
+func begin_mini_game() -> void:
 	spawn_items.call_deferred()
+	for _freebies in range(randi_range(1, 9)):
+		spawn_coins()
+
 	current_position = magnet_area.position
 	new_position = current_position
+	visible_on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
 
 
 func update_magnet_type() -> void:
 	var radius: float = magnet_resource.magnet_influence[GameState.current_magnet]
 	var texture: Texture2D = magnet_resource.magnet_textures[GameState.current_magnet]
 	magnet.texture = texture
+	magnet.z_index = -1
 	magnet_collision_shape.shape.radius = radius * 3
 	print("Radius of Magnet: ", radius)
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Item:
+	if area is Item and not _quick_pull:
 		items_acquired.append.call_deferred(area)
 		print("|----------> Item caught ", area)
 
@@ -101,19 +108,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var item: Item
 	var desired_velocity := Vector2.ZERO
-	# If there is one or more overlapping areas, we steer towards the first one.
 
-	# The desired velocity is a vector of length `max_speed` pointing
-	# towards the player.
 	for idx in range(items_acquired.size()):
 		item = items_acquired[idx]
 		desired_velocity = max_speed * item.global_position.direction_to(magnet_area.position)
-
-		# The follow steering equation works like so:
-		#
-		# 1. We calculate the difference between the desired and current
-		#    velocity.
-		# 2. We add a fraction of that difference to the current velocity.
 		var steering := desired_velocity - _velocity
 		_velocity += steering / drag
 		item.translate(_velocity * delta)
@@ -142,15 +140,22 @@ func spawn_items() -> void:
 
 		if items_original_parent != item.get_parent():
 			items_original_parent = item.get_parent()
-		items_original_locations.append([item, item.global_position])
 
-		item.shake_item()
+		items_original_locations.append([item, item.global_position])
+		print("Before Reparent")
+		print("item.global_position = ", item.global_position, "\nitem.position = ", item.position)
 		item.reparent(item_control, false)
+		item.position = Vector2.ZERO
+		item.global_position = Vector2.ZERO
+		print("After Reparent")
+		print("item.global_position = ", item.global_position, "\nitem.position = ", item.position)
 		item.item_sprite.scale = Vector2.ONE
-		item_control.global_position = get_random_spawn_position()
+		item.shake_item()
+
+		item_control.position = get_random_spawn_position()
 
 		item_container.add_child(item_control)
-		print("Spawned Item: ", item)
+		print("Spawned Item: ", item, "position = ", item.global_position, "global_position = ", item.global_position)
 	print("Spawned Total: ", items.size())
 	print("+++++++++++++++++++++++++")
 
@@ -159,7 +164,7 @@ func get_random_spawn_position() -> Vector2:
 	var x: float = randf_range(0,  spawn_area.size.x)
 	var y: float = randf_range(0, spawn_area.size.y)
 
-	return spawn_area.global_position + Vector2(x, y)
+	return spawn_area.position + Vector2(x, y)
 
 
 func _on_screen_exited() -> void:
@@ -184,6 +189,6 @@ func _exit_tree() -> void:
 
 			item.reparent(items_original_parent, false)
 			item.global_position = item_location
-			item.item_sprite.scale = Vector2.ZERO
+			item.item_sprite.scale = Vector2.ZERO if !item.is_debug_on else Vector2.ONE
 
 			print("Item returning: ", item)

@@ -52,17 +52,19 @@ items = Array[PackedScene]([ExtResource("7_w83us"), ExtResource("8_yespv"), ExtR
 
 [node name="ItemSpawnArea" type="ReferenceRect" parent="." unique_id=1123986912]
 unique_name_in_owner = true
-offset_left = -56.0
-offset_top = 33.0
-offset_right = 55.0
-offset_bottom = 72.0
+offset_left = 20.0
+offset_top = 97.0
+offset_right = 131.0
+offset_bottom = 136.0
 
 [node name="MainCamera" parent="." unique_id=1132060896 instance=ExtResource("5_2wl6j")]
+offset = Vector2(80, 72)
 
 [node name="Player" parent="." unique_id=1516898991 instance=ExtResource("6_iovqx")]
-position = Vector2(0, -8)
+position = Vector2(80, 64)
 
 [node name="HomeBridge" type="StaticBody2D" parent="." unique_id=1131055364]
+position = Vector2(80, 72)
 
 [node name="LevelBG" type="Sprite2D" parent="HomeBridge" unique_id=1864412477]
 unique_name_in_owner = true
