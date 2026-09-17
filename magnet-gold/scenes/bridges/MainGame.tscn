@@ -17,6 +17,128 @@
 [ext_resource type="PackedScene" uid="uid://cqk8h6lb38f0c" path="res://objects/SpoonItem.tscn" id="12_3q0ny"]
 [ext_resource type="PackedScene" uid="uid://dcxdb2hed253r" path="res://objects/WrenchItem.tscn" id="13_2bkwo"]
 [ext_resource type="PackedScene" uid="uid://dytv4fb7hrbkp" path="res://objects/HammerItem.tscn" id="14_yespv"]
+[ext_resource type="Texture2D" uid="uid://sonr1k3wakki" path="res://scenes/bridges/textures/cloud-1.png" id="17_x5csy"]
+[ext_resource type="Texture2D" uid="uid://dvyxnwwaj6q32" path="res://scenes/bridges/textures/trees.png" id="17_yespv"]
+[ext_resource type="Texture2D" uid="uid://cd80xdte1sidb" path="res://scenes/bridges/textures/cloud-2.png" id="18_leei0"]
+[ext_resource type="Texture2D" uid="uid://vtqb5ru8myvp" path="res://scenes/bridges/textures/water.png" id="19_3q0ny"]
+[ext_resource type="Texture2D" uid="uid://bxnuocpue4dsn" path="res://scenes/bridges/textures/rocks.png" id="20_n4b7y"]
+
+[sub_resource type="Animation" id="Animation_n4b7y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-80, -52)]
+}
+
+[sub_resource type="Animation" id="Animation_3q0ny"]
+resource_name = "move"
+length = 30.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-80, -52), Vector2(80, -52)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2bkwo"]
+_data = {
+&"RESET": SubResource("Animation_n4b7y"),
+&"move": SubResource("Animation_3q0ny")
+}
+
+[sub_resource type="Animation" id="Animation_x5csy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-80, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_leei0"]
+resource_name = "move"
+length = 40.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-80, -44), Vector2(80, -44)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4b7y"]
+_data = {
+&"RESET": SubResource("Animation_x5csy"),
+&"move": SubResource("Animation_leei0")
+}
+
+[sub_resource type="Animation" id="Animation_2bkwo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hl03j"]
+resource_name = "flow"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_me0qj"]
+_data = {
+&"RESET": SubResource("Animation_2bkwo"),
+&"flow": SubResource("Animation_hl03j")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_176rl"]
 size = Vector2(96, 10)
@@ -71,7 +193,43 @@ unique_name_in_owner = true
 z_index = -10
 texture = ExtResource("6_hujvb")
 
-[node name="LevelFG" type="Sprite2D" parent="HomeBridge" unique_id=652894707]
+[node name="Cloud2" type="Sprite2D" parent="HomeBridge/LevelBG" unique_id=1140072529]
+position = Vector2(-80, -52)
+texture = ExtResource("18_leei0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HomeBridge/LevelBG/Cloud2" unique_id=1318364734]
+libraries/ = SubResource("AnimationLibrary_2bkwo")
+autoplay = &"move"
+
+[node name="Cloud1" type="Sprite2D" parent="HomeBridge/LevelBG" unique_id=1699491181]
+position = Vector2(-80, -40)
+texture = ExtResource("17_x5csy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HomeBridge/LevelBG/Cloud1" unique_id=1097204015]
+libraries/ = SubResource("AnimationLibrary_n4b7y")
+autoplay = &"move"
+
+[node name="LevelWater" type="Sprite2D" parent="HomeBridge" unique_id=1449611478]
+unique_name_in_owner = true
+z_index = -10
+texture = ExtResource("19_3q0ny")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HomeBridge/LevelWater" unique_id=2075692130]
+libraries/ = SubResource("AnimationLibrary_me0qj")
+autoplay = &"flow"
+
+[node name="LevelTrees" type="Sprite2D" parent="HomeBridge" unique_id=305551947]
+unique_name_in_owner = true
+z_index = -10
+texture = ExtResource("17_yespv")
+
+[node name="LevelRocks" type="Sprite2D" parent="HomeBridge" unique_id=1725412176]
+unique_name_in_owner = true
+z_index = -10
+texture = ExtResource("20_n4b7y")
+
+[node name="LevelBridge" type="Sprite2D" parent="HomeBridge" unique_id=652894707]
 unique_name_in_owner = true
 z_index = 10
 texture = ExtResource("7_hbod5")
