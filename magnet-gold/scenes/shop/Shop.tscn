@@ -1,6 +1,162 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://dhikhypod3wsd"]
 
-[ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_v61rp"]
+[ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
+[ext_resource type="Texture2D" uid="uid://3e6pcgo4rcb5" path="res://shared assets/images/textures/bell.png" id="2_3qebd"]
 
-[node name="Shop" type="Node2D"]
+[node name="Shop" type="Control" unique_id=1355205205]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_v61rp")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
+custom_minimum_size = Vector2(100, 125)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -35.5
+offset_right = 24.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1275048634]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1493087401]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=497051525]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1788129645]
+layout_mode = 2
+alignment = 1
+
+[node name="SellButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=45599846]
+layout_mode = 2
+text = "Sell"
+
+[node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=161019732]
+layout_mode = 2
+text = "Buy"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
+custom_minimum_size = Vector2(50, 90)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=409022619]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1288468344]
+custom_maximum_size = Vector2(-1, 12)
+layout_mode = 2
+
+[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1470735379]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3qebd")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1730332773]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Bell"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=934809158]
+custom_maximum_size = Vector2(-1, 12)
+layout_mode = 2
+
+[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1563881368]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3qebd")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1217271376]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Bell"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=735076913]
+custom_maximum_size = Vector2(-1, 12)
+layout_mode = 2
+
+[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1981433037]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3qebd")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1224734133]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Bell"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=968410006]
+custom_maximum_size = Vector2(-1, 12)
+layout_mode = 2
+
+[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=814795662]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3qebd")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=367707427]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Bell"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=745489170]
+custom_maximum_size = Vector2(-1, 12)
+layout_mode = 2
+
+[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=705179369]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3qebd")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=2085732361]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Bell"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=551254247]
+custom_maximum_size = Vector2(-1, 12)
+layout_mode = 2
+
+[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=785218584]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3qebd")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=972235873]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Bell"

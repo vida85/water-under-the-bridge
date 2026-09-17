@@ -43,12 +43,10 @@ var cast_line: bool = false
 var is_returning: bool = false
 var default_position: Vector2
 
-
 var attracted_items: Array:
 	set(val):
 		attracted_items = val
 		ready_for_minigame.emit(attracted_items)
-
 
 
 func _ready() -> void:
@@ -95,7 +93,6 @@ func _physics_process(delta: float) -> void:
 				hide()
 				if z_index != ORDER_INDEX_DEFAULT:
 					z_index = ORDER_INDEX_DEFAULT
-
 
 
 func _draw() -> void:

@@ -1,4 +1,4 @@
-class_name MiniGame extends Control
+class_name MiniGamev2 extends Node2D
 
 
 signal all_items_acquired(items: Array[Item])
@@ -9,13 +9,14 @@ signal minigame_ended
 @export var magnet_resource: MagnetResource
 
 
-@onready var magnet: TextureRect = %Magnet
+@onready var magnet: Sprite2D = %Magnet
 @onready var magnet_area: Area2D = %MagnetArea
 @onready var magnet_collision_shape: CollisionShape2D = %MagnetCollisionShape
 
 @onready var spawn_area: ReferenceRect = %SpawnArea
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
-@onready var item_container: Control = %ItemContainer
+@onready var item_container: Node2D = %ItemContainer
+@onready var magnet_start_position: Marker2D = %MagnetStartPosition
 
 
 var items: Array
@@ -32,16 +33,27 @@ var magnet_speed: float = 10.0
 const COIN_A_ITEM = preload("uid://dxtn2uaofbsdw")
 const COIN_B_ITEM = preload("uid://b1cxxu1auayoy")
 
+## drag is a divider which controls the coin's acceleration and the time it takes
+## to change direction. A higher value makes it less reactive.
+const DRAG: float = 45.0
+var drag: float = 45.0
+var max_speed: float = 200.0
+var _velocity: Vector2 = Vector2.ZERO
+var _quick_pull: bool = false
+
 
 func _ready() -> void:
+	magnet_area.global_position = magnet_start_position.global_position
+	magnet_area.area_exited.connect(_on_area_exited)
 	magnet_area.area_entered.connect(_on_area_entered)
 	visible_on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
 	update_magnet_type()
 
 	for _freebies in range(10):
 		spawn_coins()
-
 	spawn_items.call_deferred()
+	current_position = magnet_area.position
+	new_position = current_position
 
 
 func update_magnet_type() -> void:
@@ -54,12 +66,20 @@ func update_magnet_type() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Item:
-		area.monitoring = false
-		area.monitoring = false
-		area.reparent.call_deferred(magnet_area)
-		area.magnet_area_active = false
-		items_acquired.append(area)
+		items_acquired.append.call_deferred(area)
 		print("|----------> Item caught ", area)
+
+		if items_acquired.is_empty():
+			return
+
+		drag = DRAG * items_acquired.size()
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area is Item and not _quick_pull:
+		if is_instance_valid(area):
+			items_acquired.erase.call_deferred(area)
+			print("|----------> Item lost ", area)
 
 
 func _process(delta: float) -> void:
@@ -71,19 +91,40 @@ func _process(delta: float) -> void:
 		new_position.x += .1
 
 	if Input.is_action_pressed("pull_up_quickly"):
+		_quick_pull = true
 		magnet_speed += 10
 
-	magnet.position.y -= magnet_speed * delta
-	magnet.position.x = lerp(current_position.x, new_position.x, .25)
+	magnet_area.position.y -= magnet_speed * delta
+	magnet_area.position.x = lerp(current_position.x, new_position.x, .25)
+
+
+func _physics_process(delta: float) -> void:
+	var item: Item
+	var desired_velocity := Vector2.ZERO
+	# If there is one or more overlapping areas, we steer towards the first one.
+
+	# The desired velocity is a vector of length `max_speed` pointing
+	# towards the player.
+	for idx in range(items_acquired.size()):
+		item = items_acquired[idx]
+		desired_velocity = max_speed * item.global_position.direction_to(magnet_area.position)
+
+		# The follow steering equation works like so:
+		#
+		# 1. We calculate the difference between the desired and current
+		#    velocity.
+		# 2. We add a fraction of that difference to the current velocity.
+		var steering := desired_velocity - _velocity
+		_velocity += steering / drag
+		item.translate(_velocity * delta)
 
 
 func spawn_coins() -> void:
-	var item_control:= Control.new()
+	var item_control:= Sprite2D.new()
 	var coin: Item = COIN_A_ITEM.instantiate() if randi_range(0, 1) == 1 else COIN_B_ITEM.instantiate()
 	coin.setup(coin)
 	coin.item_sprite.scale = Vector2.ONE
 
-	coin.magnet_area = magnet_area
 	item_control.global_position = get_random_spawn_position()
 	item_control.add_child(coin)
 	item_container.add_child(item_control)
@@ -97,14 +138,12 @@ func spawn_items() -> void:
 		# Create control node for Canvas stuff
 		# randomize it's location within the UI Reference Rect,
 		# add_child to MiniGame, reparent the items to each new canvas item
-		var item_control:= Control.new()
+		var item_control:= Sprite2D.new()
 
 		if items_original_parent != item.get_parent():
 			items_original_parent = item.get_parent()
 		items_original_locations.append([item, item.global_position])
 
-		# dependency inject -- property injection
-		item.magnet_area = magnet_area
 		item.shake_item()
 		item.reparent(item_control, false)
 		item.item_sprite.scale = Vector2.ONE
@@ -145,7 +184,6 @@ func _exit_tree() -> void:
 
 			item.reparent(items_original_parent, false)
 			item.global_position = item_location
-			item.magnet_area = null
-			item.item_sprite.scale = Vector2(.33, .33)
+			item.item_sprite.scale = Vector2.ZERO
 
 			print("Item returning: ", item)

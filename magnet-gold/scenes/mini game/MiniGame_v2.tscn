@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://py3j8cf40f4h"]
+
+[ext_resource type="Texture2D" uid="uid://dy5i2a32umsmu" path="res://scenes/magnet/textures/magnet-1.png" id="1_or2j1"]
+[ext_resource type="Script" uid="uid://dh4c4tjkokcnw" path="res://scenes/mini game/mini_game_v2.gd" id="1_xluq3"]
+[ext_resource type="Texture2D" uid="uid://b6lfkmqsmpu6" path="res://scenes/magnet/textures/rope.png" id="2_jynqs"]
+[ext_resource type="Resource" uid="uid://crh5dh2gulls8" path="res://scenes/magnet/magnet_resource.tres" id="2_mq5h3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_or2j1"]
+
+[node name="MiniGamev2" type="Node2D" unique_id=1868901409]
+script = ExtResource("1_xluq3")
+magnet_resource = ExtResource("2_mq5h3")
+
+[node name="BG" type="Control" parent="." unique_id=1561498015]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 6.0
+offset_right = 27.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BG" unique_id=1596839357]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 106.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpawnArea" type="ReferenceRect" parent="." unique_id=613622168]
+unique_name_in_owner = true
+offset_left = 35.0
+offset_top = 15.0
+offset_right = 125.0
+offset_bottom = 87.0
+
+[node name="ItemContainer" type="Node2D" parent="." unique_id=1556840285]
+unique_name_in_owner = true
+
+[node name="MagnetArea" type="Area2D" parent="." unique_id=590136882]
+unique_name_in_owner = true
+position = Vector2(78, 118)
+collision_layer = 0
+collision_mask = 4
+
+[node name="Magnet" type="Sprite2D" parent="MagnetArea" unique_id=1978576660]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+texture = ExtResource("1_or2j1")
+region_rect = Rect2(4, 4, 8, 8)
+
+[node name="Rope" type="Sprite2D" parent="MagnetArea" unique_id=1142483371]
+unique_name_in_owner = true
+position = Vector2(0, -102)
+texture = ExtResource("2_jynqs")
+region_rect = Rect2(4, 4, 8, 8)
+
+[node name="MagnetCollisionShape" type="CollisionShape2D" parent="MagnetArea" unique_id=479234419]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_or2j1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MagnetArea" unique_id=1011293482]
+unique_name_in_owner = true
+rect = Rect2(-10, -2, 20, 3)
+
+[node name="MagnetStartPosition" type="Marker2D" parent="." unique_id=838112582]
+unique_name_in_owner = true
+position = Vector2(80, 118)

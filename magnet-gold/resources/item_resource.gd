@@ -18,7 +18,7 @@ func get_total_value(item: Item, inventory_combo_items: Array[Item]) -> float:
 	var total: float = 0.0
 
 	for _item: Item in inventory_combo_items:
-		if _item.combo_item_id in combo_item_ids:
+		if _item.item_resource.combo_item_id in combo_item_ids:
 			total += _item.item_resource.value + _item.item_resource.combo_bonus_value
 
 	total += item.item_resource.value + (item.item_resource.combo_bonus_value if total != 0.0 else 0.0)

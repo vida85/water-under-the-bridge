@@ -1,4 +1,4 @@
-class_name Shop extends Node2D
+class_name Shop extends Control
 
 
 func _ready() -> void:
