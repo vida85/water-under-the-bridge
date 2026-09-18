@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bg13xtw6ww3d6"]
+
+[ext_resource type="Script" uid="uid://cawnfmxsn35p4" path="res://scenes/game ui/main_game_ui.gd" id="1_eebsa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hl03j"]
+font_size = 8
+font_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 2
+stacked_outline_0/color = Color(0.13725491, 0.22352941, 0.2, 1)
+
+[node name="MainGameUi" type="Control" unique_id=2061357430]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eebsa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1123192850]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=2021455507]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="CashLabel" type="Label" parent="HBoxContainer/MarginContainer" unique_id=2147243040]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cash: $0"
+label_settings = SubResource("LabelSettings_hl03j")
+horizontal_alignment = 2

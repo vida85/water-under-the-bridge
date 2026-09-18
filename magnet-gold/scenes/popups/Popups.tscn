@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://bp58d3xjjj58x"]
 
 [ext_resource type="Script" uid="uid://rghe8vdkrxd" path="res://scenes/popups/pop_ups.gd" id="1_ticgj"]
+[ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_311g3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hl03j"]
+font = ExtResource("2_311g3")
+font_size = 12
+font_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
+stacked_outline_count = 2
+stacked_outline_0/size = 4
+stacked_outline_0/color = Color(0.13725491, 0.22352941, 0.2, 1)
+stacked_outline_1/color = Color(0.8352941, 0.84705883, 0.81960785, 1)
 
 [node name="Popups" type="Control" unique_id=629519763]
 layout_mode = 3
@@ -13,57 +23,64 @@ script = ExtResource("1_ticgj")
 debug = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2039678765]
+custom_maximum_size = Vector2(130, 140)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.5
-offset_top = -54.0
-offset_right = 54.5
-offset_bottom = 54.0
+offset_left = -68.5
+offset_top = -84.5
+offset_right = 68.5
+offset_bottom = 84.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1591093506]
+propagate_maximum_size = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=230708089]
-custom_minimum_size = Vector2(50, 50)
+propagate_maximum_size = false
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+alignment = 1
 
 [node name="PopupLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1903965129]
 layout_mode = 2
-text = "You Caught Something!!!"
+text = "You
+Caught Something!!!"
+label_settings = SubResource("LabelSettings_hl03j")
 horizontal_alignment = 1
 uppercase = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1982884750]
 custom_minimum_size = Vector2(50, 75)
 layout_mode = 2
+follow_focus = true
+draw_focus_border = true
 
 [node name="ItemContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=815051995]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+propagate_maximum_size = false
 layout_mode = 2
-size_flags_horizontal = 3
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=250027697]
+custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
+alignment = 1
 
 [node name="ShopButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1110219871]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Go to Shop"
+text = "Shop"
 
 [node name="KeepFishingButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1743896258]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Keep Fishing"
+text = "Back"

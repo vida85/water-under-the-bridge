@@ -13,7 +13,9 @@ config_version=5
 config/name="MagnetGold"
 run/main_scene="uid://cy57xutg2kj7w"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/image="uid://b5mfrsltks3d2"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1
 
 [audio]
 

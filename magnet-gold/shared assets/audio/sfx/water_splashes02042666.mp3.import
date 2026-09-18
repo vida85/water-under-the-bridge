@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3pkrdxm8hlqk"
+path="res://.godot/imported/water_splashes02042666.mp3-e1a7323ec25ba95cdd89fdd87cd59e08.mp3str"
+
+[deps]
+
+source_file="res://shared assets/audio/sfx/water_splashes02042666.mp3"
+dest_files=["res://.godot/imported/water_splashes02042666.mp3-e1a7323ec25ba95cdd89fdd87cd59e08.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

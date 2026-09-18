@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ce4ndjmb4u3kf"]
+
+[ext_resource type="Shader" uid="uid://36n5dw6e5b5y" path="res://shared assets/shaders/shine.gdshader" id="1_dndpu"]
+
+[resource]
+shader = ExtResource("1_dndpu")
+shader_parameter/shine_color = Vector4(1, 1, 1, 1)
+shader_parameter/shine_speed = 2.0000000298024
+shader_parameter/shine_size = 0.006000000284999999

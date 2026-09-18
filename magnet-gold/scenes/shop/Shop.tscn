@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://dhikhypod3wsd"]
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
-[ext_resource type="Texture2D" uid="uid://3e6pcgo4rcb5" path="res://shared assets/images/textures/bell.png" id="2_3qebd"]
+[ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
+font = ExtResource("2_3qebd")
+font_color = Color(0.8392157, 0.84705883, 0.81960785, 1)
+stacked_outline_count = 2
+stacked_outline_0/size = 4
+stacked_outline_0/color = Color(0.13725491, 0.22352941, 0.2, 1)
+stacked_outline_1/size = 1
+stacked_outline_1/color = Color(0.8392157, 0.84705883, 0.81960785, 1)
 
 [node name="Shop" type="Control" unique_id=1355205205]
 layout_mode = 3
@@ -13,17 +22,18 @@ grow_vertical = 2
 script = ExtResource("1_v61rp")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
-custom_minimum_size = Vector2(100, 125)
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(-1, 140)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -35.5
-offset_right = 24.0
-offset_bottom = 35.5
+offset_left = -50.0
+offset_top = -74.5
+offset_right = 50.0
+offset_bottom = 74.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -32,131 +42,54 @@ layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1493087401]
+custom_maximum_size = Vector2(-1, 140)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=497051525]
+[node name="ShopLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=113695734]
 layout_mode = 2
+text = "Gold'en Stuff"
+label_settings = SubResource("LabelSettings_tfrm4")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1788129645]
+custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
 alignment = 1
 
 [node name="SellButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=45599846]
+unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../BuyButton")
+focus_neighbor_top = NodePath("../../LeaveButton")
+focus_neighbor_right = NodePath("../BuyButton")
+focus_neighbor_bottom = NodePath("../../LeaveButton")
 text = "Sell"
 
 [node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=161019732]
+unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../SellButton")
+focus_neighbor_top = NodePath("../../LeaveButton")
+focus_neighbor_right = NodePath("../SellButton")
+focus_neighbor_bottom = NodePath("../../LeaveButton")
 text = "Buy"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
-custom_minimum_size = Vector2(50, 90)
+custom_minimum_size = Vector2(50, 80)
+custom_maximum_size = Vector2(100, 90)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=409022619]
+[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=409022619]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1288468344]
-custom_maximum_size = Vector2(-1, 12)
+[node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 5)
+custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
-
-[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1470735379]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_3qebd")
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1730332773]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Bell"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=934809158]
-custom_maximum_size = Vector2(-1, 12)
-layout_mode = 2
-
-[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1563881368]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_3qebd")
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1217271376]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Bell"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=735076913]
-custom_maximum_size = Vector2(-1, 12)
-layout_mode = 2
-
-[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1981433037]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_3qebd")
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1224734133]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Bell"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=968410006]
-custom_maximum_size = Vector2(-1, 12)
-layout_mode = 2
-
-[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=814795662]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_3qebd")
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=367707427]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Bell"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=745489170]
-custom_maximum_size = Vector2(-1, 12)
-layout_mode = 2
-
-[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=705179369]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_3qebd")
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=2085732361]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Bell"
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=551254247]
-custom_maximum_size = Vector2(-1, 12)
-layout_mode = 2
-
-[node name="TextureBottom" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=785218584]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_3qebd")
-
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=972235873]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Bell"
+focus_neighbor_top = NodePath("../HBoxContainer/SellButton")
+focus_neighbor_bottom = NodePath("../HBoxContainer/BuyButton")
+text = "Leave"

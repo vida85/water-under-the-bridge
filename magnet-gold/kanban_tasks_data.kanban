@@ -14,13 +14,16 @@
 				"d825a01d-40b8-4b28-b2f6-c6f918b89951",
 				"36c9389c-a7d2-476a-bc85-6635061e5d7e",
 				"707a7622-554b-4d90-9aa5-b05ab42cbeef",
-				"f8a4b730-f9c3-4712-8459-f1c35acfebf5"
+				"f8a4b730-f9c3-4712-8459-f1c35acfebf5",
+				"d141b684-f763-4148-be41-66d1a5bd83a7"
 			]
 		},
 		{
 			"uuid": "82a95543-d7f5-4647-84eb-4d2408b41dac",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"af803927-e5ab-4b74-b54b-f3d30ff350f8"
+			]
 		},
 		{
 			"uuid": "d0187720-38e8-4f07-b8e2-68650260b4c7",
@@ -31,7 +34,10 @@
 				"a6d53671-e038-4727-8f31-128f9c066f85",
 				"7a1fd060-0fdc-47c0-b558-5ee1b73620d6",
 				"d7052f2e-e26f-4462-b18a-edeefada1b0a",
-				"1d122373-25a4-42b0-95fd-582254483df2"
+				"1d122373-25a4-42b0-95fd-582254483df2",
+				"4f74b4db-eec8-48a7-a6c2-1e6a01e2166b",
+				"6892d9cf-9094-448a-83ef-23b674922e8d",
+				"715ca00c-1a61-4e95-bb84-1b7bf2db891c"
 			]
 		}
 	],
@@ -102,6 +108,41 @@
 		{
 			"uuid": "707a7622-554b-4d90-9aa5-b05ab42cbeef",
 			"title": "Remove individual coins, add them all up",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "4f74b4db-eec8-48a7-a6c2-1e6a01e2166b",
+			"title": "walk a little faster",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "6892d9cf-9094-448a-83ef-23b674922e8d",
+			"title": "items can't spawn too low in minigame",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "af803927-e5ab-4b74-b54b-f3d30ff350f8",
+			"title": "glue item to magnet.... not as nice as being able to lose an item due to too much items attached",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "d141b684-f763-4148-be41-66d1a5bd83a7",
+			"title": "add sparker fx in water",
+			"description": "",
+			"category": "60738252-781c-4faf-93f4-99405380a96d",
+			"steps": []
+		},
+		{
+			"uuid": "715ca00c-1a61-4e95-bb84-1b7bf2db891c",
+			"title": "added shine in mini game",
 			"description": "",
 			"category": "60738252-781c-4faf-93f4-99405380a96d",
 			"steps": []

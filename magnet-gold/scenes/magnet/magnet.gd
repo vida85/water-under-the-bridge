@@ -26,6 +26,9 @@ signal display_timer(time: int)
 
 @onready var splash: GPUParticles2D = %Splash
 
+@onready var splash_out: AudioStreamPlayer = %Splash_out
+@onready var splash_in: AudioStreamPlayer = %Splash_in
+
 
 const MAX_LINE_LENGTH: float = 5.0
 const MIN_LINE_LENGTH: float = 3.6
@@ -71,6 +74,7 @@ func _physics_process(delta: float) -> void:
 			queue_redraw()
 		else:
 			if magnet_sprite.visible:
+				splash_in.play()
 				splash.emitting = true
 				splash_emitted.emit()
 				magnet_sprite.visible = false
@@ -82,6 +86,7 @@ func _physics_process(delta: float) -> void:
 		if velocity.length() > 1.0:
 			if magnet_sprite.visible == false:
 				magnet_sprite.visible = true
+				splash_out.play()
 			pos = prev_pos
 			prev_pos = prev_pos + velocity + _gravity * delta * delta
 			magnet_area.position = prev_pos

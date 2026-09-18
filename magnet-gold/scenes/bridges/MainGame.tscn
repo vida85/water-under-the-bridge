@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bp58d3xjjj58x" path="res://scenes/popups/Popups.tscn" id="3_xdeye"]
 [ext_resource type="Script" uid="uid://d2s7dyvd1hbjf" path="res://components/item spawn component/item_spawn_component.gd" id="4_hbod5"]
 [ext_resource type="PackedScene" uid="uid://um0yp4oxdqh2" path="res://scenes/main camera/MainCamera.tscn" id="5_2wl6j"]
+[ext_resource type="PackedScene" uid="uid://bg13xtw6ww3d6" path="res://scenes/game ui/MainGameUi.tscn" id="5_hl03j"]
 [ext_resource type="Texture2D" uid="uid://cnm2hd5vq5j8p" path="res://scenes/bridges/textures/background.png" id="6_hujvb"]
 [ext_resource type="PackedScene" uid="uid://b86xoenolr8kv" path="res://scenes/player/Player.tscn" id="6_iovqx"]
 [ext_resource type="Texture2D" uid="uid://xnor1krhsgl2" path="res://scenes/bridges/textures/bridge.png" id="7_hbod5"]
@@ -22,6 +23,44 @@
 [ext_resource type="Texture2D" uid="uid://cd80xdte1sidb" path="res://scenes/bridges/textures/cloud-2.png" id="18_leei0"]
 [ext_resource type="Texture2D" uid="uid://vtqb5ru8myvp" path="res://scenes/bridges/textures/water.png" id="19_3q0ny"]
 [ext_resource type="Texture2D" uid="uid://bxnuocpue4dsn" path="res://scenes/bridges/textures/rocks.png" id="20_n4b7y"]
+[ext_resource type="Texture2D" uid="uid://cl5wq7a3rj1r" path="res://shared assets/images/textures/leaves.png" id="23_2bkwo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jj0sy"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_hl03j"]
+offsets = PackedFloat32Array(0, 0.104347825, 0.66086954, 0.93043476)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qqowo"]
+gradient = SubResource("Gradient_hl03j")
+
+[sub_resource type="Curve" id="Curve_me0qj"]
+_data = [Vector2(0, 0.5176471), 0.0, 9.710292, 0, 0, Vector2(0.13306451, 1), 0.0, 0.0, 0, 0, Vector2(0.76478493, 0.8852942), -0.6943435, -0.6943435, 0, 0, Vector2(1, 0.46742213), -2.3827462, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_eo301"]
+curve = SubResource("Curve_me0qj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_176rl"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -42.78, 0)
+emission_shape_scale = Vector3(3.07, 1.03, 1)
+emission_shape = 3
+emission_box_extents = Vector3(60.14, 20.43, 1)
+angle_min = -720.0
+angle_max = 720.0
+initial_velocity_min = 0.25
+initial_velocity_max = 1.0
+gravity = Vector3(0, 2.5, 0)
+radial_accel_min = -3.4000022
+radial_accel_max = 1.7999977
+scale_curve = SubResource("CurveTexture_eo301")
+color_ramp = SubResource("GradientTexture1D_qqowo")
+anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_n4b7y"]
 length = 0.001
@@ -141,7 +180,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_176rl"]
-size = Vector2(96, 10)
+size = Vector2(112, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pr2el"]
 size = Vector2(12, 42)
@@ -162,6 +201,9 @@ bus = &"Music"
 unique_name_in_owner = true
 popup_items_caught = NodePath("Popups")
 
+[node name="MainGameUi" parent="GameUi" unique_id=2061357430 instance=ExtResource("5_hl03j")]
+mouse_filter = 2
+
 [node name="Popups" parent="GameUi" unique_id=2144600210 instance=ExtResource("3_xdeye")]
 debug = false
 
@@ -178,6 +220,15 @@ offset_left = 20.0
 offset_top = 97.0
 offset_right = 131.0
 offset_bottom = 136.0
+
+[node name="Leaves" type="GPUParticles2D" parent="." unique_id=1208024105]
+z_index = 10
+material = SubResource("CanvasItemMaterial_jj0sy")
+position = Vector2(76, 67)
+texture = ExtResource("23_2bkwo")
+lifetime = 7.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_176rl")
 
 [node name="MainCamera" parent="." unique_id=1132060896 instance=ExtResource("5_2wl6j")]
 offset = Vector2(80, 72)
@@ -235,13 +286,13 @@ z_index = 10
 texture = ExtResource("7_hbod5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomeBridge" unique_id=554408698]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_176rl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HomeBridge" unique_id=887504809]
-position = Vector2(-54, -21)
+position = Vector2(-61, -21)
 shape = SubResource("RectangleShape2D_pr2el")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="HomeBridge" unique_id=2084817223]
-position = Vector2(54, -21)
+position = Vector2(61, -21)
 shape = SubResource("RectangleShape2D_pr2el")

@@ -40,5 +40,5 @@ func turn_all_mobility_inputs_on() -> void:
 	set_physics_process(true)
 
 
-func toggle_cast_button() -> void:
-	_can_cast_magnet = not _can_cast_magnet
+func set_cast_button(value: bool) -> void:
+	_can_cast_magnet = value

@@ -43,6 +43,7 @@ func throw():
 
 
 func end_throw():
+	animation_player.speed_scale = .5
 	throwing = false
 	fishing = true
 	player_cast()
@@ -50,6 +51,7 @@ func end_throw():
 
 func end_pull():
 	pulling = false
+	animation_player.speed_scale = 1.0
 
 
 func pull():
@@ -69,7 +71,8 @@ func determine_anim(move_direction: float) -> void:
 	elif pulling:
 		animation_player.play("pull")
 	elif fishing:
-		animation_player.play("fish")
+		animation_player.speed_scale = .5
+		animation_player.play("pull")
 	else:
 		animation_player.play("idle")
 
@@ -81,7 +84,7 @@ func _on_cast_line_request() -> void:
 		set_cast_bar.emit()
 		_strength = cast_bar_ui.get_cast_bar_set_position()
 		throw()
-		_toggle_cast_button()
+		_set_cast_button(false)
 
 	elif cast_bar_ui.visible == false:
 		aim()
@@ -112,5 +115,5 @@ func turn_on_player_mobility() -> void:
 	platformer_input_component.turn_all_mobility_inputs_on()
 
 
-func _toggle_cast_button() -> void:
-	platformer_input_component.toggle_cast_button()
+func _set_cast_button(value: bool) -> void:
+	platformer_input_component.set_cast_button(value)
