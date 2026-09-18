@@ -2,9 +2,21 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
+[ext_resource type="Texture2D" uid="uid://cwcu75yx6d440" path="res://shared assets/images/textures/ui-phone.png" id="2_tc8pp"]
+[ext_resource type="StyleBox" uid="uid://be4t2hc0spgo7" path="res://components/ui elements/button_style.tres" id="4_6yl83"]
+[ext_resource type="StyleBox" uid="uid://ba2ev5fuv0u3x" path="res://components/ui elements/button_active_style.tres" id="5_rdw2s"]
+[ext_resource type="StyleBox" uid="uid://bmyy2uy3s44h" path="res://components/ui elements/button_focus_style.tres" id="6_2xo2e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_srfm6"]
+texture = ExtResource("2_tc8pp")
+texture_margin_left = 5.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 9.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
+font_size = 12
 font_color = Color(0.8392157, 0.84705883, 0.81960785, 1)
 stacked_outline_count = 2
 stacked_outline_0/size = 4
@@ -22,30 +34,33 @@ grow_vertical = 2
 script = ExtResource("1_v61rp")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
-custom_minimum_size = Vector2(100, 100)
-custom_maximum_size = Vector2(-1, 140)
+custom_minimum_size = Vector2(80, 128)
+custom_maximum_size = Vector2(80, 128)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -74.5
-offset_right = 50.0
-offset_bottom = 74.5
+offset_left = -40.0
+offset_top = -64.0
+offset_right = 40.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_srfm6")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1275048634]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1493087401]
-custom_maximum_size = Vector2(-1, 140)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
 
 [node name="ShopLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=113695734]
 layout_mode = 2
@@ -65,6 +80,10 @@ focus_neighbor_left = NodePath("../BuyButton")
 focus_neighbor_top = NodePath("../../LeaveButton")
 focus_neighbor_right = NodePath("../BuyButton")
 focus_neighbor_bottom = NodePath("../../LeaveButton")
+theme_override_styles/normal = ExtResource("4_6yl83")
+theme_override_styles/pressed = ExtResource("5_rdw2s")
+theme_override_styles/hover = ExtResource("6_2xo2e")
+theme_override_styles/focus = ExtResource("6_2xo2e")
 text = "Sell"
 
 [node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=161019732]
@@ -74,12 +93,15 @@ focus_neighbor_left = NodePath("../SellButton")
 focus_neighbor_top = NodePath("../../LeaveButton")
 focus_neighbor_right = NodePath("../SellButton")
 focus_neighbor_bottom = NodePath("../../LeaveButton")
+theme_override_styles/normal = ExtResource("4_6yl83")
+theme_override_styles/pressed = ExtResource("5_rdw2s")
+theme_override_styles/hover = ExtResource("6_2xo2e")
+theme_override_styles/focus = ExtResource("6_2xo2e")
 text = "Buy"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
-custom_minimum_size = Vector2(50, 80)
-custom_maximum_size = Vector2(100, 90)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=409022619]
 unique_name_in_owner = true
@@ -92,4 +114,8 @@ custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
 focus_neighbor_top = NodePath("../HBoxContainer/SellButton")
 focus_neighbor_bottom = NodePath("../HBoxContainer/BuyButton")
+theme_override_styles/normal = ExtResource("4_6yl83")
+theme_override_styles/pressed = ExtResource("5_rdw2s")
+theme_override_styles/hover = ExtResource("6_2xo2e")
+theme_override_styles/focus = ExtResource("6_2xo2e")
 text = "Leave"

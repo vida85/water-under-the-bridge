@@ -19,6 +19,7 @@ func _ready() -> void:
 	buy_button.pressed.connect(_on_buy_button)
 	leave_button.pressed.connect(_on_leave_button)
 	show_inventory.call_deferred()
+	sell_button.grab_focus.call_deferred()
 
 
 func show_inventory() -> void:
