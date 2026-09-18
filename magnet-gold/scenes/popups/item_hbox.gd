@@ -1,4 +1,4 @@
-class_name ItemHBox extends HBoxContainer
+class_name ItemHBox extends Button
 
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var name_label: Label = %NameLabel

@@ -7,16 +7,25 @@ class_name Shop extends Control
 @onready var buy_button: Button = %BuyButton
 @onready var leave_button: Button = %LeaveButton
 
+@onready var tab_container: TabContainer = %TabContainer
+
 const ITEM_HBOX = preload("res://scenes/popups/item_hbox.tscn")
 
 var item_box_slot: ItemHBox
 
 var item_resources: Dictionary = {}
 
+
 func _ready() -> void:
+	tab_container.tab_clicked.connect(_on_tab_button_pressed)
+
 	sell_button.pressed.connect(_on_sell_button)
 	buy_button.pressed.connect(_on_buy_button)
 	leave_button.pressed.connect(_on_leave_button)
+
+	sell_button.visible = true
+	buy_button.visible = false
+
 	show_inventory.call_deferred()
 	sell_button.grab_focus.call_deferred()
 
@@ -46,3 +55,13 @@ func _on_buy_button() -> void:
 
 func _on_leave_button() -> void:
 	hide()
+
+
+func _on_tab_button_pressed(tab_idx: int) -> void:
+	match tab_idx:
+		1:
+			sell_button.visible = false
+			buy_button.visible = true
+		0:
+			sell_button.visible = true
+			buy_button.visible = false
