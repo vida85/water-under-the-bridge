@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://baia8xqn0xjjg"
+path="res://.godot/imported/cash_sfx00000000.mp3-549a82b045463fb9d1e0cc5d507869d7.mp3str"
+
+[deps]
+
+source_file="res://shared assets/audio/sfx/cash_sfx00000000.mp3"
+dest_files=["res://.godot/imported/cash_sfx00000000.mp3-549a82b045463fb9d1e0cc5d507869d7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

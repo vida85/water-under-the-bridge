@@ -24,10 +24,15 @@ signal minigame_caught_nothing
 
 @onready var magnet_sfx: AudioStreamPlayer2D = %MagnetSFX
 @onready var cash_sfx: AudioStreamPlayer2D = %CashSFX
+@onready var magnet_slide_sfx: AudioStreamPlayer2D = %MagnetSlideSFX
+@onready var bell_sfx: AudioStreamPlayer2D = %BellSFX
+
+@onready var coin_colection_area: Area2D = %CoinColectionArea
 
 const NEW_SHADER_SHINE_MATERIAL = preload("uid://ce4ndjmb4u3kf")
 
 
+var coins: Array
 var items: Array
 var items_original_locations: Array[Array]
 var items_original_parent: Node
@@ -38,6 +43,7 @@ var new_position: Vector2
 
 var items_acquired: Array[Item]
 var magnet_speed: float = 10.0
+
 
 const COIN_A_ITEM = preload("uid://dxtn2uaofbsdw")
 const COIN_B_ITEM = preload("uid://b1cxxu1auayoy")
@@ -50,15 +56,15 @@ var max_speed: float = 300.0
 var _velocity: Vector2 = Vector2.ZERO
 var _quick_pull: bool = false
 
+
 var _total_coins_acquired: float = 0.0:
 	set(val):
 		_total_coins_acquired = val
 		GameState.current_money_earned += _total_coins_acquired
 
-var tween: Tween
-
 
 func _ready() -> void:
+	coin_colection_area.area_entered.connect(_on_magnet_entered)
 	_turn_off_items()
 	animation_player.play("popup")
 	_update_magnet_type_from_resource()
@@ -91,24 +97,30 @@ func _turn_on_items() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Item and not _quick_pull:
 		var item: Item = area
-		if "coin" in item.item_resource.name.to_lower():
-			print("You got a coin!!!")
-			cash_sfx.play()
-			tween = _reset_tween()
-			tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SPRING)
-			await tween.tween_property(item, "global_position", coin_end_position.global_position, .275).finished
-			_total_coins_acquired += item.item_resource.value
-			item.queue_free()
-			return
+		if not magnet_sfx.playing:
+			magnet_sfx.play.call_deferred()
 
-		items_acquired.append.call_deferred(area)
-		print("|----------> Item caught ", area)
-		magnet_sfx.play()
+		if "coin" in item.item_resource.name.to_lower():
+			coins.append(item)
+			item.set_deferred("monitorable", false)
+
+			# After a small amount let item get stuck to magnet 
+			await get_tree().create_timer(2.0).timeout
+			item.is_item_stuck_to_magnet = true
+			item.reparent(magnet_area)
+
+		if item not in coins:
+			items_acquired.append.call_deferred(item)
 
 		if items_acquired.is_empty():
 			return
 
 		drag = DRAG * items_acquired.size()
+		print("|----------> Item caught ", item)
+
+
+func _on_coin_faded_away(value: float) -> void:
+	_total_coins_acquired += value
 
 
 func _on_area_exited(area: Area2D) -> void:
@@ -124,14 +136,14 @@ func _on_area_exited(area: Area2D) -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		current_position = new_position
-		new_position.x += -.1
+		new_position.x += -.125
 	if Input.is_action_pressed("right"):
 		current_position = new_position
-		new_position.x += .1
+		new_position.x += .125
 
 	if Input.is_action_pressed("pull_up_quickly"):
 		_quick_pull = true
-		magnet_speed += 10
+		magnet_speed += 12.5
 
 	magnet_area.position.y -= magnet_speed * delta
 	magnet_area.position.x = lerp(current_position.x, new_position.x, .25)
@@ -141,7 +153,7 @@ func _physics_process(delta: float) -> void:
 	var item: Item
 	var desired_velocity := Vector2.ZERO
 
-	# Magnet attraction logic
+	# Magnet attraction logic ITEMS
 	for idx in range(items_acquired.size()):
 		item = items_acquired[idx]
 		desired_velocity = max_speed * item.global_position.direction_to(magnet_area.position)
@@ -149,15 +161,33 @@ func _physics_process(delta: float) -> void:
 		_velocity += steering / drag
 		item.translate(_velocity * delta)
 
+	desired_velocity = Vector2.ZERO
+	# Magnet attraction logic COINS
+	for idx in range(coins.size()):
+		item = coins[idx]
+		if not item.is_item_stuck_to_magnet:
+			desired_velocity = max_speed * item.global_position.direction_to(magnet_area.position)
+			var steering := desired_velocity - _velocity
+			_velocity += steering / drag
+			item.translate(_velocity * delta)
 
+
+func _on_magnet_entered(_area: Area2D) -> void:
+	bell_sfx.play()
+	for coin: Item in coins:
+		if items_acquired.has(coin):
+			items_acquired.erase.call_deferred(coin)
+		coin.fade_away(coin_end_position)
+
+  
 func _on_screen_exited() -> void:
+	await get_tree().create_timer(1.0 if not _quick_pull else 2.0).timeout
 	if items_acquired.is_empty():
-		minigame_caught_nothing.emit()
+		minigame_caught_nothing.emit.call_deferred()
 	else:
-		all_items_acquired.emit(items_acquired)
-		print("all_items_acquired.emit(items_acquired) = ", items_acquired)
+		all_items_acquired.emit.call_deferred(items_acquired)
 
-	minigame_ended.emit()
+	minigame_ended.emit.call_deferred()
 
 
 func _exit_tree() -> void:
@@ -183,18 +213,13 @@ func _exit_tree() -> void:
 	items.clear()
 
 
-func _reset_tween() -> Tween:
-	if tween and tween.is_running():
-		tween.kill()
-	return create_tween()
-
-
 func spawn_coins() -> void:
 	var item_control:= Sprite2D.new()
 	var coin: Item = COIN_A_ITEM.instantiate() if randi_range(0, 1) == 1 else COIN_B_ITEM.instantiate()
 	coin.setup(coin)
 	coin.item_sprite.scale = Vector2.ONE
-	
+	coin.coin_has_faded_and_died.connect(_on_coin_faded_away)
+
 	item_control.global_position = get_random_spawn_position()
 	item_control.add_child(coin)
 	item_container.add_child(item_control)
@@ -242,6 +267,8 @@ func get_random_spawn_position() -> Vector2:
 ## Called from animation_player after animation_player.play("popup") finished
 func begin_mini_game() -> void:
 	spawn_items.call_deferred()
+	items_acquired.clear()
+
 	for _freebies in range(randi_range(1, 9)):
 		spawn_coins()
 
@@ -253,3 +280,4 @@ func begin_mini_game() -> void:
 	set_process(true)
 	set_physics_process(true)
 	_turn_on_items()
+	magnet_slide_sfx.play()

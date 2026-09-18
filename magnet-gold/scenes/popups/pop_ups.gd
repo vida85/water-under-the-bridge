@@ -13,15 +13,13 @@ signal can_cast(value: bool)
 const SHOP = preload("uid://dhikhypod3wsd")
 
 var item_resources: Dictionary = {}
-
-var item_box_slot: HBoxContainer
-var item_texture_rect: TextureRect
-var item_label: Label
+var item_button: Button
 
 
 func _ready() -> void:
 	shop_button.pressed.connect(_on_go_to_shop_pressed)
 	keep_fishing_button.pressed.connect(_on_keep_fishing_pressed)
+	keep_fishing_button.grab_focus()
 
 	if debug:
 		return
@@ -53,27 +51,23 @@ func populate_scroll_container(items: Array) -> void:
 	"""
 	for item: Item in items:
 		if item_resources.has(item.item_resource):
-			item_box_slot     = item_resources[item.item_resource][0] as HBoxContainer
-			item_texture_rect = item_resources[item.item_resource][1] as TextureRect
-			item_label        = item_resources[item.item_resource][2] as Label
+			item_button = item_resources[item.item_resource] as Button
 		else:
-			item_box_slot     = HBoxContainer.new()
-			item_texture_rect = TextureRect.new()
-			item_label        = Label.new()
-			item_resources[item.item_resource] = [item_box_slot, item_texture_rect, item_label]
+			item_button = Button.new()
+			item_resources[item.item_resource] = item_button
 
-		item_box_slot.custom_maximum_size = Vector2(-1.0, 15.0)
-		item_box_slot.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		item_box_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		# Button Layout
+		item_button.custom_maximum_size = Vector2(-1.0, 25.0)
+		item_button.size_flags_vertical = Control.SIZE_EXPAND
+		item_button.clip_contents = true
 
-		item_texture_rect.texture = item.item_resource.texture
-		item_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-		item_texture_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		item_texture_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		item_button.icon = item.item_resource.texture
 
-		item_label.text = item.item_resource.name + " -- " + str(GameState.inventory[item.item_resource])
+		# Text Behavior
+		item_button.text = item.item_resource.name
+		item_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		item_button.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		item_button.autowrap_mode = TextServer.AUTOWRAP_WORD
 
-		if !item_box_slot.is_inside_tree():
-			item_box_slot.add_child(item_texture_rect)
-			item_box_slot.add_child(item_label)
-			item_container.add_child(item_box_slot)
+		if not item_button.is_inside_tree():
+			item_container.add_child(item_button)

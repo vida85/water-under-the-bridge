@@ -58,16 +58,19 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1982884750]
-custom_minimum_size = Vector2(50, 75)
+custom_minimum_size = Vector2(125, 80)
 layout_mode = 2
 follow_focus = true
 draw_focus_border = true
 
 [node name="ItemContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=815051995]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 70)
+custom_maximum_size = Vector2(-1, 80)
 propagate_maximum_size = false
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -14
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=250027697]
