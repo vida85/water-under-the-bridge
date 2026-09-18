@@ -11,12 +11,11 @@ signal can_cast(value: bool)
 @onready var item_container: VBoxContainer = %ItemContainer
 
 const SHOP = preload("uid://dhikhypod3wsd")
+const ITEM_HBOX = preload("res://scenes/popups/item_hbox.tscn")
 
 var item_resources: Dictionary = {}
 
-var item_box_slot: HBoxContainer
-var item_texture_rect: TextureRect
-var item_label: Label
+var item_box_slot: ItemHBox
 
 
 func _ready() -> void:
@@ -53,27 +52,12 @@ func populate_scroll_container(items: Array) -> void:
 	"""
 	for item: Item in items:
 		if item_resources.has(item.item_resource):
-			item_box_slot     = item_resources[item.item_resource][0] as HBoxContainer
-			item_texture_rect = item_resources[item.item_resource][1] as TextureRect
-			item_label        = item_resources[item.item_resource][2] as Label
+			item_box_slot = item_resources[item.item_resource] as ItemHBox
 		else:
-			item_box_slot     = HBoxContainer.new()
-			item_texture_rect = TextureRect.new()
-			item_label        = Label.new()
-			item_resources[item.item_resource] = [item_box_slot, item_texture_rect, item_label]
-
-		item_box_slot.custom_maximum_size = Vector2(-1.0, 15.0)
-		item_box_slot.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		item_box_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-
-		item_texture_rect.texture = item.item_resource.texture
-		item_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-		item_texture_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		item_texture_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-
-		item_label.text = item.item_resource.name + " -- " + str(GameState.inventory[item.item_resource])
+			item_box_slot = ITEM_HBOX.instantiate()
+			item_resources[item.item_resource] = item_box_slot
 
 		if !item_box_slot.is_inside_tree():
-			item_box_slot.add_child(item_texture_rect)
-			item_box_slot.add_child(item_label)
 			item_container.add_child(item_box_slot)
+
+		item_box_slot.set_item(item.item_resource.texture, item.item_resource.name, GameState.inventory[item.item_resource])

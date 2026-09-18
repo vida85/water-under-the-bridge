@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
-[ext_resource type="Theme" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
+[ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
@@ -88,6 +88,7 @@ size_flags_vertical = 3
 [node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=409022619]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
 unique_name_in_owner = true

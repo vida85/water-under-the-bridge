@@ -7,10 +7,9 @@ class_name Shop extends Control
 @onready var buy_button: Button = %BuyButton
 @onready var leave_button: Button = %LeaveButton
 
+const ITEM_HBOX = preload("res://scenes/popups/item_hbox.tscn")
 
-var item_box_slot: HBoxContainer
-var item_texture_rect: TextureRect
-var item_label: Label
+var item_box_slot: ItemHBox
 
 var item_resources: Dictionary = {}
 
@@ -25,28 +24,16 @@ func _ready() -> void:
 func show_inventory() -> void:
 	for item_resource: ItemResource in GameState.inventory:
 		if item_resources.has(item_resource):
-			item_box_slot     = item_resources[item_resource][0] as HBoxContainer
-			item_texture_rect = item_resources[item_resource][1] as TextureRect
-			item_label        = item_resources[item_resource][2] as Label
+			item_box_slot = item_resources[item_resource] as ItemHBox
 		else:
-			item_box_slot     = HBoxContainer.new()
-			item_texture_rect = TextureRect.new()
-			item_label        = Label.new()
-			item_resources[item_resource] = [item_box_slot, item_texture_rect, item_label]
-
-		item_box_slot.custom_maximum_size = Vector2(-1.0, 12.0)
-	
-		item_texture_rect.custom_maximum_size = Vector2(10, 10)
-		item_texture_rect.texture = item_resource.texture
-		item_texture_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		item_texture_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-
-		item_label.text = str(GameState.inventory[item_resource])
+			item_box_slot = ITEM_HBOX.instantiate()
+			item_resources[item_resource] = item_box_slot
 
 		if !item_box_slot.is_inside_tree():
-			item_box_slot.add_child(item_texture_rect)
-			item_box_slot.add_child(item_label)
 			main_container.add_child(item_box_slot)
+
+		item_box_slot.set_item(item_resource.texture, "", GameState.inventory[item_resource])
+		item_box_slot.set_price(item_resource.value)
 
 
 func _on_sell_button() -> void:

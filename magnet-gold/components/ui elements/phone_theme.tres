@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3]
+[gd_resource type="Theme" format=3 uid="uid://bje0fb4plrk45"]
 
 [ext_resource type="StyleBox" uid="uid://be4t2hc0spgo7" path="res://components/ui elements/button_style.tres" id="1_style"]
 [ext_resource type="StyleBox" uid="uid://ba2ev5fuv0u3x" path="res://components/ui elements/button_active_style.tres" id="2_active"]
@@ -13,8 +13,8 @@ texture_margin_right = 5.0
 texture_margin_bottom = 9.0
 
 [resource]
+Button/styles/focus = ExtResource("3_focus")
+Button/styles/hover = ExtResource("3_focus")
 Button/styles/normal = ExtResource("1_style")
 Button/styles/pressed = ExtResource("2_active")
-Button/styles/hover = ExtResource("3_focus")
-Button/styles/focus = ExtResource("3_focus")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_panel")
