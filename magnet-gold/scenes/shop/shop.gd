@@ -3,13 +3,15 @@ class_name Shop extends Control
 
 @onready var main_container: VBoxContainer = %MainContainer
 
-@onready var sell_button: Button = %SellButton
-@onready var buy_button: Button = %BuyButton
 @onready var leave_button: Button = %LeaveButton
 
 @onready var tab_container: TabContainer = %TabContainer
 
+@onready var magnet_1_button: Button = %Magnet_1_Button
+@onready var magnet_2_button: Button = %Magnet_2_Button
+
 const ITEM_HBOX = preload("res://scenes/popups/item_hbox.tscn")
+const MAGNET_RESOURCE = preload("uid://crh5dh2gulls8")
 
 var item_box_slot: ItemHBox
 
@@ -17,17 +19,11 @@ var item_resources: Dictionary = {}
 
 
 func _ready() -> void:
-	tab_container.tab_clicked.connect(_on_tab_button_pressed)
-
-	sell_button.pressed.connect(_on_sell_button)
-	buy_button.pressed.connect(_on_buy_button)
 	leave_button.pressed.connect(_on_leave_button)
-
-	sell_button.visible = true
-	buy_button.visible = false
-
+	magnet_1_button.pressed.connect(_on_magnet_1_pressed)
+	magnet_2_button.pressed.connect(_on_magnet_2_pressed)
 	show_inventory.call_deferred()
-	sell_button.grab_focus.call_deferred()
+	tab_container.grab_focus.call_deferred()
 
 
 func show_inventory() -> void:
@@ -45,23 +41,19 @@ func show_inventory() -> void:
 		item_box_slot.set_price(item_resource.value)
 
 
-func _on_sell_button() -> void:
-	pass
-
-
-func _on_buy_button() -> void:
-	pass
-
-
 func _on_leave_button() -> void:
 	hide()
 
 
-func _on_tab_button_pressed(tab_idx: int) -> void:
-	match tab_idx:
-		1:
-			sell_button.visible = false
-			buy_button.visible = true
-		0:
-			sell_button.visible = true
-			buy_button.visible = false
+func _on_magnet_1_pressed() -> void:
+	# Don't forget to update the GameState.current_magnet resource | MAGNET_RESOURCE
+	# magnet influence is the radius of the area2D
+	print("Purchased Magnet 1")
+	pass
+
+
+func _on_magnet_2_pressed() -> void:
+	# Don't forget to update the GameState.current_magnet resource | MAGNET_RESOURCE
+	# magnet influence is the radius of the area2D
+	print("Purchased Magnet 2")
+	pass
