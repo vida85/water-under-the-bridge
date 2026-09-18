@@ -2,17 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
-[ext_resource type="Texture2D" uid="uid://cwcu75yx6d440" path="res://shared assets/images/textures/ui-phone.png" id="2_tc8pp"]
-[ext_resource type="StyleBox" uid="uid://be4t2hc0spgo7" path="res://components/ui elements/button_style.tres" id="4_6yl83"]
-[ext_resource type="StyleBox" uid="uid://ba2ev5fuv0u3x" path="res://components/ui elements/button_active_style.tres" id="5_rdw2s"]
-[ext_resource type="StyleBox" uid="uid://bmyy2uy3s44h" path="res://components/ui elements/button_focus_style.tres" id="6_2xo2e"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_srfm6"]
-texture = ExtResource("2_tc8pp")
-texture_margin_left = 5.0
-texture_margin_top = 7.0
-texture_margin_right = 5.0
-texture_margin_bottom = 9.0
+[ext_resource type="Theme" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
@@ -31,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_theme")
 script = ExtResource("1_v61rp")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
@@ -48,7 +39,6 @@ offset_right = 40.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_srfm6")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1275048634]
 layout_mode = 2
@@ -80,10 +70,6 @@ focus_neighbor_left = NodePath("../BuyButton")
 focus_neighbor_top = NodePath("../../LeaveButton")
 focus_neighbor_right = NodePath("../BuyButton")
 focus_neighbor_bottom = NodePath("../../LeaveButton")
-theme_override_styles/normal = ExtResource("4_6yl83")
-theme_override_styles/pressed = ExtResource("5_rdw2s")
-theme_override_styles/hover = ExtResource("6_2xo2e")
-theme_override_styles/focus = ExtResource("6_2xo2e")
 text = "Sell"
 
 [node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=161019732]
@@ -93,10 +79,6 @@ focus_neighbor_left = NodePath("../SellButton")
 focus_neighbor_top = NodePath("../../LeaveButton")
 focus_neighbor_right = NodePath("../SellButton")
 focus_neighbor_bottom = NodePath("../../LeaveButton")
-theme_override_styles/normal = ExtResource("4_6yl83")
-theme_override_styles/pressed = ExtResource("5_rdw2s")
-theme_override_styles/hover = ExtResource("6_2xo2e")
-theme_override_styles/focus = ExtResource("6_2xo2e")
 text = "Buy"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
@@ -114,8 +96,4 @@ custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
 focus_neighbor_top = NodePath("../HBoxContainer/SellButton")
 focus_neighbor_bottom = NodePath("../HBoxContainer/BuyButton")
-theme_override_styles/normal = ExtResource("4_6yl83")
-theme_override_styles/pressed = ExtResource("5_rdw2s")
-theme_override_styles/hover = ExtResource("6_2xo2e")
-theme_override_styles/focus = ExtResource("6_2xo2e")
 text = "Leave"
