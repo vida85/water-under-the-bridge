@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
+[ext_resource type="Texture2D" uid="uid://wuosyex7re2q" path="res://scenes/magnet/textures/magnet-2.png" id="3_srfm6"]
+[ext_resource type="Texture2D" uid="uid://b5lkgq8wmbl3m" path="res://scenes/magnet/textures/magnet-3.png" id="4_xjfbs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
@@ -53,43 +55,92 @@ text = "Gold'en Stuff"
 label_settings = SubResource("LabelSettings_tfrm4")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1788129645]
-custom_maximum_size = Vector2(-1, 10)
-layout_mode = 2
-alignment = 1
-
-[node name="SellButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=45599846]
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1523699682]
 unique_name_in_owner = true
+custom_maximum_size = Vector2(-1, 76)
 layout_mode = 2
-focus_neighbor_left = NodePath("../BuyButton")
-focus_neighbor_top = NodePath("../../LeaveButton")
-focus_neighbor_right = NodePath("../BuyButton")
-focus_neighbor_bottom = NodePath("../../LeaveButton")
-text = "Sell"
+current_tab = 0
+tab_0/title = "Sell"
+tab_1/title = "Buy"
 
-[node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=161019732]
+[node name="SellTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=87560814]
 unique_name_in_owner = true
-layout_mode = 2
-focus_neighbor_left = NodePath("../SellButton")
-focus_neighbor_top = NodePath("../../LeaveButton")
-focus_neighbor_right = NodePath("../SellButton")
-focus_neighbor_bottom = NodePath("../../LeaveButton")
-text = "Buy"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
 custom_minimum_size = Vector2(50, 80)
 custom_maximum_size = Vector2(100, 90)
 layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "Sell"
 
-[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=409022619]
+[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/SellTab" unique_id=409022619]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="BuyTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=816675381]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(50, 80)
+custom_maximum_size = Vector2(100, 90)
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = "Buy"
+
+[node name="MainBuyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab" unique_id=478197876]
+propagate_maximum_size = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer" unique_id=1997975020]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer" unique_id=1633069516]
+layout_mode = 2
+
+[node name="Magnet 2" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer/HBoxContainer" unique_id=1216234787]
+layout_mode = 2
+texture_normal = ExtResource("3_srfm6")
+
+[node name="Magnet2Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer/HBoxContainer" unique_id=1433835486]
+layout_mode = 2
+text = "$47.99"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer" unique_id=2040019678]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2" unique_id=1059351127]
+layout_mode = 2
+
+[node name="Magnet 3" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2/HBoxContainer" unique_id=1768837274]
+layout_mode = 2
+texture_normal = ExtResource("4_xjfbs")
+
+[node name="Magnet3Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2/HBoxContainer" unique_id=832011116]
+layout_mode = 2
+text = "$ 67.00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1120612008]
+layout_mode = 2
+alignment = 1
+
+[node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1234681049]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 5)
+custom_maximum_size = Vector2(-1, 10)
+layout_mode = 2
+text = "Buy"
+
+[node name="SellButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=763470953]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 5)
+custom_maximum_size = Vector2(-1, 10)
+layout_mode = 2
+text = "Sell"
 
 [node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
-focus_neighbor_top = NodePath("../HBoxContainer/SellButton")
-focus_neighbor_bottom = NodePath("../HBoxContainer/BuyButton")
 text = "Leave"
