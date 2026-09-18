@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://cst0ttagts4k6"]
 
 [ext_resource type="Texture2D" uid="uid://b0ry70i2pbnkl" path="res://shared assets/images/textures/UI.png" id="1_mfept"]
-[ext_resource type="FontFile" uid="uid://5tkm5jck2a3n" path="res://shared assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_ntlge"]
+[ext_resource type="FontFile" uid="uid://csrsbkr1453td" path="res://shared assets/fonts/Silkscreen-Regular.ttf" id="2_mfept"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jj0sy"]
 texture = ExtResource("1_mfept")
@@ -12,6 +12,6 @@ texture_margin_bottom = 4.0
 region_rect = Rect2(0, 0, 16, 16)
 
 [resource]
-default_font = ExtResource("1_ntlge")
+default_font = ExtResource("2_mfept")
 default_font_size = 8
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_jj0sy")
