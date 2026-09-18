@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://c7xiwktiwt2qx" path="res://shared assets/fonts/Silkscreen-Bold.ttf" id="2_srfm6"]
 [ext_resource type="Texture2D" uid="uid://wuosyex7re2q" path="res://scenes/magnet/textures/magnet-2.png" id="3_srfm6"]
-[ext_resource type="Texture2D" uid="uid://b5lkgq8wmbl3m" path="res://scenes/magnet/textures/magnet-3.png" id="4_xjfbs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_srfm6")
@@ -65,12 +64,13 @@ custom_minimum_size = Vector2(100, 0)
 custom_maximum_size = Vector2(-1, 94)
 layout_mode = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tab_0/title = "Sell"
 tab_1/title = "Buy"
 
 [node name="SellTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=87560814]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(50, 80)
 custom_maximum_size = Vector2(-1, 90)
 layout_mode = 2
@@ -85,7 +85,6 @@ alignment = 1
 
 [node name="BuyTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=816675381]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(50, 80)
 custom_maximum_size = Vector2(100, 90)
 layout_mode = 2
@@ -104,13 +103,16 @@ theme_override_constants/margin_bottom = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer" unique_id=1633069516]
 layout_mode = 2
 
-[node name="Magnet 2" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer/HBoxContainer" unique_id=1216234787]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer/HBoxContainer" unique_id=1017671325]
 layout_mode = 2
-texture_normal = ExtResource("3_srfm6")
 
-[node name="Magnet2Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer/HBoxContainer" unique_id=1433835486]
+[node name="Magnet_1_Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=87842202]
+unique_name_in_owner = true
 layout_mode = 2
-text = "$47.99"
+text = "Advance
+$47.99"
+icon = ExtResource("3_srfm6")
+alignment = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer" unique_id=2040019678]
 layout_mode = 2
@@ -120,13 +122,16 @@ theme_override_constants/margin_bottom = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2" unique_id=1059351127]
 layout_mode = 2
 
-[node name="Magnet 3" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2/HBoxContainer" unique_id=1768837274]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2/HBoxContainer" unique_id=368480226]
 layout_mode = 2
-texture_normal = ExtResource("4_xjfbs")
 
-[node name="Magnet3Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2/HBoxContainer" unique_id=832011116]
+[node name="Magnet_2_Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab/MainBuyContainer/MarginContainer2/HBoxContainer/MarginContainer2" unique_id=4864341]
+unique_name_in_owner = true
 layout_mode = 2
-text = "$ 67.00"
+text = "Pro
+$67.99"
+icon = ExtResource("3_srfm6")
+alignment = 0
 
 [node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
 unique_name_in_owner = true
