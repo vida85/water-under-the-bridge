@@ -80,6 +80,7 @@ alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=250027697]
 custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
+theme_override_constants/separation = 2
 alignment = 1
 
 [node name="ShopButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1110219871]
