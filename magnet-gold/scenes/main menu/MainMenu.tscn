@@ -3,6 +3,19 @@
 [ext_resource type="Theme" uid="uid://cst0ttagts4k6" path="res://resources/game_theme.tres" id="1_c7oo3"]
 [ext_resource type="Script" uid="uid://b12eteptwcg63" path="res://scenes/main menu/main_menu.gd" id="1_v04ij"]
 [ext_resource type="AudioStream" uid="uid://dqjmlemu4qmy8" path="res://shared assets/audio/music/first_song.mp3" id="3_4nwu2"]
+[ext_resource type="FontFile" uid="uid://c7xiwktiwt2qx" path="res://shared assets/fonts/Silkscreen-Bold.ttf" id="4_fxkxh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4nwu2"]
+font_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxkxh"]
+font_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_176rl"]
+line_spacing = -11.97
+font = ExtResource("4_fxkxh")
+font_size = 21
+font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 
 [node name="MainMenu" type="Control" unique_id=1547466342]
 layout_mode = 3
@@ -27,43 +40,89 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1997605265]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=711328960]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(60, 50)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -34.0
+offset_right = 55.0
+offset_bottom = 16.0
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1850961834]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" unique_id=900285300]
 layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer2" unique_id=484608550]
+visible = false
+propagate_maximum_size = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2" unique_id=29284775]
+propagate_maximum_size = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2/VBoxContainer" unique_id=940043547]
+custom_maximum_size = Vector2(-1, 25)
+propagate_maximum_size = false
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1028818363]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+text = "play"
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2059346895]
+[node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=375118447]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Play"
+size_flags_vertical = 3
+text = "options"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=974679523]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer2/VBoxContainer" unique_id=692420038]
+layout_mode = 2
+
+[node name="OptionSfxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2" unique_id=21716969]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Options"
+theme_override_constants/separation = -3
 
-[node name="OptionVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=663454287]
+[node name="SfxLabel" type="Label" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/OptionSfxContainer" unique_id=1895001312]
+custom_minimum_size = Vector2(0, 10)
+custom_maximum_size = Vector2(-1, 20)
+layout_mode = 2
+text = "Sfx"
+label_settings = SubResource("LabelSettings_4nwu2")
+
+[node name="SfxHSlider" type="HSlider" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/OptionSfxContainer" unique_id=1876577420]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 10
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.7
 
-[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/OptionVolumeContainer" unique_id=174786940]
+[node name="OptionVolumeContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2" unique_id=488102402]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Volume"
+theme_override_constants/separation = -3
 
-[node name="VolumeHSlider" type="HSlider" parent="MarginContainer/VBoxContainer/OptionVolumeContainer" unique_id=1329709352]
+[node name="VolumeLabel" type="Label" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/OptionVolumeContainer" unique_id=174786940]
+custom_minimum_size = Vector2(0, 10)
+custom_maximum_size = Vector2(-1, 20)
+layout_mode = 2
+text = "Vol"
+label_settings = SubResource("LabelSettings_fxkxh")
+
+[node name="VolumeHSlider" type="HSlider" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer2/OptionVolumeContainer" unique_id=1329709352]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -71,20 +130,20 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 
-[node name="OptionSfxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1783557686]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 23
-
-[node name="SfxLabel" type="Label" parent="MarginContainer/VBoxContainer/OptionSfxContainer" unique_id=1895001312]
-layout_mode = 2
-text = "Sfx"
-
-[node name="SfxHSlider" type="HSlider" parent="MarginContainer/VBoxContainer/OptionSfxContainer" unique_id=1876577420]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.001
-value = 0.7
+[node name="Title" type="Label" parent="." unique_id=1480068827]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -35.34
+offset_bottom = 17.660034
+grow_horizontal = 0
+grow_vertical = 2
+text = "Water
+Under
+the
+Bridge"
+label_settings = SubResource("LabelSettings_176rl")

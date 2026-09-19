@@ -60,7 +60,8 @@ func show_magnets() -> void:
 
 func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> void:
 	GameState.inventory.erase(item_resource)
-	GameState.current_money_earned += item_resource.value
+	#GameState.current_money_earned += item_resource.value
+	GameState.update_cash(item_resource.value)
 	item_resources.erase(item_resource)
 	button.queue_free()
 
@@ -71,7 +72,7 @@ func _on_buy_magnet_pressed(magnet_type: Magnets.Type, button: ItemButton) -> vo
 		description_label.text = "Not enough cash..."
 		return
 
-	GameState.current_money_earned -= price
+	GameState.update_cash(-price)
 	GameState.current_magnet = magnet_type
 	button.queue_free()
 

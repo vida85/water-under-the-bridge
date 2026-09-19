@@ -8,4 +8,5 @@ func _ready() -> void:
 
 
 func update_cash(value: float) -> void:
-	cash_label.text = "$ " + str(value)
+	cash_label.text = "$ " + str(round(value))
+ 

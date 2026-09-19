@@ -1,10 +1,34 @@
 [gd_resource type="Theme" format=3 uid="uid://cst0ttagts4k6"]
 
-[ext_resource type="Texture2D" uid="uid://b0ry70i2pbnkl" path="res://shared assets/images/textures/UI.png" id="1_mfept"]
+[ext_resource type="Texture2D" uid="uid://llhnhyp3hu7e" path="res://shared assets/images/textures/ui-button.png" id="1_mfept"]
+[ext_resource type="Texture2D" uid="uid://qhaulhhwclip" path="res://shared assets/images/textures/ui-button-focus.png" id="1_oitfk"]
 [ext_resource type="FontFile" uid="uid://csrsbkr1453td" path="res://shared assets/fonts/Silkscreen-Regular.ttf" id="2_mfept"]
+[ext_resource type="Texture2D" uid="uid://dt8v8lruf8eyi" path="res://shared assets/images/textures/ui-button-active.png" id="3_jqkxy"]
+[ext_resource type="Texture2D" uid="uid://b0ry70i2pbnkl" path="res://shared assets/images/textures/UI.png" id="3_lyffh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfept"]
+texture = ExtResource("1_oitfk")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4qhqp"]
+texture = ExtResource("1_mfept")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhhdj"]
+texture = ExtResource("3_jqkxy")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jj0sy"]
-texture = ExtResource("1_mfept")
+texture = ExtResource("3_lyffh")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -14,4 +38,7 @@ region_rect = Rect2(0, 0, 16, 16)
 [resource]
 default_font = ExtResource("2_mfept")
 default_font_size = 8
+Button/styles/focus = SubResource("StyleBoxTexture_mfept")
+Button/styles/normal = SubResource("StyleBoxTexture_4qhqp")
+Button/styles/pressed = SubResource("StyleBoxTexture_bhhdj")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_jj0sy")

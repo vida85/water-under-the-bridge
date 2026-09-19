@@ -62,6 +62,7 @@ func fade_away(coin_end_position: Marker2D) -> void:
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_parallel(true)
 	tween.tween_property(self, "scale", Vector2.ZERO, COIN_TRANSITION_TIME)
 	await tween.tween_property(self, "global_position", coin_end_position.global_position, COIN_TRANSITION_TIME).finished
+	GameState.update_cash(item_resource.value)
 	bell_sfx.play()
 	splash.emitting = true
 	await get_tree().create_timer(1.0).timeout

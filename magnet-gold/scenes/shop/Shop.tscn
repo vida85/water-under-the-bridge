@@ -74,6 +74,8 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_tab_index = 0
+metadata/_tab_name = "Sell"
 
 [node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/SellTab" unique_id=409022619]
 unique_name_in_owner = true
@@ -85,21 +87,23 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_tab_index = 1
+metadata/_tab_name = "Buy"
 
 [node name="MainBuyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab" unique_id=478197876]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=3927164821]
+[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=-367802475]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 custom_maximum_size = Vector2(-1, 24)
 layout_mode = 2
-clip_text = true
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+clip_text = true
 
 [node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
 unique_name_in_owner = true

@@ -3,8 +3,8 @@ class_name MainMenu extends Control
 @onready var play_button: Button = %PlayButton
 @onready var options_button: Button = %OptionsButton
 
-@onready var option_volume_container: HBoxContainer = %OptionVolumeContainer
-@onready var option_sfx_container: HBoxContainer = %OptionSfxContainer
+@onready var option_volume_container: VBoxContainer = %OptionVolumeContainer
+@onready var option_sfx_container: VBoxContainer = %OptionSfxContainer
 
 @onready var volume_h_slider: HSlider = %VolumeHSlider
 @onready var sfx_h_slider: HSlider = %SfxHSlider
