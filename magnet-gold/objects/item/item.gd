@@ -6,6 +6,8 @@ signal coin_has_faded_and_died
 @export var item_resource: ItemResource
 @onready var bell_sfx: AudioStreamPlayer2D = %BellSFX
 @onready var splash: GPUParticles2D = %Splash
+@onready var sparkle_sprite: Sprite2D = %SparkleSprite
+@onready var sparkle_ap: AnimationPlayer = %SparkleAP
 
 
 # Item needs to exits in Layer 3
@@ -27,13 +29,15 @@ func setup(item: Item) -> void:
 	shape.radius = item_resource.caught_radius
 	collision2D.shape = shape
 	item_sprite.texture = item_resource.texture
-	item_sprite.scale = Vector2.ZERO
+	item_sprite.visible = false
 	name = item_resource.name
 
 	item.set_collision_layer_value(COLLISION_ITEM_LAYER, true)
 
 	item.add_child(collision2D)
 	item.add_child(item_sprite)
+
+	sparkle_ap.seek(randf() * sparkle_ap.get_animation("sparkle").length, true)
 
 
 func shake_item() -> void:
@@ -47,11 +51,17 @@ func _input(event: InputEvent) -> void:
 
 func _debug_mode() -> void:
 	is_debug_on = not is_debug_on
+	restore_debug_visuals()
 
-	if is_debug_on:
-		item_sprite.scale = Vector2.ONE
-	else:
-		item_sprite.scale = Vector2.ZERO
+
+func show_item_sprite() -> void:
+	item_sprite.visible = true
+	sparkle_sprite.visible = false
+
+
+func restore_debug_visuals() -> void:
+	item_sprite.visible = is_debug_on
+	sparkle_sprite.visible = not is_debug_on
 
 
 func fade_away(coin_end_position: Marker2D) -> void:

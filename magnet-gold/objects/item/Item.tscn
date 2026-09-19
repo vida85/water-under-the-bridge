@@ -3,6 +3,46 @@
 [ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_onjwb"]
 [ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="3_b7w6f"]
 [ext_resource type="Texture2D" uid="uid://b26q1gaoy1w0h" path="res://scenes/magnet/textures/splash.png" id="3_j5lnw"]
+[ext_resource type="Texture2D" uid="uid://c6jsudnndbk2k" path="res://shared assets/images/textures/sparklet.png" id="4_sparkle"]
+
+[sub_resource type="Animation" id="Animation_sparkle_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sparkle"]
+resource_name = "sparkle"
+length = 3.0000000000000004
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6, 2.7, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sparkle"]
+_data = {
+&"RESET": SubResource("Animation_sparkle_reset"),
+&"sparkle": SubResource("Animation_sparkle")
+}
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bcfb2"]
 particles_animation = true
@@ -31,6 +71,16 @@ script = ExtResource("1_onjwb")
 unique_name_in_owner = true
 stream = ExtResource("3_b7w6f")
 bus = &"Sfx"
+
+[node name="SparkleSprite" type="Sprite2D" parent="." unique_id=-1554050765]
+unique_name_in_owner = true
+texture = ExtResource("4_sparkle")
+hframes = 5
+
+[node name="SparkleAP" type="AnimationPlayer" parent="SparkleSprite" unique_id=-439858849]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_sparkle")
+autoplay = &"sparkle"
 
 [node name="Splash" type="GPUParticles2D" parent="." unique_id=1741790392]
 unique_name_in_owner = true

@@ -17,7 +17,6 @@ signal minigame_caught_nothing
 @onready var spawn_area: ReferenceRect = %SpawnArea
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
 @onready var item_container: Node2D = %ItemContainer
-@onready var magnet_start_position: Marker2D = %MagnetStartPosition
 @onready var coin_end_position: Marker2D = %CoinEndPosition
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -59,11 +58,13 @@ var _quick_pull: bool = false
 
 
 func _ready() -> void:
+	magnet.visible = false
 	coin_colection_area.area_entered.connect(_on_magnet_entered)
 	_turn_off_items()
-	animation_player.play("popup")
 	_update_magnet_type_from_resource()
-	magnet_area.global_position = magnet_start_position.global_position
+	animation_player.play("popup")
+	await get_tree().process_frame
+	magnet.visible = true
 	set_process(false)
 	set_physics_process(false)
 
@@ -201,7 +202,7 @@ func _exit_tree() -> void:
 
 			item.reparent(items_original_parent, false)
 			item.global_position = item_location
-			item.item_sprite.scale = Vector2.ZERO if !item.is_debug_on else Vector2.ONE
+			item.restore_debug_visuals()
 
 			print("Item returning: ", item)
 	items.clear()
@@ -210,13 +211,13 @@ func _exit_tree() -> void:
 func spawn_coins() -> void:
 	var item_control:= Sprite2D.new()
 	var coin: Item = COIN_A_ITEM.instantiate() if randi_range(0, 1) == 1 else COIN_B_ITEM.instantiate()
-	coin.setup(coin)
-	coin.item_sprite.scale = Vector2.ONE
 	coin.coin_has_faded_and_died.connect(_on_coin_faded_away)
 
 	item_control.global_position = get_random_spawn_position()
 	item_control.add_child(coin)
 	item_container.add_child(item_control)
+	coin.setup(coin)
+	coin.show_item_sprite()
 
 
 func spawn_items() -> void:
@@ -240,7 +241,7 @@ func spawn_items() -> void:
 		item.global_position = Vector2.ZERO
 		print("After Reparent")
 		print("item.global_position = ", item.global_position, "\nitem.position = ", item.position)
-		item.item_sprite.scale = Vector2.ONE
+		item.show_item_sprite()
 		item.item_sprite.material = NEW_SHADER_SHINE_MATERIAL
 		item.shake_item()
 
