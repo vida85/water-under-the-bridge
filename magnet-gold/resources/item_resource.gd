@@ -5,6 +5,7 @@ class_name ItemResource extends Resource
 @export var name: String
 @export_multiline("funny item description") var item_description: String
 @export var texture: Texture2D
+@export var icon: Texture2D
 
 @export_group("Value")
 @export var value: float

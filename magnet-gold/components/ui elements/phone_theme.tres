@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://ba2ev5fuv0u3x" path="res://components/ui elements/button_active_style.tres" id="2_active"]
 [ext_resource type="StyleBox" uid="uid://bmyy2uy3s44h" path="res://components/ui elements/button_focus_style.tres" id="3_focus"]
 [ext_resource type="Texture2D" uid="uid://cwcu75yx6d440" path="res://shared assets/images/textures/ui-phone.png" id="4_phone_tex"]
-[ext_resource type="FontVariation" path="res://components/ui elements/silkscreen_button_font.tres" id="5_font"]
+[ext_resource type="FontVariation" uid="uid://cqdsw52v7oo8f" path="res://components/ui elements/silkscreen_button_font.tres" id="5_font"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
 texture = ExtResource("4_phone_tex")

@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://b86xoenolr8kv"]
 
 [ext_resource type="Script" uid="uid://2vel5m0jevel" path="res://scenes/player/player.gd" id="1_alepy"]
+[ext_resource type="AudioStream" uid="uid://dthbt2mai3k68" path="res://shared assets/audio/sfx/step_sfx00249042.mp3" id="2_180ig"]
 [ext_resource type="Script" uid="uid://cegwxif5430ph" path="res://components/platformer input component/platformer_input_component.gd" id="2_s4vxx"]
+[ext_resource type="AudioStream" uid="uid://crlrsjwal7tc8" path="res://shared assets/audio/sfx/step_sfx00249066.mp3" id="3_20koh"]
 [ext_resource type="Script" uid="uid://q4cenmnxjao" path="res://components/platformer movement 2D/platformer_movement_2d.gd" id="3_pa6wy"]
 [ext_resource type="Texture2D" uid="uid://dfgreumex2mkv" path="res://scenes/player/textures/pedro_animation.png" id="4_c3xxp"]
 [ext_resource type="Texture2D" uid="uid://duwqltdc2dcsq" path="res://scenes/player/textures/fisherman-Sheet.png" id="4_npwbq"]
+[ext_resource type="AudioStream" uid="uid://bh25ph23r8jv3" path="res://shared assets/audio/sfx/step_sfx00249080.mp3" id="4_ov1oi"]
 [ext_resource type="PackedScene" uid="uid://co13tsg6ogpdk" path="res://scenes/magnet/Magnet.tscn" id="4_tpg5x"]
 [ext_resource type="PackedScene" uid="uid://bbkww7ou58dgp" path="res://scenes/cast bar/CastBar.tscn" id="6_c3xxp"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_176rl"]
+streams_count = 3
+stream_0/stream = ExtResource("2_180ig")
+stream_1/stream = ExtResource("3_20koh")
+stream_2/stream = ExtResource("4_ov1oi")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpg5x"]
 atlas = ExtResource("4_c3xxp")
@@ -244,6 +253,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [6, 5, 4, 7]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.30090347),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}, {
+"args": [],
+"method": &"play_footstep"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_npwbq"]
 resource_name = "walk_right"
@@ -261,6 +287,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.30255),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}, {
+"args": [],
+"method": &"play_footstep"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c3xxp"]
@@ -285,6 +328,11 @@ magnet = NodePath("Magnet")
 cast_bar_ui = NodePath("CastBarUI")
 platformer_input_component = NodePath("PlatformerInputComponent")
 platformer_movement_2d = NodePath("PlatformerMovement2D")
+
+[node name="StepSFX" type="AudioStreamPlayer" parent="." unique_id=108847524]
+stream = SubResource("AudioStreamRandomizer_176rl")
+volume_db = 6.0
+bus = &"Sfx"
 
 [node name="PlatformerInputComponent" type="Node" parent="." unique_id=1565816887]
 script = ExtResource("2_s4vxx")

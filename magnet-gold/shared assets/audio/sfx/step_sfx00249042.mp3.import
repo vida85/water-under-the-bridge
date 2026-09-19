@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dthbt2mai3k68"
+path="res://.godot/imported/step_sfx00249042.mp3-3b0c641d58424541b3250c6e339e583f.mp3str"
+
+[deps]
+
+source_file="res://shared assets/audio/sfx/step_sfx00249042.mp3"
+dest_files=["res://.godot/imported/step_sfx00249042.mp3-3b0c641d58424541b3250c6e339e583f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

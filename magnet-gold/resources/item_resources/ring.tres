@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_p8u1c"]
 [ext_resource type="Texture2D" uid="uid://bjxghrc7oqp3c" path="res://shared assets/images/textures/ring.png" id="3_ff5oc"]
+[ext_resource type="Texture2D" uid="uid://b21ig2d17wpqf" path="res://shared assets/images/icons/ring.png" id="4_icon"]
 
 [resource]
 script = ExtResource("1_p8u1c")
-name = "A simple ring"
+name = "Ring"
 item_description = "Darn it, this is not my Heirloom... but hey, it's gotta be worth something."
 texture = ExtResource("3_ff5oc")
+icon = ExtResource("4_icon")
 value = 15.0
 combo_bonus_value = 7.5
 combo_item_id = &"ring"

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dh31pk7i8en66" path="res://scenes/bridges/main_game.gd" id="1_hbod5"]
 [ext_resource type="PackedScene" path="res://scenes/game ui/GameUi.tscn" id="2_2csi4"]
 [ext_resource type="AudioStream" uid="uid://bl1mjn5nn6fq8" path="res://shared assets/audio/music/happy_song.mp3" id="2_w83us"]
+[ext_resource type="AudioStream" uid="uid://xxr6afemxt5b" path="res://shared assets/audio/sfx/lake.mp3" id="3_me0qj"]
 [ext_resource type="PackedScene" uid="uid://bp58d3xjjj58x" path="res://scenes/popups/Popups.tscn" id="3_xdeye"]
 [ext_resource type="Script" uid="uid://d2s7dyvd1hbjf" path="res://components/item spawn component/item_spawn_component.gd" id="4_hbod5"]
 [ext_resource type="PackedScene" uid="uid://um0yp4oxdqh2" path="res://scenes/main camera/MainCamera.tscn" id="5_2wl6j"]
@@ -194,6 +195,11 @@ metadata/_edit_horizontal_guides_ = [32.0]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=800145047]
 stream = ExtResource("2_w83us")
+autoplay = true
+bus = &"Music"
+
+[node name="WaterSFX" type="AudioStreamPlayer" parent="." unique_id=2007393586]
+stream = ExtResource("3_me0qj")
 autoplay = true
 bus = &"Music"
 
