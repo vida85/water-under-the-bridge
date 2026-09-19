@@ -25,8 +25,8 @@ theme = ExtResource("7_theme")
 script = ExtResource("1_v61rp")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
-custom_minimum_size = Vector2(112, 160)
-custom_maximum_size = Vector2(112, 160)
+custom_minimum_size = Vector2(112, 140)
+custom_maximum_size = Vector2(112, 140)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,52 +58,47 @@ text = "Gold'en Stuff"
 label_settings = SubResource("LabelSettings_tfrm4")
 horizontal_alignment = 1
 
-[node name="TabContainer" type="TabContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1523699682]
+[node name="TabBar" type="TabBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1523699682]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-tab_alignment = 1
 current_tab = 1
+tab_alignment = 1
+tab_count = 2
 tab_0/title = "Sell"
 tab_1/title = "Buy"
-
-[node name="SellTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=87560814]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 0
-metadata/_tab_name = "Sell"
-
-[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/SellTab" unique_id=409022619]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BuyTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=816675381]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 1
-metadata/_tab_name = "Buy"
-
-[node name="MainBuyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab" unique_id=478197876]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=-367802475]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 custom_maximum_size = Vector2(-1, 24)
 layout_mode = 2
+theme_override_constants/line_spacing = -5
 horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 2
-clip_text = true
+
+[node name="SellTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/SellTab" unique_id=409022619]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuyTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=816675381]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainBuyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BuyTab" unique_id=478197876]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
 unique_name_in_owner = true

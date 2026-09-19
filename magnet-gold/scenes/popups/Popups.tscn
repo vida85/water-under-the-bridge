@@ -81,7 +81,6 @@ draw_focus_border = true
 
 [node name="ItemContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=815051995]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 custom_maximum_size = Vector2(-1, 80)
 propagate_maximum_size = false
 layout_mode = 2

@@ -7,7 +7,9 @@ class_name Shop extends Control
 @onready var leave_button: Button = %LeaveButton
 @onready var description_label: Label = %DescriptionLabel
 
-@onready var tab_container: TabContainer = %TabContainer
+@onready var tab_bar: TabBar = %TabBar
+@onready var sell_tab: ScrollContainer = %SellTab
+@onready var buy_tab: ScrollContainer = %BuyTab
 
 const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 const MAGNET_RESOURCE: MagnetResource = preload("uid://crh5dh2gulls8")
@@ -19,9 +21,15 @@ var item_resources: Dictionary = {}
 
 func _ready() -> void:
 	leave_button.pressed.connect(_on_leave_button)
+	tab_bar.tab_changed.connect(_on_tab_changed)
 	show_inventory.call_deferred()
 	show_magnets.call_deferred()
-	tab_container.grab_focus.call_deferred()
+	tab_bar.grab_focus.call_deferred()
+
+
+func _on_tab_changed(tab_idx: int) -> void:
+	sell_tab.visible = tab_idx == 0
+	buy_tab.visible = tab_idx == 1
 
 
 func show_inventory() -> void:
