@@ -199,11 +199,12 @@ size = Vector2(112, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pr2el"]
 size = Vector2(12, 42)
 
-[node name="MainGame" type="Node2D" unique_id=1874786984 node_paths=PackedStringArray("player", "item_spawn_component", "main_camera")]
+[node name="MainGame" type="Node2D" unique_id=1874786984 node_paths=PackedStringArray("player", "item_spawn_component", "main_camera", "main_game_ui")]
 script = ExtResource("1_hbod5")
 player = NodePath("Player")
 item_spawn_component = NodePath("ItemSpawnComponent")
 main_camera = NodePath("MainCamera")
+main_game_ui = NodePath("GameUi/MainGameUi")
 metadata/_edit_horizontal_guides_ = [32.0]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=800145047]

@@ -26,9 +26,9 @@ magnet_icons = Dictionary[int, Texture2D]({
 2: ExtResource("7_icon3")
 })
 magnet_names = Dictionary[int, String]({
-0: "Lv. 1 Mag",
-1: "Lv. 2 Mag",
-2: "Lv. 3 Mag"
+0: "Mag Lv1",
+1: "Mag Lv2",
+2: "Mag Lv3"
 })
 magnet_prices = Dictionary[int, float]({
 1: 47.99,

@@ -7,6 +7,7 @@ signal leave_shop
 signal can_cast(value: bool)
 
 const MINI_GAME_V2 = preload("uid://py3j8cf40f4h")
+const SHOP = preload("uid://dhikhypod3wsd")
 
 
 @export_group("Dependencies")

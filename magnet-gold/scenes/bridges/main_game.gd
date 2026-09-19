@@ -6,6 +6,7 @@ class_name MainGame extends Node2D
 @export var player: Player
 @export var item_spawn_component: ItemSpawnComponent
 @export var main_camera: Camera2D
+@export var main_game_ui: MainGameUi
 
 @onready var game_ui: GameUi = %GameUi
 
@@ -13,6 +14,9 @@ class_name MainGame extends Node2D
 func _ready() -> void:
 	game_ui.leave_shop.connect(player.turn_on_player_mobility)
 	game_ui.can_cast.connect(player._set_cast_button)
+
+	player.open_shop_request.connect(game_ui.open_shop_from_field)
+	player.cast_availability_changed.connect(main_game_ui.set_input_hint_visible)
 
 	game_ui.popup_items_caught.can_cast.connect(player._set_cast_button)
 
