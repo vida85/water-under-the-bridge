@@ -12,7 +12,6 @@ class_name Shop extends Control
 @onready var buy_tab: ScrollContainer = %BuyTab
 @onready var arrow_left: TextureRect = %ArrowLeft
 @onready var arrow_right: TextureRect = %ArrowRight
-@onready var coin_sfx: AudioStreamPlayer = %CoinSFX
 
 @onready var sell: AudioStreamPlayer = %Sell
 @onready var buy: AudioStreamPlayer = %Buy
@@ -124,7 +123,6 @@ func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> v
 	GameState.inventory.erase(item_resource)
 	GameState.update_cash(item_resource.value)
 	item_resources.erase(item_resource)
-	coin_sfx.play()
 	_remove_and_refocus(button, main_container)
 
 
@@ -136,7 +134,6 @@ func _on_buy_magnet_pressed(magnet_type: Magnets.Type) -> void:
 	buy.play()
 	GameState.update_cash(-price)
 	GameState.current_magnet = magnet_type
-	coin_sfx.play()
 	show_magnets()
 	_focus_first_in_active_tab()
 

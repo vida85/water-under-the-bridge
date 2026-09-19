@@ -8,7 +8,6 @@
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 [ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="8_desc_bg"]
 [ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
-[ext_resource type="AudioStream" uid="uid://byqowspbrenu8" path="res://shared assets/audio/sfx/coin_sfx00000000.mp3" id="10_coin_sfx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
@@ -38,11 +37,6 @@ bus = &"Sfx"
 [node name="Buy" type="AudioStreamPlayer" parent="." unique_id=836676568]
 unique_name_in_owner = true
 stream = ExtResource("4_6yl83")
-bus = &"Sfx"
-
-[node name="CoinSFX" type="AudioStreamPlayer" parent="." unique_id=1580517017]
-unique_name_in_owner = true
-stream = ExtResource("10_coin_sfx")
 bus = &"Sfx"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
