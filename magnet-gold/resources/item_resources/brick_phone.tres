@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_6urqg")
-name = "Flip Phone"
+name = "Phone"
 item_description = "Cool!! My Mom had one of these..."
 texture = ExtResource("3_6urqg")
 icon = ExtResource("1_ibluf")
