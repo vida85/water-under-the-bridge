@@ -2,15 +2,12 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
-<<<<<<< HEAD
 [ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="3_xjfbs"]
 [ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="4_6yl83"]
-=======
 [ext_resource type="Texture2D" uid="uid://bvuekuopv8dq7" path="res://shared assets/images/textures/ui-arrow.png" id="4_xjfbs"]
-[ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
->>>>>>> 763b345c71a7829f38257aace28e231a295d617d
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 [ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="8_desc_bg"]
+[ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
 [ext_resource type="AudioStream" uid="uid://byqowspbrenu8" path="res://shared assets/audio/sfx/coin_sfx00000000.mp3" id="10_coin_sfx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
@@ -33,7 +30,6 @@ grow_vertical = 2
 theme = ExtResource("7_theme")
 script = ExtResource("1_v61rp")
 
-<<<<<<< HEAD
 [node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1936382102]
 unique_name_in_owner = true
 stream = ExtResource("3_xjfbs")
@@ -44,9 +40,6 @@ unique_name_in_owner = true
 stream = ExtResource("4_6yl83")
 bus = &"Sfx"
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
-custom_minimum_size = Vector2(112, 160)
-=======
 [node name="CoinSFX" type="AudioStreamPlayer" parent="." unique_id=1580517017]
 unique_name_in_owner = true
 stream = ExtResource("10_coin_sfx")
@@ -54,7 +47,6 @@ bus = &"Sfx"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
 custom_minimum_size = Vector2(112, 140)
->>>>>>> 763b345c71a7829f38257aace28e231a295d617d
 custom_maximum_size = Vector2(112, 140)
 layout_mode = 1
 anchors_preset = 8
@@ -79,7 +71,7 @@ theme_override_constants/margin_bottom = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1493087401]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = -2
+theme_override_constants/separation = 2
 
 [node name="ShopLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=113695734]
 layout_mode = 2
