@@ -23,6 +23,7 @@ func _ready() -> void:
 
 	volume_h_slider.value_changed.connect(_on_volume_drag_ended)
 	sfx_h_slider.value_changed.connect(_on_sfx_drag_ended)
+	play_button.grab_focus()
 
 
 func _on_play_pressed() -> void:

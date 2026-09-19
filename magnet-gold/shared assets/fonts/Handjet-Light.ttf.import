@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://5tkm5jck2a3n"
-path="res://.godot/imported/PixelifySans-VariableFont_wght.ttf-817c666d3f57a4353a25f8f7b816b2fe.fontdata"
+uid="uid://bgsg3rtqcy2o"
+path="res://.godot/imported/Handjet-Light.ttf-1ee691ae7d392152d0d947fac4ae4b7f.fontdata"
 
 [deps]
 
-source_file="res://shared assets/fonts/PixelifySans-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/PixelifySans-VariableFont_wght.ttf-817c666d3f57a4353a25f8f7b816b2fe.fontdata"]
+source_file="res://shared assets/fonts/Handjet-Light.ttf"
+dest_files=["res://.godot/imported/Handjet-Light.ttf-1ee691ae7d392152d0d947fac4ae4b7f.fontdata"]
 
 [params]
 

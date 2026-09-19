@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://dh4c4tjkokcnw" path="res://scenes/mini game/mini_game_v2.gd" id="1_xluq3"]
 [ext_resource type="Texture2D" uid="uid://b6lfkmqsmpu6" path="res://scenes/magnet/textures/rope.png" id="2_jynqs"]
 [ext_resource type="Resource" uid="uid://crh5dh2gulls8" path="res://scenes/magnet/magnet_resource.tres" id="2_mq5h3"]
-[ext_resource type="AudioStream" uid="uid://cf85mr2utj5fq" path="res://shared assets/audio/sfx/Tether_SFX_v1.mp3" id="3_plrat"]
-[ext_resource type="AudioStream" uid="uid://c3pkrdxm8hlqk" path="res://shared assets/audio/sfx/water_splashes02042666.mp3" id="3_xrsr2"]
+[ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="3_6x84r"]
+[ext_resource type="AudioStream" uid="uid://dcj27bf0bovxv" path="res://shared assets/audio/sfx/item_caught_sfx00054921.mp3" id="3_gnelm"]
+[ext_resource type="AudioStream" uid="uid://hpan5s8soo1e" path="res://shared assets/audio/sfx/magnet_slide_sfx00054464.mp3" id="4_gnelm"]
+[ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="4_xrsr2"]
 
 [sub_resource type="Animation" id="Animation_plrat"]
 length = 0.001
@@ -84,9 +86,17 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_or2j1"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_176rl"]
+normal = Vector2(0, 1)
+
 [node name="MiniGamev2" type="Node2D" unique_id=1868901409]
 script = ExtResource("1_xluq3")
 magnet_resource = ExtResource("2_mq5h3")
+
+[node name="BellSFX" type="AudioStreamPlayer2D" parent="." unique_id=1314288526]
+unique_name_in_owner = true
+stream = ExtResource("3_6x84r")
+bus = &"Sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2082730199]
 unique_name_in_owner = true
@@ -130,20 +140,28 @@ unique_name_in_owner = true
 [node name="MagnetArea" type="Area2D" parent="." unique_id=590136882]
 unique_name_in_owner = true
 position = Vector2(80, -22.61)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 4
 
 [node name="MagnetSFX" type="AudioStreamPlayer2D" parent="MagnetArea" unique_id=512273163]
 unique_name_in_owner = true
 position = Vector2(-0.07, -0.07)
-stream = ExtResource("3_xrsr2")
+stream = ExtResource("3_gnelm")
 volume_db = -6.0
+pitch_scale = 1.25
+bus = &"Sfx"
+
+[node name="MagnetSlideSFX" type="AudioStreamPlayer2D" parent="MagnetArea" unique_id=784217743]
+unique_name_in_owner = true
+position = Vector2(-0.07, -0.07)
+stream = ExtResource("4_gnelm")
+volume_db = -18.0
 pitch_scale = 1.25
 bus = &"Sfx"
 
 [node name="CashSFX" type="AudioStreamPlayer2D" parent="MagnetArea" unique_id=926427280]
 unique_name_in_owner = true
-stream = ExtResource("3_plrat")
+stream = ExtResource("4_xrsr2")
 bus = &"Sfx"
 
 [node name="Magnet" type="Sprite2D" parent="MagnetArea" unique_id=1978576660]
@@ -164,7 +182,7 @@ shape = SubResource("CircleShape2D_or2j1")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="MagnetArea" unique_id=1011293482]
 unique_name_in_owner = true
-rect = Rect2(-10, -2, 20, 3)
+rect = Rect2(-10, -28.39, 20, 3)
 
 [node name="MagnetStartPosition" type="Marker2D" parent="." unique_id=838112582]
 unique_name_in_owner = true
@@ -173,3 +191,12 @@ position = Vector2(80, 118)
 [node name="CoinEndPosition" type="Marker2D" parent="." unique_id=1191609724]
 unique_name_in_owner = true
 position = Vector2(148, 7)
+
+[node name="CoinColectionArea" type="Area2D" parent="." unique_id=1377229465]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinColectionArea" unique_id=1137135873]
+position = Vector2(82, 10)
+shape = SubResource("WorldBoundaryShape2D_176rl")

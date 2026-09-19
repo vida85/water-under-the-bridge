@@ -21,6 +21,7 @@ var item_box_slot: ItemHBox
 func _ready() -> void:
 	shop_button.pressed.connect(_on_go_to_shop_pressed)
 	keep_fishing_button.pressed.connect(_on_keep_fishing_pressed)
+	keep_fishing_button.grab_focus()
 
 	if debug:
 		return
