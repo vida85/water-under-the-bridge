@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_ct8be"]
 [ext_resource type="Texture2D" uid="uid://c8c2u0qstos3n" path="res://shared assets/images/textures/hammer.png" id="3_uae5v"]
+[ext_resource type="Texture2D" uid="uid://dtatsh7kk8p1v" path="res://shared assets/images/icons/hammer.png" id="4_icon"]
 
 [resource]
 script = ExtResource("1_ct8be")
-name = "Old Hammer"
+name = "Hammer"
 item_description = "Hammer from another era! Geez, this has to be worth something to someone...?"
 texture = ExtResource("3_uae5v")
+icon = ExtResource("4_icon")
 value = 12.3
 combo_bonus_value = 6.0
 combo_item_id = &"hammer"

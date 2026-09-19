@@ -2,68 +2,87 @@ class_name Shop extends Control
 
 
 @onready var main_container: VBoxContainer = %MainContainer
+@onready var main_buy_container: VBoxContainer = %MainBuyContainer
 
 @onready var leave_button: Button = %LeaveButton
-
-@onready var sell_tab: ScrollContainer = %SellTab
-@onready var buy_tab: ScrollContainer = %BuyTab
+@onready var description_label: Label = %DescriptionLabel
 
 @onready var tab_container: TabContainer = %TabContainer
 
-@onready var magnet_1_button: Button = %Magnet_1_Button
-@onready var magnet_2_button: Button = %Magnet_2_Button
+const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
+const MAGNET_RESOURCE: MagnetResource = preload("uid://crh5dh2gulls8")
 
-const MAGNET_RESOURCE = preload("uid://crh5dh2gulls8")
-
-var item_box_container: MarginContainer
-var item_button: Button
+var item_button_slot: ItemButton
 
 var item_resources: Dictionary = {}
 
 
 func _ready() -> void:
 	leave_button.pressed.connect(_on_leave_button)
-	magnet_1_button.pressed.connect(_on_magnet_1_pressed)
-	magnet_2_button.pressed.connect(_on_magnet_2_pressed)
 	show_inventory.call_deferred()
+	show_magnets.call_deferred()
+	tab_container.grab_focus.call_deferred()
 
 
 func show_inventory() -> void:
 	for item_resource: ItemResource in GameState.inventory:
 		if item_resources.has(item_resource):
-			item_box_container = item_resources[item_resource][0] as MarginContainer
-			item_button = item_resources[item_resource][2] as Button
+			item_button_slot = item_resources[item_resource] as ItemButton
 		else:
-			item_box_container = MarginContainer.new()
-			item_button = Button.new()
-			item_resources[item_resource] = [item_box_container, item_button]
+			item_button_slot = ITEM_BUTTON.instantiate()
+			item_resources[item_resource] = item_button_slot
+			item_button_slot.pressed.connect(_on_sell_item_pressed.bind(item_resource, item_button_slot))
+			item_button_slot.item_hovered.connect(_on_item_hovered)
+			item_button_slot.item_unhovered.connect(_on_item_unhovered)
 
-		item_box_container.add_theme_constant_override("margin_top", 1)
-		item_box_container.add_theme_constant_override("margin_bottom", 1)
-		item_box_container.add_theme_constant_override("margin_left", 2)
+		if !item_button_slot.is_inside_tree():
+			main_container.add_child(item_button_slot)
 
-		item_button.custom_maximum_size = Vector2(95.0, 30.0)
-		item_button.icon = item_resource.texture
-		item_button.text = str(GameState.inventory[item_resource]) + " X $" + str(item_resource.value)
+		item_button_slot.set_item(item_resource.icon, item_resource.name, GameState.inventory[item_resource])
+		item_button_slot.set_price(item_resource.value, "+")
+		item_button_slot.set_description(item_resource.item_description)
 
-		if !item_box_container.is_inside_tree():
-			item_box_container.add_child(item_button)
-			main_container.add_child(item_box_container)
+
+func show_magnets() -> void:
+	for magnet_type: Magnets.Type in MAGNET_RESOURCE.magnet_prices:
+		if magnet_type == GameState.current_magnet:
+			continue
+
+		var magnet_button: ItemButton = ITEM_BUTTON.instantiate()
+		main_buy_container.add_child(magnet_button)
+		magnet_button.set_item(MAGNET_RESOURCE.magnet_icons[magnet_type], MAGNET_RESOURCE.magnet_names[magnet_type], 0)
+		magnet_button.set_price(MAGNET_RESOURCE.magnet_prices[magnet_type], "-")
+		magnet_button.set_description(MAGNET_RESOURCE.magnet_descriptions[magnet_type])
+		magnet_button.pressed.connect(_on_buy_magnet_pressed.bind(magnet_type, magnet_button))
+		magnet_button.item_hovered.connect(_on_item_hovered)
+		magnet_button.item_unhovered.connect(_on_item_unhovered)
+
+
+func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> void:
+	GameState.inventory.erase(item_resource)
+	GameState.current_money_earned += item_resource.value
+	item_resources.erase(item_resource)
+	button.queue_free()
+
+
+func _on_buy_magnet_pressed(magnet_type: Magnets.Type, button: ItemButton) -> void:
+	var price: float = MAGNET_RESOURCE.magnet_prices[magnet_type]
+	if GameState.current_money_earned < price:
+		description_label.text = "Not enough cash..."
+		return
+
+	GameState.current_money_earned -= price
+	GameState.current_magnet = magnet_type
+	button.queue_free()
 
 
 func _on_leave_button() -> void:
 	hide()
 
 
-func _on_magnet_1_pressed() -> void:
-	# Don't forget to update the GameState.current_magnet resource | MAGNET_RESOURCE
-	# magnet influence is the radius of the area2D
-	print("Purchased Magnet 1")
-	pass
+func _on_item_hovered(description: String) -> void:
+	description_label.text = description
 
 
-func _on_magnet_2_pressed() -> void:
-	# Don't forget to update the GameState.current_magnet resource | MAGNET_RESOURCE
-	# magnet influence is the radius of the area2D
-	print("Purchased Magnet 2")
-	pass
+func _on_item_unhovered() -> void:
+	description_label.text = ""

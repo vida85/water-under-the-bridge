@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="1_7gqo7"]
 [ext_resource type="Texture2D" uid="uid://bu5o5emedxr6m" path="res://shared assets/images/textures/key.png" id="2_bp02r"]
+[ext_resource type="Texture2D" uid="uid://cevuhxmdeg3gd" path="res://shared assets/images/icons/key.png" id="4_icon"]
 
 [resource]
 script = ExtResource("1_7gqo7")
-name = "An old Key"
+name = "Key"
 item_description = "A key, I wonder what this was used for? Maybe a hidden Treasure chest!"
 texture = ExtResource("2_bp02r")
+icon = ExtResource("4_icon")
 value = 4.75
 combo_item_id = &"old_key"
 caught_radius = 7.0

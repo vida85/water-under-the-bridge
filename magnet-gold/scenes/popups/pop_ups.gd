@@ -9,11 +9,14 @@ signal can_cast(value: bool)
 @onready var shop_button: Button = %ShopButton
 @onready var keep_fishing_button: Button = %KeepFishingButton
 @onready var item_container: VBoxContainer = %ItemContainer
+@onready var description_label: Label = %DescriptionLabel
 
 const SHOP = preload("uid://dhikhypod3wsd")
+const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 
 var item_resources: Dictionary = {}
-var item_button: Button
+
+var item_button_slot: ItemButton
 
 
 func _ready() -> void:
@@ -51,23 +54,23 @@ func populate_scroll_container(items: Array) -> void:
 	"""
 	for item: Item in items:
 		if item_resources.has(item.item_resource):
-			item_button = item_resources[item.item_resource] as Button
+			item_button_slot = item_resources[item.item_resource] as ItemButton
 		else:
-			item_button = Button.new()
-			item_resources[item.item_resource] = item_button
+			item_button_slot = ITEM_BUTTON.instantiate()
+			item_resources[item.item_resource] = item_button_slot
+			item_button_slot.item_hovered.connect(_on_item_hovered)
+			item_button_slot.item_unhovered.connect(_on_item_unhovered)
 
-		# Button Layout
-		item_button.custom_maximum_size = Vector2(-1.0, 25.0)
-		item_button.size_flags_vertical = Control.SIZE_EXPAND
-		item_button.clip_contents = true
+		if !item_button_slot.is_inside_tree():
+			item_container.add_child(item_button_slot)
 
-		item_button.icon = item.item_resource.texture
+		item_button_slot.set_item(item.item_resource.icon, item.item_resource.name, GameState.inventory[item.item_resource])
+		item_button_slot.set_description(item.item_resource.item_description)
 
-		# Text Behavior
-		item_button.text = item.item_resource.name
-		item_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		item_button.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-		item_button.autowrap_mode = TextServer.AUTOWRAP_WORD
 
-		if not item_button.is_inside_tree():
-			item_container.add_child(item_button)
+func _on_item_hovered(description: String) -> void:
+	description_label.text = description
+
+
+func _on_item_unhovered() -> void:
+	description_label.text = ""
