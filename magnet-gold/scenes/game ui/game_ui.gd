@@ -7,7 +7,6 @@ signal leave_shop
 signal can_cast(value: bool)
 
 const MINI_GAME_V2 = preload("uid://py3j8cf40f4h")
-const SHOP = preload("uid://dhikhypod3wsd")
 
 
 @export_group("Dependencies")
@@ -22,6 +21,7 @@ var minigame_caught_nothing: bool = false
 func _ready() -> void:
 	popup_items_caught.go_to_shop.connect(go_to_shop_scene)
 	popup_items_caught.keep_fishing.connect(turn_on_player)
+	shop.leave_button.pressed.connect(_on_leave_button)
 
 	minigame_ended.connect(display_items_caught)
 
@@ -68,6 +68,15 @@ func turn_on_player() -> void:
 func go_to_shop_scene() -> void:
 	shop.show_inventory()
 	shop.show.call_deferred()
+
+
+func open_shop_from_field() -> void:
+	if shop.visible:
+		return
+
+	turn_off_player_mobility.emit()
+	can_cast.emit(false)
+	go_to_shop_scene()
 
 
 func _on_leave_button() -> void:

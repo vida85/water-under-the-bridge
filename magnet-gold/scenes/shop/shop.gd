@@ -25,15 +25,23 @@ const ARROW_ACTIVE_TEXTURE = preload("uid://cr8ra0ywula1k")
 
 var item_button_slot: ItemButton
 var item_resources: Dictionary = {}
+var idle_description: String = "..."
 
 
 func _ready() -> void:
 	hide()
 	leave_button.pressed.connect(_on_leave_button)
 	tab_bar.tab_changed.connect(_on_tab_changed)
+	visibility_changed.connect(_on_visibility_changed)
 	show_inventory.call_deferred()
 	show_magnets.call_deferred()
 	_focus_first_in_active_tab.call_deferred()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		tab_bar.current_tab = 0
+		_focus_first_in_active_tab()
 
 
 func _input(event: InputEvent) -> void:
@@ -55,6 +63,7 @@ func _on_tab_changed(tab_idx: int) -> void:
 	arrow_left.texture = ARROW_ACTIVE_TEXTURE if tab_idx == 0 else ARROW_TEXTURE
 	arrow_right.texture = ARROW_ACTIVE_TEXTURE if tab_idx == 1 else ARROW_TEXTURE
 
+	_update_idle_description()
 	_focus_first_in_active_tab()
 
 
@@ -64,6 +73,17 @@ func _focus_first_in_active_tab() -> void:
 		active_container.get_child(0).grab_focus()
 	else:
 		leave_button.grab_focus()
+
+
+func _update_idle_description() -> void:
+	if tab_bar.current_tab == 0 and main_container.get_child_count() == 0:
+		idle_description = "No Items"
+	elif tab_bar.current_tab == 1 and main_buy_container.get_child_count() == 0:
+		idle_description = "Sold Out"
+	else:
+		idle_description = "..."
+
+	description_label.text = idle_description
 
 
 func show_inventory() -> void:
@@ -83,22 +103,27 @@ func show_inventory() -> void:
 		item_button_slot.set_item(item_resource.icon, item_resource.name, GameState.inventory[item_resource])
 		item_button_slot.set_price(item_resource.value, "+")
 		item_button_slot.set_description(item_resource.item_description)
-		print("Show inventory Items: ", item_resource.name)
+
+	_update_idle_description()
 
 
 func show_magnets() -> void:
-	for magnet_type in MAGNET_RESOURCE.magnet_prices:
-		if magnet_type == GameState.current_magnet:
-			continue
+	for child in main_buy_container.get_children():
+		main_buy_container.remove_child(child)
+		child.queue_free()
 
+	var next_type: int = int(GameState.current_magnet) + 1
+	if MAGNET_RESOURCE.magnet_prices.has(next_type):
 		var magnet_button: ItemButton = ITEM_BUTTON.instantiate()
 		main_buy_container.add_child(magnet_button)
-		magnet_button.set_item(MAGNET_RESOURCE.magnet_icons[magnet_type], MAGNET_RESOURCE.magnet_names[magnet_type], 0)
-		magnet_button.set_price(MAGNET_RESOURCE.magnet_prices[magnet_type], "-")
-		magnet_button.set_description(MAGNET_RESOURCE.magnet_descriptions[magnet_type])
-		magnet_button.pressed.connect(_on_buy_magnet_pressed.bind(magnet_type, magnet_button))
+		magnet_button.set_item(MAGNET_RESOURCE.magnet_icons[next_type], MAGNET_RESOURCE.magnet_names[next_type], 0)
+		magnet_button.set_price(MAGNET_RESOURCE.magnet_prices[next_type], "-")
+		magnet_button.set_description(MAGNET_RESOURCE.magnet_descriptions[next_type])
+		magnet_button.pressed.connect(_on_buy_magnet_pressed.bind(next_type))
 		magnet_button.item_hovered.connect(_on_item_hovered)
 		magnet_button.item_unhovered.connect(_on_item_unhovered)
+
+	_update_idle_description()
 
 
 func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> void:
@@ -109,7 +134,7 @@ func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> v
 	_remove_and_refocus(button, main_container)
 
 
-func _on_buy_magnet_pressed(magnet_type: Magnets.Type, button: ItemButton) -> void:
+func _on_buy_magnet_pressed(magnet_type: Magnets.Type) -> void:
 	var price: float = MAGNET_RESOURCE.magnet_prices[magnet_type]
 	if GameState.current_money_earned < price:
 		description_label.text = "Not enough cash..."
@@ -117,13 +142,16 @@ func _on_buy_magnet_pressed(magnet_type: Magnets.Type, button: ItemButton) -> vo
 	buy.play()
 	GameState.update_cash(-price)
 	GameState.current_magnet = magnet_type
-	_remove_and_refocus(button, main_buy_container)
+	show_magnets()
+	_focus_first_in_active_tab()
 
 
 func _remove_and_refocus(button: ItemButton, container: VBoxContainer) -> void:
 	var index: int = button.get_index()
 	container.remove_child(button)
 	button.queue_free()
+
+	_update_idle_description()
 
 	if container.get_child_count() > 0:
 		var next_index: int = clampi(index, 0, container.get_child_count() - 1)
@@ -142,4 +170,4 @@ func _on_item_hovered(description: String) -> void:
 
 
 func _on_item_unhovered() -> void:
-	description_label.text = "..."
+	description_label.text = idle_description

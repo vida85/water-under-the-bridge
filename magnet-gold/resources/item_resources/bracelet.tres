@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_4b1l5")
-name = "Gold Bracelet"
+name = "Bracelet"
 item_description = "Oh nice, maybe I should keep this!!"
 texture = ExtResource("3_4b1l5")
 icon = ExtResource("1_loktk")

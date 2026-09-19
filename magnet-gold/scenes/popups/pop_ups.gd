@@ -1,6 +1,6 @@
 class_name PopUp extends Control
 
-signal go_to_shop(shop_scene: Shop)
+signal go_to_shop
 signal keep_fishing
 signal can_cast(value: bool)
 

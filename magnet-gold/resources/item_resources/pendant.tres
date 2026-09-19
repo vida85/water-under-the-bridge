@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_s3d84")
-name = "Old Pendant"
+name = "Pendant"
 item_description = "Oh nice, sad someone lost this!"
 texture = ExtResource("3_s3d84")
 icon = ExtResource("1_qcna0")
