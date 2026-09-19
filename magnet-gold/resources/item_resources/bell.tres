@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_l6veg")
-name = "Old Bell"
+name = "Bell"
 item_description = "Wow, does this ring a bell..."
 texture = ExtResource("3_l6veg")
 icon = ExtResource("1_da1h1")

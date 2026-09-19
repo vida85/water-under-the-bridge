@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_gtgis")
-name = "Pocket Watch"
+name = "Watch"
 item_description = "Well, it's correct twice a day!"
 texture = ExtResource("3_gtgis")
 icon = ExtResource("1_yrsr5")
