@@ -12,6 +12,7 @@ signal set_cast_bar
 
 @onready var sprite: Sprite2D = %Sprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var step_sfx: AudioStreamPlayer = $StepSFX
 
 var _strength: float = .5
 var is_line_cast: bool = false
@@ -30,6 +31,10 @@ func _ready() -> void:
 	magnet.return_started.connect(pull)
 	magnet.return_finished.connect(end_pull)
 	magnet.splash_emitted.connect(cast_bar_ui.hide)
+
+# called through AnimationPlayer
+func play_footstep() -> void:
+	step_sfx.play()
 
 
 func aim():

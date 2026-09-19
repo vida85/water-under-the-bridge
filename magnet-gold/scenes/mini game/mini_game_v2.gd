@@ -25,7 +25,7 @@ signal minigame_caught_nothing
 @onready var magnet_sfx: AudioStreamPlayer2D = %MagnetSFX
 @onready var cash_sfx: AudioStreamPlayer2D = %CashSFX
 @onready var magnet_slide_sfx: AudioStreamPlayer2D = %MagnetSlideSFX
-@onready var bell_sfx: AudioStreamPlayer2D = %BellSFX
+@onready var coin_sfx: AudioStreamPlayer2D = %Coin_sfx
 
 @onready var coin_colection_area: Area2D = %CoinColectionArea
 
@@ -56,11 +56,6 @@ var max_speed: float = 300.0
 var _velocity: Vector2 = Vector2.ZERO
 var _quick_pull: bool = false
 
-
-var _total_coins_acquired: float = 0.0:
-	set(val):
-		_total_coins_acquired = val
-		GameState.current_money_earned += _total_coins_acquired
 
 
 func _ready() -> void:
@@ -97,9 +92,7 @@ func _turn_on_items() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Item and not _quick_pull:
 		var item: Item = area
-		if not magnet_sfx.playing:
-			magnet_sfx.play.call_deferred()
-
+		coin_sfx.play()
 		if "coin" in item.item_resource.name.to_lower():
 			coins.append(item)
 			item.set_deferred("monitorable", false)
@@ -120,7 +113,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_coin_faded_away(value: float) -> void:
-	_total_coins_acquired += value
+	print()
+	print("Coin value = ", value)
+	GameState.update_cash(value)
 
 
 func _on_area_exited(area: Area2D) -> void:
@@ -173,7 +168,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_magnet_entered(_area: Area2D) -> void:
-	bell_sfx.play()
 	for coin: Item in coins:
 		if items_acquired.has(coin):
 			items_acquired.erase.call_deferred(coin)

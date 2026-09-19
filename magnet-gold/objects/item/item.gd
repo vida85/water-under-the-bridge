@@ -4,9 +4,9 @@ signal coin_has_faded_and_died
 
 
 @export var item_resource: ItemResource
+@onready var bell_sfx: AudioStreamPlayer2D = %BellSFX
+@onready var splash: GPUParticles2D = %Splash
 
-
-@onready var coin_sfx: AudioStreamPlayer2D = %coin_sfx
 
 # Item needs to exits in Layer 3
 const COLLISION_ITEM_LAYER: int = 3
@@ -55,13 +55,16 @@ func _debug_mode() -> void:
 
 
 func fade_away(coin_end_position: Marker2D) -> void:
+	splash.global_position = coin_end_position.global_position
 	await get_tree().create_timer(randf()).timeout
 
 	tween = _reset_tween()
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_parallel(true)
 	tween.tween_property(self, "scale", Vector2.ZERO, COIN_TRANSITION_TIME)
 	await tween.tween_property(self, "global_position", coin_end_position.global_position, COIN_TRANSITION_TIME).finished
-	coin_sfx.play()
+	bell_sfx.play()
+	splash.emitting = true
+	await get_tree().create_timer(1.0).timeout
 	coin_has_faded_and_died.emit(item_resource.value)
 
 

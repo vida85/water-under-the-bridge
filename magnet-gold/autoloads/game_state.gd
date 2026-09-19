@@ -1,15 +1,10 @@
 extends Node
 
-signal update_cash(value: float)
+signal cash_value_changed(value: float)
 
 
 var current_magnet: Magnets.Type = Magnets.Type.BASIC
-var current_money_earned: float = 0.0:
-	set(val):
-		current_money_earned = val
-		update_cash.emit(current_money_earned)
-
-
+var current_money_earned: float = 0.0
 var inventory: Dictionary[ItemResource, int]
 
 
@@ -19,3 +14,8 @@ func update_items_to_dict(items: Array[Item]) -> void:
 			inventory[item.item_resource] += 1
 		else:
 			inventory[item.item_resource] = 1
+
+
+func update_cash(value: float) -> void:
+	current_money_earned += value
+	cash_value_changed.emit(current_money_earned)

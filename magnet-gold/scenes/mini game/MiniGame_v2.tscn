@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dh4c4tjkokcnw" path="res://scenes/mini game/mini_game_v2.gd" id="1_xluq3"]
 [ext_resource type="Texture2D" uid="uid://b6lfkmqsmpu6" path="res://scenes/magnet/textures/rope.png" id="2_jynqs"]
 [ext_resource type="Resource" uid="uid://crh5dh2gulls8" path="res://scenes/magnet/magnet_resource.tres" id="2_mq5h3"]
-[ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="3_6x84r"]
 [ext_resource type="AudioStream" uid="uid://dcj27bf0bovxv" path="res://shared assets/audio/sfx/item_caught_sfx00054921.mp3" id="3_gnelm"]
 [ext_resource type="AudioStream" uid="uid://hpan5s8soo1e" path="res://shared assets/audio/sfx/magnet_slide_sfx00054464.mp3" id="4_gnelm"]
 [ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="4_xrsr2"]
+[ext_resource type="AudioStream" uid="uid://byqowspbrenu8" path="res://shared assets/audio/sfx/coin_sfx00000000.mp3" id="5_gnelm"]
 
 [sub_resource type="Animation" id="Animation_plrat"]
 length = 0.001
@@ -93,10 +93,10 @@ normal = Vector2(0, 1)
 script = ExtResource("1_xluq3")
 magnet_resource = ExtResource("2_mq5h3")
 
-[node name="BellSFX" type="AudioStreamPlayer2D" parent="." unique_id=1314288526]
+[node name="Coin_sfx" type="AudioStreamPlayer2D" parent="." unique_id=50486268]
 unique_name_in_owner = true
-stream = ExtResource("3_6x84r")
-bus = &"Sfx"
+stream = ExtResource("5_gnelm")
+bus = &"Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2082730199]
 unique_name_in_owner = true
@@ -155,14 +155,14 @@ bus = &"Sfx"
 unique_name_in_owner = true
 position = Vector2(-0.07, -0.07)
 stream = ExtResource("4_gnelm")
-volume_db = -18.0
+volume_db = -12.0
 pitch_scale = 1.25
 bus = &"Sfx"
 
 [node name="CashSFX" type="AudioStreamPlayer2D" parent="MagnetArea" unique_id=926427280]
 unique_name_in_owner = true
 stream = ExtResource("4_xrsr2")
-bus = &"Sfx"
+bus = &"Music"
 
 [node name="Magnet" type="Sprite2D" parent="MagnetArea" unique_id=1978576660]
 unique_name_in_owner = true
@@ -190,13 +190,13 @@ position = Vector2(80, 118)
 
 [node name="CoinEndPosition" type="Marker2D" parent="." unique_id=1191609724]
 unique_name_in_owner = true
-position = Vector2(148, 7)
+position = Vector2(134, 7)
 
 [node name="CoinColectionArea" type="Area2D" parent="." unique_id=1377229465]
 unique_name_in_owner = true
+position = Vector2(81, 7)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinColectionArea" unique_id=1137135873]
-position = Vector2(82, 10)
 shape = SubResource("WorldBoundaryShape2D_176rl")

@@ -4,8 +4,8 @@ class_name MainGameUi extends Control
 
 
 func _ready() -> void:
-	GameState.update_cash.connect(update_cash)
+	GameState.cash_value_changed.connect(update_cash)
 
 
 func update_cash(value: float) -> void:
-	cash_label.text = "$ "+str(value)
+	cash_label.text = "$ " + str(value)
