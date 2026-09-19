@@ -2,16 +2,12 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
-<<<<<<< HEAD
-[ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="3_xjfbs"]
-[ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="4_6yl83"]
-=======
+[ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="3_rdw2s"]
+[ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="4_2xo2e"]
 [ext_resource type="Texture2D" uid="uid://bvuekuopv8dq7" path="res://shared assets/images/textures/ui-arrow.png" id="4_xjfbs"]
-[ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
->>>>>>> 763b345c71a7829f38257aace28e231a295d617d
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 [ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="8_desc_bg"]
-[ext_resource type="AudioStream" uid="uid://byqowspbrenu8" path="res://shared assets/audio/sfx/coin_sfx00000000.mp3" id="10_coin_sfx"]
+[ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
@@ -33,28 +29,20 @@ grow_vertical = 2
 theme = ExtResource("7_theme")
 script = ExtResource("1_v61rp")
 
-<<<<<<< HEAD
-[node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1936382102]
+[node name="Buy" type="AudioStreamPlayer" parent="." unique_id=1580517017]
 unique_name_in_owner = true
-stream = ExtResource("3_xjfbs")
+stream = ExtResource("3_rdw2s")
 bus = &"Sfx"
 
-[node name="Buy" type="AudioStreamPlayer" parent="." unique_id=836676568]
+[node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1400551176]
 unique_name_in_owner = true
-stream = ExtResource("4_6yl83")
-bus = &"Sfx"
-
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
-custom_minimum_size = Vector2(112, 160)
-=======
-[node name="CoinSFX" type="AudioStreamPlayer" parent="." unique_id=1580517017]
-unique_name_in_owner = true
-stream = ExtResource("10_coin_sfx")
-bus = &"Sfx"
+stream = ExtResource("4_2xo2e")
+volume_db = -6.0
+pitch_scale = 0.75
+bus = &"Music"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
 custom_minimum_size = Vector2(112, 140)
->>>>>>> 763b345c71a7829f38257aace28e231a295d617d
 custom_maximum_size = Vector2(112, 140)
 layout_mode = 1
 anchors_preset = 8

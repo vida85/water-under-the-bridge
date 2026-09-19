@@ -12,6 +12,7 @@ class_name MainGame extends Node2D
 
 
 func _ready() -> void:
+	# add something
 	game_ui.leave_shop.connect(player.turn_on_player_mobility)
 	game_ui.can_cast.connect(player._set_cast_button)
 

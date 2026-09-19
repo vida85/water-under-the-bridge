@@ -66,7 +66,6 @@ func turn_on_player() -> void:
 
 
 func go_to_shop_scene() -> void:
-	shop.leave_button.pressed.connect(_on_leave_button)
 	shop.show_inventory()
 	shop.show.call_deferred()
 
@@ -74,3 +73,7 @@ func go_to_shop_scene() -> void:
 func _on_leave_button() -> void:
 	leave_shop.emit()
 	can_cast.emit(true)
+
+
+func open_shop_from_field() -> void:
+	go_to_shop_scene()

@@ -77,17 +77,17 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1028818363]
 unique_name_in_owner = true
-theme = ExtResource("5_phone_theme")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("5_phone_theme")
 text = "play"
 
 [node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=375118447]
 unique_name_in_owner = true
-theme = ExtResource("5_phone_theme")
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("5_phone_theme")
 text = "options"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer2/VBoxContainer" unique_id=692420038]

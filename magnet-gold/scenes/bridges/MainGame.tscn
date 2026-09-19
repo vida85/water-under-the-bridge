@@ -214,6 +214,7 @@ bus = &"Music"
 
 [node name="WaterSFX" type="AudioStreamPlayer" parent="." unique_id=2007393586]
 stream = ExtResource("3_me0qj")
+volume_db = -12.0
 autoplay = true
 bus = &"Music"
 

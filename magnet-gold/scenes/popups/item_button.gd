@@ -18,9 +18,9 @@ func _ready() -> void:
 	focus_exited.connect(_on_focus_exited)
 
 
-func set_item(texture: Texture2D, name: String, qty: int) -> void:
+func set_item(texture: Texture2D, _name: String, qty: int) -> void:
 	texture_rect.texture = texture
-	name_label.text = name
+	name_label.text = _name
 	quantity_label.text = "x" + str(qty)
 
 
@@ -29,8 +29,8 @@ func set_price(price: float, prefix: String = "") -> void:
 	price_label.show()
 
 
-func set_description(text: String) -> void:
-	description = text
+func set_description(_text: String) -> void:
+	description = _text
 
 
 func _on_hover_started() -> void:
