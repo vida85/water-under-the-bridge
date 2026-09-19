@@ -22,7 +22,7 @@ var item_button_slot: ItemButton
 func _ready() -> void:
 	shop_button.pressed.connect(_on_go_to_shop_pressed)
 	keep_fishing_button.pressed.connect(_on_keep_fishing_pressed)
-	keep_fishing_button.grab_focus()
+	_focus_first_selectable()
 
 	if debug:
 		return
@@ -67,10 +67,19 @@ func populate_scroll_container(items: Array) -> void:
 		item_button_slot.set_item(item.item_resource.icon, item.item_resource.name, GameState.inventory[item.item_resource])
 		item_button_slot.set_description(item.item_resource.item_description)
 
+	_focus_first_selectable()
+
+
+func _focus_first_selectable() -> void:
+	if item_container.get_child_count() > 0:
+		item_container.get_child(0).grab_focus()
+	else:
+		shop_button.grab_focus()
+
 
 func _on_item_hovered(description: String) -> void:
 	description_label.text = description
 
 
 func _on_item_unhovered() -> void:
-	description_label.text = ""
+	description_label.text = "..."

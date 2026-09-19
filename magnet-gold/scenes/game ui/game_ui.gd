@@ -7,6 +7,7 @@ signal leave_shop
 signal can_cast(value: bool)
 
 const MINI_GAME_V2 = preload("uid://py3j8cf40f4h")
+const SHOP = preload("uid://dhikhypod3wsd")
 
 
 @export_group("Dependencies")
@@ -62,6 +63,15 @@ func display_items_caught() -> void:
 
 func turn_on_player() -> void:
 	turn_on_player_mobility.emit()
+
+
+func open_shop_from_field() -> void:
+	if shop and shop.visible:
+		return
+
+	turn_off_player_mobility.emit()
+	can_cast.emit(false)
+	go_to_shop_scene(SHOP)
 
 
 func go_to_shop_scene(SHOP_SCENE: PackedScene) -> void:

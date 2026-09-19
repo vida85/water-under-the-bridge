@@ -10,9 +10,13 @@ class_name Shop extends Control
 @onready var tab_bar: TabBar = %TabBar
 @onready var sell_tab: ScrollContainer = %SellTab
 @onready var buy_tab: ScrollContainer = %BuyTab
+@onready var arrow_left: TextureRect = %ArrowLeft
+@onready var arrow_right: TextureRect = %ArrowRight
 
 const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 const MAGNET_RESOURCE: MagnetResource = preload("uid://crh5dh2gulls8")
+const ARROW_TEXTURE = preload("uid://bvuekuopv8dq7")
+const ARROW_ACTIVE_TEXTURE = preload("uid://cr8ra0ywula1k")
 
 var item_button_slot: ItemButton
 
@@ -27,9 +31,30 @@ func _ready() -> void:
 	tab_bar.grab_focus.call_deferred()
 
 
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+
+	if event.is_action_pressed("ui_left"):
+		tab_bar.current_tab = 0
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_right"):
+		tab_bar.current_tab = 1
+		get_viewport().set_input_as_handled()
+
+
 func _on_tab_changed(tab_idx: int) -> void:
 	sell_tab.visible = tab_idx == 0
 	buy_tab.visible = tab_idx == 1
+
+	arrow_left.texture = ARROW_ACTIVE_TEXTURE if tab_idx == 0 else ARROW_TEXTURE
+	arrow_right.texture = ARROW_ACTIVE_TEXTURE if tab_idx == 1 else ARROW_TEXTURE
+
+	var active_container: VBoxContainer = main_container if tab_idx == 0 else main_buy_container
+	if active_container.get_child_count() > 0:
+		active_container.get_child(0).grab_focus()
+	else:
+		tab_bar.grab_focus()
 
 
 func show_inventory() -> void:
@@ -94,4 +119,4 @@ func _on_item_hovered(description: String) -> void:
 
 
 func _on_item_unhovered() -> void:
-	description_label.text = ""
+	description_label.text = "..."

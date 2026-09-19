@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b12eteptwcg63" path="res://scenes/main menu/main_menu.gd" id="1_v04ij"]
 [ext_resource type="AudioStream" uid="uid://dqjmlemu4qmy8" path="res://shared assets/audio/music/first_song.mp3" id="3_4nwu2"]
 [ext_resource type="FontFile" uid="uid://c7xiwktiwt2qx" path="res://shared assets/fonts/Silkscreen-Bold.ttf" id="4_fxkxh"]
+[ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="5_phone_theme"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4nwu2"]
 font_size = 6
@@ -76,6 +77,7 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1028818363]
 unique_name_in_owner = true
+theme = ExtResource("5_phone_theme")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -83,6 +85,7 @@ text = "play"
 
 [node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=375118447]
 unique_name_in_owner = true
+theme = ExtResource("5_phone_theme")
 layout_mode = 2
 size_flags_vertical = 3
 text = "options"

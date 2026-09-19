@@ -2,6 +2,8 @@ class_name PlatformerInputComponent extends Node
 
 
 signal cast_magnet_request
+signal open_shop_request
+signal cast_availability_changed(value: bool)
 
 
 var movement_direction: float = 0.0
@@ -28,6 +30,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _can_cast_magnet and event.is_action_pressed("cast_line"):
 		cast_magnet_request.emit()
 
+	if _can_cast_magnet and event.is_action_pressed("pull_up_quickly"):
+		open_shop_request.emit()
+
 
 func turn_all_mobility_inputs_off() -> void:
 	set_physics_process(false)
@@ -42,3 +47,4 @@ func turn_all_mobility_inputs_on() -> void:
 
 func set_cast_button(value: bool) -> void:
 	_can_cast_magnet = value
+	cast_availability_changed.emit(value)
