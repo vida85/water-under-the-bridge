@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 signal cast_line
 signal set_cast_bar
+signal open_shop_request
+signal cast_availability_changed(value: bool)
 
 
 @export_group("Dependencies")
@@ -28,6 +30,8 @@ var fishing = false
 func _ready() -> void:
 	set_cast_bar.connect(cast_bar_ui.pause_cast_bar)
 	platformer_input_component.cast_magnet_request.connect(_on_cast_line_request)
+	platformer_input_component.open_shop_request.connect(_on_open_shop_request)
+	platformer_input_component.cast_availability_changed.connect(_on_cast_availability_changed)
 	magnet.return_started.connect(pull)
 	magnet.return_finished.connect(end_pull)
 	magnet.splash_emitted.connect(cast_bar_ui.hide)
@@ -122,3 +126,11 @@ func turn_on_player_mobility() -> void:
 
 func _set_cast_button(value: bool) -> void:
 	platformer_input_component.set_cast_button(value)
+
+
+func _on_open_shop_request() -> void:
+	open_shop_request.emit()
+
+
+func _on_cast_availability_changed(value: bool) -> void:
+	cast_availability_changed.emit(value)

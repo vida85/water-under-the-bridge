@@ -22,11 +22,17 @@ var item_button_slot: ItemButton
 func _ready() -> void:
 	shop_button.pressed.connect(_on_go_to_shop_pressed)
 	keep_fishing_button.pressed.connect(_on_keep_fishing_pressed)
-	keep_fishing_button.grab_focus()
+	visibility_changed.connect(_on_visibility_changed)
+	_focus_first_selectable()
 
 	if debug:
 		return
 	hide()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		_focus_first_selectable()
 
 
 func _on_go_to_shop_pressed() -> void:
@@ -45,6 +51,7 @@ func populate_scroll_container(items: Array) -> void:
 		_on_keep_fishing_pressed()
 		return
 
+	_clear_items()
 	GameState.update_items_to_dict(items)
 	"""
 	I have items coming in as an Array[Item]
@@ -67,10 +74,25 @@ func populate_scroll_container(items: Array) -> void:
 		item_button_slot.set_item(item.item_resource.icon, item.item_resource.name, GameState.inventory[item.item_resource])
 		item_button_slot.set_description(item.item_resource.item_description)
 
+	_focus_first_selectable()
+
+
+func _focus_first_selectable() -> void:
+	if item_container.get_child_count() > 0:
+		item_container.get_child(0).grab_focus()
+	else:
+		shop_button.grab_focus()
+
 
 func _on_item_hovered(description: String) -> void:
 	description_label.text = description
 
 
 func _on_item_unhovered() -> void:
-	description_label.text = ""
+	description_label.text = "..."
+
+
+func _clear_items() -> void:
+	for child in item_container.get_children():
+		child.queue_free()
+	item_resources.clear()

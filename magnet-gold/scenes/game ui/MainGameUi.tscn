@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cawnfmxsn35p4" path="res://scenes/game ui/main_game_ui.gd" id="1_eebsa"]
 [ext_resource type="FontFile" uid="uid://bgsg3rtqcy2o" path="res://shared assets/fonts/Handjet-Light.ttf" id="2_ehktw"]
 [ext_resource type="Texture2D" uid="uid://cg346rf5jd8n7" path="res://shared assets/images/textures/ui_cash_bg.png" id="2_l7wif"]
+[ext_resource type="FontVariation" uid="uid://cqdsw52v7oo8f" path="res://components/ui elements/silkscreen_button_font.tres" id="3_btn_font"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hl03j"]
 font = ExtResource("2_ehktw")
@@ -53,3 +54,31 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "$ 0"
 label_settings = SubResource("LabelSettings_hl03j")
+
+[node name="InputHintLabel" type="RichTextLabel" parent="." unique_id=-982112188]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -20.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
+theme_override_colors/font_outline_color = Color(0.13725491, 0.22352941, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3_btn_font")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "E [img=8x8]res://shared assets/images/textures/ui-cast.png[/img]
+Q [img=8x8]res://shared assets/images/textures/ui-cart.png[/img]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 2

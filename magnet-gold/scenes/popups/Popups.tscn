@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://rghe8vdkrxd" path="res://scenes/popups/pop_ups.gd" id="1_ticgj"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_311g3"]
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="3_theme"]
+[ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="4_desc_bg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hl03j"]
 line_spacing = -4.0
@@ -43,7 +44,6 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1591093506]
-propagate_maximum_size = false
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
@@ -51,7 +51,6 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=230708089]
-propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
@@ -64,14 +63,23 @@ horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=-367802474]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-custom_maximum_size = Vector2(100, 24)
+[node name="DescriptionPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1480040616]
+custom_minimum_size = Vector2(0, 28)
+custom_maximum_size = Vector2(-1, 28)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_desc_bg")
+
+[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/DescriptionPanel" unique_id=1058479859]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -1)
+theme_override_colors/font_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
 theme_override_constants/line_spacing = -5
+text = "..."
 horizontal_alignment = 1
 autowrap_mode = 2
+clip_text = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1982884750]
 layout_mode = 2
@@ -81,7 +89,6 @@ draw_focus_border = true
 
 [node name="ItemContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=815051995]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 custom_maximum_size = Vector2(-1, 80)
 propagate_maximum_size = false
 layout_mode = 2

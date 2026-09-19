@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
+[ext_resource type="Texture2D" uid="uid://bvuekuopv8dq7" path="res://shared assets/images/textures/ui-arrow.png" id="4_xjfbs"]
+[ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
+[ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="8_desc_bg"]
+[ext_resource type="AudioStream" uid="uid://byqowspbrenu8" path="res://shared assets/audio/sfx/coin_sfx00000000.mp3" id="10_coin_sfx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfrm4"]
 font = ExtResource("2_3qebd")
@@ -24,9 +28,14 @@ grow_vertical = 2
 theme = ExtResource("7_theme")
 script = ExtResource("1_v61rp")
 
+[node name="CoinSFX" type="AudioStreamPlayer" parent="." unique_id=1580517017]
+unique_name_in_owner = true
+stream = ExtResource("10_coin_sfx")
+bus = &"Sfx"
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
-custom_minimum_size = Vector2(112, 160)
-custom_maximum_size = Vector2(112, 160)
+custom_minimum_size = Vector2(112, 140)
+custom_maximum_size = Vector2(112, 140)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,52 +67,72 @@ text = "Gold'en Stuff"
 label_settings = SubResource("LabelSettings_tfrm4")
 horizontal_alignment = 1
 
-[node name="TabContainer" type="TabContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1523699682]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=361539866]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ArrowLeft" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=49112955]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("9_arrow_active")
+flip_h = true
+
+[node name="TabBar" type="TabBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1523699682]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(-1, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+tab_alignment = 1
+tab_count = 2
+tab_0/title = "Sell"
+tab_1/title = "Buy"
+
+[node name="ArrowRight" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=282774980]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_xjfbs")
+
+[node name="DescriptionPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=-367802476]
+custom_minimum_size = Vector2(0, 28)
+custom_maximum_size = Vector2(-1, 28)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("8_desc_bg")
+
+[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/DescriptionPanel" unique_id=-367802475]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -1)
+theme_override_colors/font_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
+theme_override_constants/line_spacing = -5
+text = "..."
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="SellTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=87560814]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-tab_alignment = 1
-current_tab = 1
-tab_0/title = "Sell"
-tab_1/title = "Buy"
 
-[node name="SellTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=87560814]
+[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/SellTab" unique_id=409022619]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuyTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=816675381]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-metadata/_tab_index = 0
-metadata/_tab_name = "Sell"
 
-[node name="MainContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/SellTab" unique_id=409022619]
+[node name="MainBuyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BuyTab" unique_id=478197876]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="BuyTab" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=816675381]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 1
-metadata/_tab_name = "Buy"
-
-[node name="MainBuyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/TabContainer/BuyTab" unique_id=478197876]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DescriptionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=-367802475]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-custom_maximum_size = Vector2(-1, 24)
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-clip_text = true
 
 [node name="LeaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=627619736]
 unique_name_in_owner = true
