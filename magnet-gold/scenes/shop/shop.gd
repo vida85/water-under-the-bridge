@@ -31,9 +31,16 @@ func _ready() -> void:
 	hide()
 	leave_button.pressed.connect(_on_leave_button)
 	tab_bar.tab_changed.connect(_on_tab_changed)
+	visibility_changed.connect(_on_visibility_changed)
 	show_inventory.call_deferred()
 	show_magnets.call_deferred()
 	_focus_first_in_active_tab.call_deferred()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		tab_bar.current_tab = 0
+		_focus_first_in_active_tab()
 
 
 func _input(event: InputEvent) -> void:
