@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cbvce2egw0pyi"]
+
+[ext_resource type="Texture2D" uid="uid://bv0l1yvfghci4" path="res://shared assets/images/icons/earing.png" id="1_0ghqe"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_gidgd"]
+[ext_resource type="Texture2D" uid="uid://4jnquoca4guf" path="res://shared assets/images/textures/earing.png" id="3_gidgd"]
+
+[resource]
+script = ExtResource("2_gidgd")
+name = "Small Earing"
+item_description = "Nice, hope it's worth a lot!"
+texture = ExtResource("3_gidgd")
+icon = ExtResource("1_0ghqe")
+value = 1.25
+combo_item_id = &"earing"
+caught_radius = 4.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

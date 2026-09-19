@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://clxis3tpkbcpj"]
+
+[ext_resource type="Texture2D" uid="uid://djqewywvb55cs" path="res://shared assets/images/icons/gameboy.png" id="1_qhqth"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_lx4ft"]
+[ext_resource type="Texture2D" uid="uid://dstlgirrbosxt" path="res://shared assets/images/textures/gameboy.png" id="3_lx4ft"]
+
+[resource]
+script = ExtResource("2_lx4ft")
+name = "Game Boy!!"
+item_description = "Unreal, I've gotta get this restored!!"
+texture = ExtResource("3_lx4ft")
+icon = ExtResource("1_qhqth")
+value = 0.1
+combo_item_id = &"gameboy"
+caught_radius = 1.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bg13xtw6ww3d6" path="res://scenes/game ui/MainGameUi.tscn" id="5_hl03j"]
 [ext_resource type="Texture2D" uid="uid://cnm2hd5vq5j8p" path="res://scenes/bridges/textures/background.png" id="6_hujvb"]
 [ext_resource type="PackedScene" uid="uid://b86xoenolr8kv" path="res://scenes/player/Player.tscn" id="6_iovqx"]
+[ext_resource type="PackedScene" uid="uid://dhikhypod3wsd" path="res://scenes/shop/Shop.tscn" id="6_xyo56"]
 [ext_resource type="Texture2D" uid="uid://xnor1krhsgl2" path="res://scenes/bridges/textures/bridge.png" id="7_hbod5"]
 [ext_resource type="PackedScene" uid="uid://b4e04yjwdbeji" path="res://objects/ForkItem.tscn" id="7_w83us"]
 [ext_resource type="PackedScene" uid="uid://cy85w0j0tdnqe" path="res://objects/KeyItem.tscn" id="8_yespv"]
@@ -19,12 +20,24 @@
 [ext_resource type="PackedScene" uid="uid://cqk8h6lb38f0c" path="res://objects/SpoonItem.tscn" id="12_3q0ny"]
 [ext_resource type="PackedScene" uid="uid://dcxdb2hed253r" path="res://objects/WrenchItem.tscn" id="13_2bkwo"]
 [ext_resource type="PackedScene" uid="uid://dytv4fb7hrbkp" path="res://objects/HammerItem.tscn" id="14_yespv"]
+[ext_resource type="PackedScene" uid="uid://bdmqopoavers6" path="res://objects/BellItem.tscn" id="17_chgfr"]
 [ext_resource type="Texture2D" uid="uid://sonr1k3wakki" path="res://scenes/bridges/textures/cloud-1.png" id="17_x5csy"]
 [ext_resource type="Texture2D" uid="uid://dvyxnwwaj6q32" path="res://scenes/bridges/textures/trees.png" id="17_yespv"]
+[ext_resource type="PackedScene" uid="uid://uuy1k5fod7re" path="res://objects/BraceletItem.tscn" id="18_l5voi"]
 [ext_resource type="Texture2D" uid="uid://cd80xdte1sidb" path="res://scenes/bridges/textures/cloud-2.png" id="18_leei0"]
 [ext_resource type="Texture2D" uid="uid://vtqb5ru8myvp" path="res://scenes/bridges/textures/water.png" id="19_3q0ny"]
+[ext_resource type="PackedScene" uid="uid://dwkqdp4eyaq71" path="res://objects/BrickPhoneItem.tscn" id="19_givjr"]
+[ext_resource type="PackedScene" uid="uid://rnrku7g4by3k" path="res://objects/BuckleItem.tscn" id="20_fsd0s"]
 [ext_resource type="Texture2D" uid="uid://bxnuocpue4dsn" path="res://scenes/bridges/textures/rocks.png" id="20_n4b7y"]
+[ext_resource type="PackedScene" uid="uid://c0myfex0i3eci" path="res://objects/EaringItem.tscn" id="21_6y6pp"]
+[ext_resource type="PackedScene" uid="uid://d2j7sv35jy8bt" path="res://objects/FloopyItem.tscn" id="22_kuajd"]
 [ext_resource type="Texture2D" uid="uid://cl5wq7a3rj1r" path="res://shared assets/images/textures/leaves.png" id="23_2bkwo"]
+[ext_resource type="PackedScene" uid="uid://dwl6gbib0mret" path="res://objects/GameBoyItem.tscn" id="23_yfbj3"]
+[ext_resource type="PackedScene" uid="uid://b1ues0h7pty5y" path="res://objects/HorseShoeItem.tscn" id="24_8w1gm"]
+[ext_resource type="PackedScene" uid="uid://b7ie3ftolua6y" path="res://objects/LockItem.tscn" id="25_61fgb"]
+[ext_resource type="PackedScene" uid="uid://bxiybtg230mo2" path="res://objects/PendantItem.tscn" id="26_rvsew"]
+[ext_resource type="PackedScene" uid="uid://bmmcskrm4wsr1" path="res://objects/PocketWatchItem.tscn" id="27_6ni1y"]
+[ext_resource type="PackedScene" uid="uid://docajmnxukwcm" path="res://objects/SpadeItem.tscn" id="28_kgfqg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jj0sy"]
 particles_animation = true
@@ -203,29 +216,32 @@ stream = ExtResource("3_me0qj")
 autoplay = true
 bus = &"Music"
 
-[node name="GameUi" parent="." unique_id=424944302 node_paths=PackedStringArray("popup_items_caught") instance=ExtResource("2_2csi4")]
+[node name="GameUi" parent="." unique_id=424944302 node_paths=PackedStringArray("popup_items_caught", "shop") instance=ExtResource("2_2csi4")]
 unique_name_in_owner = true
 popup_items_caught = NodePath("Popups")
-
-[node name="MainGameUi" parent="GameUi" unique_id=2061357430 instance=ExtResource("5_hl03j")]
-mouse_filter = 2
+shop = NodePath("Shop")
 
 [node name="Popups" parent="GameUi" unique_id=2144600210 instance=ExtResource("3_xdeye")]
 debug = false
+
+[node name="Shop" parent="GameUi" unique_id=1355205205 instance=ExtResource("6_xyo56")]
+
+[node name="MainGameUi" parent="GameUi" unique_id=2061357430 instance=ExtResource("5_hl03j")]
+mouse_filter = 2
 
 [node name="ItemSpawnComponent" type="Node" parent="." unique_id=1785452676 node_paths=PackedStringArray("player", "item_spawn_area")]
 unique_name_in_owner = true
 script = ExtResource("4_hbod5")
 player = NodePath("../Player")
 item_spawn_area = NodePath("../ItemSpawnArea")
-items = Array[PackedScene]([ExtResource("7_w83us"), ExtResource("8_yespv"), ExtResource("9_x5csy"), ExtResource("10_leei0"), ExtResource("11_n4b7y"), ExtResource("12_3q0ny"), ExtResource("13_2bkwo"), ExtResource("14_yespv")])
+items = Array[PackedScene]([ExtResource("7_w83us"), ExtResource("8_yespv"), ExtResource("9_x5csy"), ExtResource("10_leei0"), ExtResource("11_n4b7y"), ExtResource("12_3q0ny"), ExtResource("13_2bkwo"), ExtResource("14_yespv"), ExtResource("17_chgfr"), ExtResource("18_l5voi"), ExtResource("19_givjr"), ExtResource("20_fsd0s"), ExtResource("21_6y6pp"), ExtResource("22_kuajd"), ExtResource("23_yfbj3"), ExtResource("24_8w1gm"), ExtResource("25_61fgb"), ExtResource("26_rvsew"), ExtResource("27_6ni1y"), ExtResource("28_kgfqg")])
 
 [node name="ItemSpawnArea" type="ReferenceRect" parent="." unique_id=1123986912]
 unique_name_in_owner = true
-offset_left = 20.0
-offset_top = 97.0
-offset_right = 131.0
-offset_bottom = 136.0
+offset_left = 24.0
+offset_top = 101.0
+offset_right = 133.0
+offset_bottom = 139.0
 
 [node name="Leaves" type="GPUParticles2D" parent="." unique_id=1208024105]
 z_index = 10

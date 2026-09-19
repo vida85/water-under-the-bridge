@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bfg7vodcbpwix"]
+
+[ext_resource type="Texture2D" uid="uid://csos7wrutcvi6" path="res://shared assets/images/icons/buckle.png" id="1_8hv2d"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_yxsa2"]
+[ext_resource type="Texture2D" uid="uid://bf16svm8lj4mw" path="res://shared assets/images/textures/belt-buckle.png" id="3_yxsa2"]
+
+[resource]
+script = ExtResource("2_yxsa2")
+name = "Big Buckle"
+item_description = "Ha, mine is better but this one has history..."
+texture = ExtResource("3_yxsa2")
+icon = ExtResource("1_8hv2d")
+value = 4.62
+combo_item_id = &"buckle"
+caught_radius = 5.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

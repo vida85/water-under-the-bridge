@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dwl6gbib0mret"]
+
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_wq6mt"]
+[ext_resource type="Resource" uid="uid://clxis3tpkbcpj" path="res://resources/item_resources/gameboy.tres" id="2_ju45j"]
+
+[node name="GameBoyItem" unique_id=1436597317 instance=ExtResource("1_wq6mt")]
+item_resource = ExtResource("2_ju45j")

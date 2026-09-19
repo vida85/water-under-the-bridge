@@ -9,17 +9,20 @@ class_name Shop extends Control
 
 @onready var tab_container: TabContainer = %TabContainer
 
+@onready var sell: AudioStreamPlayer = %Sell
+@onready var buy: AudioStreamPlayer = %Buy
+
+
 const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 const MAGNET_RESOURCE: MagnetResource = preload("uid://crh5dh2gulls8")
 
 var item_button_slot: ItemButton
-
 var item_resources: Dictionary = {}
 
 
 func _ready() -> void:
+	hide()
 	leave_button.pressed.connect(_on_leave_button)
-	show_inventory.call_deferred()
 	show_magnets.call_deferred()
 	tab_container.grab_focus.call_deferred()
 
@@ -41,10 +44,11 @@ func show_inventory() -> void:
 		item_button_slot.set_item(item_resource.icon, item_resource.name, GameState.inventory[item_resource])
 		item_button_slot.set_price(item_resource.value, "+")
 		item_button_slot.set_description(item_resource.item_description)
+		print("Show inventory Items: ", item_resource.name)
 
 
 func show_magnets() -> void:
-	for magnet_type: Magnets.Type in MAGNET_RESOURCE.magnet_prices:
+	for magnet_type in MAGNET_RESOURCE.magnet_prices:
 		if magnet_type == GameState.current_magnet:
 			continue
 
@@ -59,8 +63,8 @@ func show_magnets() -> void:
 
 
 func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> void:
+	sell.play()
 	GameState.inventory.erase(item_resource)
-	#GameState.current_money_earned += item_resource.value
 	GameState.update_cash(item_resource.value)
 	item_resources.erase(item_resource)
 	button.queue_free()
@@ -71,7 +75,7 @@ func _on_buy_magnet_pressed(magnet_type: Magnets.Type, button: ItemButton) -> vo
 	if GameState.current_money_earned < price:
 		description_label.text = "Not enough cash..."
 		return
-
+	buy.play()
 	GameState.update_cash(-price)
 	GameState.current_magnet = magnet_type
 	button.queue_free()

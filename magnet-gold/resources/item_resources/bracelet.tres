@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bb6m1m7f6dilr"]
+
+[ext_resource type="Texture2D" uid="uid://ctdmtglehw0w7" path="res://shared assets/images/icons/bracelet.png" id="1_loktk"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_4b1l5"]
+[ext_resource type="Texture2D" uid="uid://d3jl05ysc6dxh" path="res://shared assets/images/textures/bracelet.png" id="3_4b1l5"]
+
+[resource]
+script = ExtResource("2_4b1l5")
+name = "Gold Bracelet"
+item_description = "Oh nice, maybe I should keep this!!"
+texture = ExtResource("3_4b1l5")
+icon = ExtResource("1_loktk")
+value = 11.76
+combo_bonus_value = 3.0
+combo_item_id = &"bracelet"
+combo_item_ids = Array[StringName]([&"pendant"])
+caught_radius = 4.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

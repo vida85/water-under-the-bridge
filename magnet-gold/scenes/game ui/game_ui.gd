@@ -11,10 +11,10 @@ const MINI_GAME_V2 = preload("uid://py3j8cf40f4h")
 
 @export_group("Dependencies")
 @export var popup_items_caught: PopUp
+@export var shop: Shop
 
 
 var mini_game_popup: MiniGamev2
-var shop: Shop
 var minigame_caught_nothing: bool = false
 
 
@@ -64,10 +64,10 @@ func turn_on_player() -> void:
 	turn_on_player_mobility.emit()
 
 
-func go_to_shop_scene(SHOP_SCENE: PackedScene) -> void:
-	shop = SHOP_SCENE.instantiate()
-	add_child(shop)
+func go_to_shop_scene() -> void:
 	shop.leave_button.pressed.connect(_on_leave_button)
+	shop.show_inventory()
+	shop.show.call_deferred()
 
 
 func _on_leave_button() -> void:

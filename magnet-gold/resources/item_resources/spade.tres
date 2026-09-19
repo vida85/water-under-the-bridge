@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bu80hr43ds85n"]
+
+[ext_resource type="Texture2D" uid="uid://brhd8w70oaobr" path="res://shared assets/images/icons/spade.png" id="1_6xpjj"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_wid2i"]
+[ext_resource type="Texture2D" uid="uid://d2h8qgxmbvfgx" path="res://shared assets/images/textures/spade.png" id="3_wid2i"]
+
+[resource]
+script = ExtResource("2_wid2i")
+name = "Spade"
+item_description = "Sweet, I can use this for my grave..."
+texture = ExtResource("3_wid2i")
+icon = ExtResource("1_6xpjj")
+value = 5.5
+combo_item_id = &"spade"
+caught_radius = 6.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

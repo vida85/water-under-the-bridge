@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_p8u1c")
 name = "Ring"
-item_description = "Darn it, this is not my Heirloom... but hey, it's gotta be worth something."
+item_description = "Darn it, this is not my Heirloom..."
 texture = ExtResource("3_ff5oc")
 icon = ExtResource("4_icon")
 value = 15.0

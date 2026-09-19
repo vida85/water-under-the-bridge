@@ -11,11 +11,10 @@ signal can_cast(value: bool)
 @onready var item_container: VBoxContainer = %ItemContainer
 @onready var description_label: Label = %DescriptionLabel
 
-const SHOP = preload("uid://dhikhypod3wsd")
+
 const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 
 var item_resources: Dictionary = {}
-
 var item_button_slot: ItemButton
 
 
@@ -31,7 +30,7 @@ func _ready() -> void:
 
 func _on_go_to_shop_pressed() -> void:
 	hide()
-	go_to_shop.emit(SHOP)
+	go_to_shop.emit()
 
 
 func _on_keep_fishing_pressed() -> void:

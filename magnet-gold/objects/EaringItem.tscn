@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c0myfex0i3eci"]
+
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_8a4b7"]
+[ext_resource type="Resource" uid="uid://cbvce2egw0pyi" path="res://resources/item_resources/earing.tres" id="2_hexmq"]
+
+[node name="EaringItem" unique_id=1436597317 instance=ExtResource("1_8a4b7")]
+item_resource = ExtResource("2_hexmq")

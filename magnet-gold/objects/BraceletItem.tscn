@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://uuy1k5fod7re"]
+
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_ieqov"]
+[ext_resource type="Resource" uid="uid://bb6m1m7f6dilr" path="res://resources/item_resources/bracelet.tres" id="2_qc3dn"]
+
+[node name="BraceletItem" unique_id=1436597317 instance=ExtResource("1_ieqov")]
+item_resource = ExtResource("2_qc3dn")

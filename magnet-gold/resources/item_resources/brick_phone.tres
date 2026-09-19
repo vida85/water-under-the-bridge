@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://d025bkbo43kd6"]
+
+[ext_resource type="Texture2D" uid="uid://xvpywre81y3r" path="res://shared assets/images/icons/phone.png" id="1_ibluf"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_6urqg"]
+[ext_resource type="Texture2D" uid="uid://b6253lerwr25p" path="res://shared assets/images/textures/brick-phone.png" id="3_6urqg"]
+
+[resource]
+script = ExtResource("2_6urqg")
+name = "Flip Phone"
+item_description = "Cool!! My Mom had one of these..."
+texture = ExtResource("3_6urqg")
+icon = ExtResource("1_ibluf")
+value = 2.99
+combo_item_id = &"brick_phone"
+caught_radius = 7.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

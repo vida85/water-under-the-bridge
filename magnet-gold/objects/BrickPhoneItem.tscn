@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dwkqdp4eyaq71"]
+
+[ext_resource type="PackedScene" uid="uid://np78i2pfbxxq" path="res://objects/item/Item.tscn" id="1_rjjmr"]
+[ext_resource type="Resource" uid="uid://d025bkbo43kd6" path="res://resources/item_resources/brick_phone.tres" id="2_e3y4b"]
+
+[node name="BrickPhoneItem" unique_id=1436597317 instance=ExtResource("1_rjjmr")]
+item_resource = ExtResource("2_e3y4b")

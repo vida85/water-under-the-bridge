@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_xde4y")
 name = "Heirloom!"
-item_description = "At last, you found your great grandmas ring!! Pretend nothing happened and go propose to her!"
+item_description = "At last, you found your great grandmas ring!!"
 texture = ExtResource("3_rajjb")
 icon = ExtResource("4_icon")
 value = 110.0

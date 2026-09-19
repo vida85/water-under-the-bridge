@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bnm226xjpkpa6"]
+
+[ext_resource type="Texture2D" uid="uid://4wnrqk3x8jl8" path="res://shared assets/images/icons/floppy.png" id="1_4emq2"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_bg22k"]
+[ext_resource type="Texture2D" uid="uid://c2ukvb3wdyn2n" path="res://shared assets/images/textures/floppy-disk.png" id="3_bg22k"]
+
+[resource]
+script = ExtResource("2_bg22k")
+name = "Floppy"
+item_description = "My Dad had one of these, I'll show him"
+texture = ExtResource("3_bg22k")
+icon = ExtResource("1_4emq2")
+value = 1.25
+combo_item_id = &"floopy"
+caught_radius = 4.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"

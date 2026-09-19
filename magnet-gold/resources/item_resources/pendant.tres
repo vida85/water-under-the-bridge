@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://r1l28qfc4tc5"]
+
+[ext_resource type="Texture2D" uid="uid://dcsn5v5sc7f62" path="res://shared assets/images/icons/pendant.png" id="1_qcna0"]
+[ext_resource type="Script" uid="uid://qmywehrbkm6d" path="res://resources/item_resource.gd" id="2_s3d84"]
+[ext_resource type="Texture2D" uid="uid://ba6tu3f084cuk" path="res://shared assets/images/textures/pendant.png" id="3_s3d84"]
+
+[resource]
+script = ExtResource("2_s3d84")
+name = "Old Pendant"
+item_description = "Oh nice, sad someone lost this!"
+texture = ExtResource("3_s3d84")
+icon = ExtResource("1_qcna0")
+value = 9.65
+combo_bonus_value = 2.0
+combo_item_id = &"pendant"
+combo_item_ids = Array[StringName]([&"bracelet"])
+caught_radius = 3.0
+metadata/_custom_type_script = "uid://qmywehrbkm6d"
