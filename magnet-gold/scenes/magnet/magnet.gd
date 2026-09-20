@@ -101,7 +101,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _draw() -> void:
-	draw_line(hand_position.position, pos, rope_highlight_color, 2.0)
+	draw_line(hand_position.position, pos + magnet_shape.position, rope_highlight_color, 2.0)
 
 
 func triger_return_magnet_animation() -> void:
