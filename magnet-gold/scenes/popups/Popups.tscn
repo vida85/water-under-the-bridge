@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rghe8vdkrxd" path="res://scenes/popups/pop_ups.gd" id="1_ticgj"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_311g3"]
+[ext_resource type="AudioStream" uid="uid://6p35b8qyuwma" path="res://shared assets/audio/music/found_me.mp3" id="3_oobv8"]
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="3_theme"]
 [ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="4_desc_bg"]
 [ext_resource type="Script" uid="uid://btfoco5birkmu" path="res://scenes/popups/indicator_button.gd" id="5_indicator_button"]
@@ -28,7 +29,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_theme")
 script = ExtResource("1_ticgj")
-debug = true
+
+[node name="WinGameSFX" type="AudioStreamPlayer" parent="." unique_id=154727940]
+stream = ExtResource("3_oobv8")
+pitch_scale = 1.25
+bus = &"Music"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2039678765]
 custom_minimum_size = Vector2(112, 140)

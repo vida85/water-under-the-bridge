@@ -8,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 [ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="8_desc_bg"]
 [ext_resource type="Texture2D" uid="uid://cr8ra0ywula1k" path="res://shared assets/images/textures/ui-arrow-active.png" id="9_arrow_active"]
-[ext_resource type="Script" path="res://scenes/popups/indicator_button.gd" id="10_indicator_button"]
+[ext_resource type="Script" uid="uid://btfoco5birkmu" path="res://scenes/popups/indicator_button.gd" id="10_indicator_button"]
 [ext_resource type="Texture2D" uid="uid://cwy451308jtx2" path="res://shared assets/images/textures/ui-phone-power-icons.png" id="11_phone_power"]
 [ext_resource type="Texture2D" uid="uid://deoqjk01krm8c" path="res://shared assets/images/textures/ui-phone-camera.png" id="12_phone_cam"]
 [ext_resource type="Texture2D" uid="uid://cbeayfq32byn5" path="res://shared assets/images/textures/ui-phone-mic.png" id="13_phone_mic"]
@@ -36,12 +36,12 @@ script = ExtResource("1_v61rp")
 [node name="Buy" type="AudioStreamPlayer" parent="." unique_id=1580517017]
 unique_name_in_owner = true
 stream = ExtResource("3_xjfbs")
-bus = &"Sfx"
+bus = &"Music"
 
 [node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1400551176]
 unique_name_in_owner = true
 stream = ExtResource("4_6yl83")
-bus = &"Music"
+bus = &"Sfx"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
 custom_minimum_size = Vector2(112, 140)
@@ -128,7 +128,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="SellScrollMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/SellTab" unique_id=3921700189]
+[node name="SellScrollMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/SellTab" unique_id=-373267107]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_right = 3
@@ -146,7 +146,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="BuyScrollMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BuyTab" unique_id=3921700190]
+[node name="BuyScrollMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BuyTab" unique_id=-373267106]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_right = 3
@@ -161,10 +161,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
-script = ExtResource("10_indicator_button")
 text = "Leave"
+script = ExtResource("10_indicator_button")
 
-[node name="PhonePowerIcon" type="TextureRect" parent="PanelContainer" unique_id=3921700191]
+[node name="PhonePowerIcon" type="TextureRect" parent="PanelContainer" unique_id=-373267105]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

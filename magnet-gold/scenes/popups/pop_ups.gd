@@ -9,6 +9,8 @@ signal can_cast(value: bool)
 @onready var keep_fishing_button: Button = %KeepFishingButton
 @onready var win_game: Button = %WinGame
 
+@onready var win_game_sfx: AudioStreamPlayer = $WinGameSFX
+
 
 @onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var item_container: VBoxContainer = %ItemContainer
@@ -63,6 +65,7 @@ func populate_scroll_container(items: Array) -> void:
 	GameState.update_items_to_dict(items)
 	for item: Item in items:
 		if "heirloom" in item.item_resource.name.to_lower():
+			win_game_sfx.play()
 			win_game.show()
 			shop_button.hide()
 			keep_fishing_button.hide()
