@@ -203,6 +203,7 @@ func _exit_tree() -> void:
 			item.reparent(items_original_parent, false)
 			item.global_position = item_location
 			item.item_sprite.texture = null
+			item.show_sparkle()
 
 			print("Item returning: ", item)
 	items.clear()

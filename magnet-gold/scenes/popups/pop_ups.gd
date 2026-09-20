@@ -92,14 +92,18 @@ func _wire_last_item_focus() -> void:
 
 	if not items.is_empty():
 		var last_item: ItemButton = items[-1]
-		last_item.button.focus_neighbor_bottom = last_item.button.get_path_to(shop_button)
+		last_item.button.focus_neighbor_bottom = last_item.button.get_path_to(_get_next_focus_target())
+
+
+func _get_next_focus_target() -> Button:
+	return win_game if win_game.visible else shop_button
 
 
 func _focus_first_selectable() -> void:
 	if item_container.get_child_count() > 0:
 		(item_container.get_child(0) as ItemButton).focus_item()
 	else:
-		shop_button.grab_focus()
+		_get_next_focus_target().grab_focus()
 
 
 func _on_item_hovered(description: String) -> void:
