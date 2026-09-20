@@ -13,4 +13,5 @@ icon = ExtResource("1_qhqth")
 value = 0.1
 combo_item_id = &"gameboy"
 caught_radius = 1.0
+responds_to_magnet_tier = 2
 metadata/_custom_type_script = "uid://qmywehrbkm6d"

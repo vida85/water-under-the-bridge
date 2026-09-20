@@ -13,6 +13,7 @@ class_name ItemResource extends Resource
 @export var combo_item_id: StringName
 @export var combo_item_ids: Array[StringName]
 @export var caught_radius: float
+@export var responds_to_magnet_tier: Magnets.Type
 
 
 func get_total_value(item: Item, inventory_combo_items: Array[Item]) -> float:

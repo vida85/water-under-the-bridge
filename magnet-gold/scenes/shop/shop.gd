@@ -14,8 +14,8 @@ signal leave_shop
 @onready var arrow_left: TextureRect = %ArrowLeft
 @onready var arrow_right: TextureRect = %ArrowRight
 
-@onready var sell: AudioStreamPlayer = %Sell
-@onready var buy: AudioStreamPlayer = %Buy
+#@onready var sell: AudioStreamPlayer = %Sell
+#@onready var buy: AudioStreamPlayer = %Buy
 
 
 const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
@@ -127,7 +127,7 @@ func show_magnets() -> void:
 
 
 func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> void:
-	sell.play()
+	#sell.play()
 	GameState.inventory.erase(item_resource)
 	GameState.update_cash(item_resource.value)
 	item_resources.erase(item_resource)
@@ -139,7 +139,7 @@ func _on_buy_magnet_pressed(magnet_type: Magnets.Type) -> void:
 	if GameState.current_money_earned < price:
 		description_label.text = "Not enough cash..."
 		return
-	buy.play()
+	#buy.play()
 	GameState.update_cash(-price)
 	GameState.current_magnet = magnet_type
 	show_magnets()

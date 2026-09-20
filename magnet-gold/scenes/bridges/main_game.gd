@@ -13,6 +13,7 @@ class_name MainGame extends Node2D
 
 func _ready() -> void:
 	# add something
+	game_ui.leave_shop.connect(item_spawn_component.on_event_finished)
 	game_ui.leave_shop.connect(player.turn_on_player_mobility)
 	game_ui.can_cast.connect(player._set_cast_button)
 
@@ -21,7 +22,7 @@ func _ready() -> void:
 
 	game_ui.popup_items_caught.can_cast.connect(player._set_cast_button)
 
-	game_ui.minigame_ended.connect(item_spawn_component.on_minigame_finished)
+	game_ui.minigame_ended.connect(item_spawn_component.on_event_finished)
 	game_ui.minigame_ended.connect(player.on_cast_line_pull_up)
 
 	game_ui.turn_off_player_mobility.connect(player.turn_off_player_mobility)

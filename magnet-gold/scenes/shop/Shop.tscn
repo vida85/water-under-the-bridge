@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" uid="uid://clb14r5scpt4l" path="res://scenes/shop/shop.gd" id="1_v61rp"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="2_3qebd"]
-<<<<<<< HEAD
-[ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="3_rdw2s"]
-[ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="4_2xo2e"]
-=======
 [ext_resource type="AudioStream" uid="uid://baia8xqn0xjjg" path="res://shared assets/audio/sfx/cash_sfx00000000.mp3" id="3_xjfbs"]
 [ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="4_6yl83"]
->>>>>>> 63d6a9a0f4c3824ad74c926286e2cb5a9b2b3ed3
 [ext_resource type="Texture2D" uid="uid://bvuekuopv8dq7" path="res://shared assets/images/textures/ui-arrow.png" id="4_xjfbs"]
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="7_theme"]
 [ext_resource type="StyleBox" uid="uid://cuhr1lvgq40bu" path="res://components/ui elements/description_bg_style.tres" id="8_desc_bg"]
@@ -36,7 +31,7 @@ script = ExtResource("1_v61rp")
 
 [node name="Buy" type="AudioStreamPlayer" parent="." unique_id=1580517017]
 unique_name_in_owner = true
-stream = ExtResource("3_rdw2s")
+stream = ExtResource("3_xjfbs")
 bus = &"Sfx"
 
 [node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1400551176]

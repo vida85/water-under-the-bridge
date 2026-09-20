@@ -13,4 +13,5 @@ icon = ExtResource("1_4emq2")
 value = 1.25
 combo_item_id = &"floopy"
 caught_radius = 4.0
+responds_to_magnet_tier = 1
 metadata/_custom_type_script = "uid://qmywehrbkm6d"

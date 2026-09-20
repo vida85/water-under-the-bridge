@@ -176,7 +176,7 @@ func _on_magnet_entered(_area: Area2D) -> void:
 
   
 func _on_screen_exited() -> void:
-	await get_tree().create_timer(1.0 if not _quick_pull else 2.0).timeout
+	await get_tree().create_timer(1.0 if not _quick_pull or items_acquired.is_empty() else 2.0).timeout
 	if items_acquired.is_empty():
 		minigame_caught_nothing.emit.call_deferred()
 	else:
@@ -202,6 +202,7 @@ func _exit_tree() -> void:
 
 			item.reparent(items_original_parent, false)
 			item.global_position = item_location
+			item.item_sprite.texture = null
 			item.restore_debug_visuals()
 
 			print("Item returning: ", item)
@@ -217,15 +218,14 @@ func spawn_coins() -> void:
 	item_control.add_child(coin)
 	item_container.add_child(item_control)
 	coin.setup(coin)
+	coin.item_sprite.texture = coin.item_resource.texture
 	coin.show_item_sprite()
 
 
 func spawn_items() -> void:
-	print()
-	print()
-	print("Minigame!")
 	for item: Item in items:
 		# Create control node for Canvas stuff
+
 		# randomize it's location within the UI Reference Rect,
 		# add_child to MiniGame, reparent the items to each new canvas item
 		var item_control:= Sprite2D.new()
@@ -234,23 +234,15 @@ func spawn_items() -> void:
 			items_original_parent = item.get_parent()
 
 		items_original_locations.append([item, item.global_position])
-		print("Before Reparent")
-		print("item.global_position = ", item.global_position, "\nitem.position = ", item.position)
 		item.reparent(item_control, false)
 		item.position = Vector2.ZERO
 		item.global_position = Vector2.ZERO
-		print("After Reparent")
-		print("item.global_position = ", item.global_position, "\nitem.position = ", item.position)
+		item.item_sprite.texture = item.item_resource.texture
 		item.show_item_sprite()
 		item.item_sprite.material = NEW_SHADER_SHINE_MATERIAL
-		item.shake_item()
 
 		item_control.position = get_random_spawn_position()
-
 		item_container.add_child(item_control)
-		print("Spawned Item: ", item, "position = ", item.global_position, "global_position = ", item.global_position)
-	print("Spawned Total: ", items.size())
-	print("+++++++++++++++++++++++++")
 
 
 func get_random_spawn_position() -> Vector2:

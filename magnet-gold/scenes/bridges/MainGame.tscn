@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://brkaifraddpx4"]
 
 [ext_resource type="Script" uid="uid://dh31pk7i8en66" path="res://scenes/bridges/main_game.gd" id="1_hbod5"]
-[ext_resource type="PackedScene" path="res://scenes/game ui/GameUi.tscn" id="2_2csi4"]
+[ext_resource type="PackedScene" uid="uid://uqc40h3t5nl0" path="res://scenes/game ui/GameUi.tscn" id="2_2csi4"]
 [ext_resource type="AudioStream" uid="uid://bl1mjn5nn6fq8" path="res://shared assets/audio/music/happy_song.mp3" id="2_w83us"]
 [ext_resource type="AudioStream" uid="uid://xxr6afemxt5b" path="res://shared assets/audio/sfx/lake.mp3" id="3_me0qj"]
 [ext_resource type="PackedScene" uid="uid://bp58d3xjjj58x" path="res://scenes/popups/Popups.tscn" id="3_xdeye"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://bxiybtg230mo2" path="res://objects/PendantItem.tscn" id="26_rvsew"]
 [ext_resource type="PackedScene" uid="uid://bmmcskrm4wsr1" path="res://objects/PocketWatchItem.tscn" id="27_6ni1y"]
 [ext_resource type="PackedScene" uid="uid://docajmnxukwcm" path="res://objects/SpadeItem.tscn" id="28_kgfqg"]
+[ext_resource type="PackedScene" uid="uid://s86oaas1h0ye" path="res://objects/Heirloom.tscn" id="29_l5voi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jj0sy"]
 particles_animation = true
@@ -236,7 +237,7 @@ unique_name_in_owner = true
 script = ExtResource("4_hbod5")
 player = NodePath("../Player")
 item_spawn_area = NodePath("../ItemSpawnArea")
-items = Array[PackedScene]([ExtResource("7_w83us"), ExtResource("8_yespv"), ExtResource("9_x5csy"), ExtResource("10_leei0"), ExtResource("11_n4b7y"), ExtResource("12_3q0ny"), ExtResource("13_2bkwo"), ExtResource("14_yespv"), ExtResource("17_chgfr"), ExtResource("18_l5voi"), ExtResource("19_givjr"), ExtResource("20_fsd0s"), ExtResource("21_6y6pp"), ExtResource("22_kuajd"), ExtResource("23_yfbj3"), ExtResource("24_8w1gm"), ExtResource("25_61fgb"), ExtResource("26_rvsew"), ExtResource("27_6ni1y"), ExtResource("28_kgfqg")])
+items = Array[PackedScene]([ExtResource("7_w83us"), ExtResource("8_yespv"), ExtResource("9_x5csy"), ExtResource("10_leei0"), ExtResource("11_n4b7y"), ExtResource("12_3q0ny"), ExtResource("13_2bkwo"), ExtResource("14_yespv"), ExtResource("17_chgfr"), ExtResource("18_l5voi"), ExtResource("19_givjr"), ExtResource("20_fsd0s"), ExtResource("21_6y6pp"), ExtResource("22_kuajd"), ExtResource("23_yfbj3"), ExtResource("24_8w1gm"), ExtResource("25_61fgb"), ExtResource("26_rvsew"), ExtResource("27_6ni1y"), ExtResource("28_kgfqg"), ExtResource("29_l5voi")])
 
 [node name="ItemSpawnArea" type="ReferenceRect" parent="." unique_id=1123986912]
 unique_name_in_owner = true

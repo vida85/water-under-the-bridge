@@ -82,7 +82,3 @@ func open_shop_from_field() -> void:
 func _on_leave_button() -> void:
 	leave_shop.emit()
 	can_cast.emit(true)
-
-
-func open_shop_from_field() -> void:
-	go_to_shop_scene()

@@ -15,4 +15,5 @@ combo_bonus_value = 25.0
 combo_item_id = &"heirloom"
 combo_item_ids = Array[StringName]([&"ring"])
 caught_radius = 1.0
+responds_to_magnet_tier = 2
 metadata/_custom_type_script = "uid://qmywehrbkm6d"
