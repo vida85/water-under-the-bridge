@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_oqq3n")
-name = "Rusty Lock"
+name = "Lock"
 item_description = "This must be for the treasure chest!"
 texture = ExtResource("3_oqq3n")
 icon = ExtResource("1_2vumv")

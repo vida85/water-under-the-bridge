@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://cmsgdck4ac8x0"]
+
+[ext_resource type="Texture2D" uid="uid://dy31rh041ekho" path="res://shared assets/images/textures/ui-scroll-track.png" id="1_track"]
+
+[resource]
+texture = ExtResource("1_track")

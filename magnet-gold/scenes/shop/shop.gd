@@ -22,6 +22,7 @@ const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 const MAGNET_RESOURCE: MagnetResource = preload("uid://crh5dh2gulls8")
 const ARROW_TEXTURE = preload("uid://bvuekuopv8dq7")
 const ARROW_ACTIVE_TEXTURE = preload("uid://cr8ra0ywula1k")
+const SCROLLBAR_WIDTH: float = 2.0
 
 var item_button_slot: ItemButton
 var item_resources: Dictionary = {}
@@ -33,6 +34,8 @@ func _ready() -> void:
 	leave_button.pressed.connect(_on_leave_button)
 	tab_bar.tab_changed.connect(_on_tab_changed)
 	visibility_changed.connect(_on_visibility_changed)
+	sell_tab.get_v_scroll_bar().custom_minimum_size.x = SCROLLBAR_WIDTH
+	buy_tab.get_v_scroll_bar().custom_minimum_size.x = SCROLLBAR_WIDTH
 	show_inventory.call_deferred()
 	show_magnets.call_deferred()
 	_focus_first_in_active_tab.call_deferred()
@@ -70,7 +73,7 @@ func _on_tab_changed(tab_idx: int) -> void:
 func _focus_first_in_active_tab() -> void:
 	var active_container: VBoxContainer = main_container if tab_bar.current_tab == 0 else main_buy_container
 	if active_container.get_child_count() > 0:
-		active_container.get_child(0).grab_focus()
+		(active_container.get_child(0) as ItemButton).focus_item()
 	else:
 		leave_button.grab_focus()
 
@@ -155,7 +158,7 @@ func _remove_and_refocus(button: ItemButton, container: VBoxContainer) -> void:
 
 	if container.get_child_count() > 0:
 		var next_index: int = clampi(index, 0, container.get_child_count() - 1)
-		container.get_child(next_index).grab_focus()
+		(container.get_child(next_index) as ItemButton).focus_item()
 	else:
 		leave_button.grab_focus()
 

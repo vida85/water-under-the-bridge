@@ -8,8 +8,11 @@ signal can_cast(value: bool)
 
 @onready var shop_button: Button = %ShopButton
 @onready var keep_fishing_button: Button = %KeepFishingButton
+@onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var item_container: VBoxContainer = %ItemContainer
 @onready var description_label: Label = %DescriptionLabel
+
+const SCROLLBAR_WIDTH: float = 2.0
 
 
 const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
@@ -22,6 +25,7 @@ func _ready() -> void:
 	shop_button.pressed.connect(_on_go_to_shop_pressed)
 	keep_fishing_button.pressed.connect(_on_keep_fishing_pressed)
 	visibility_changed.connect(_on_visibility_changed)
+	scroll_container.get_v_scroll_bar().custom_minimum_size.x = SCROLLBAR_WIDTH
 	_focus_first_selectable()
 
 	if debug:
@@ -73,12 +77,23 @@ func populate_scroll_container(items: Array) -> void:
 		item_button_slot.set_item(item.item_resource.icon, item.item_resource.name, GameState.inventory[item.item_resource])
 		item_button_slot.set_description(item.item_resource.item_description)
 
+	_wire_last_item_focus()
 	_focus_first_selectable()
+
+
+func _wire_last_item_focus() -> void:
+	var items: Array[Node] = item_container.get_children()
+	for item_button: ItemButton in items:
+		item_button.button.focus_neighbor_bottom = NodePath()
+
+	if not items.is_empty():
+		var last_item: ItemButton = items[-1]
+		last_item.button.focus_neighbor_bottom = last_item.button.get_path_to(shop_button)
 
 
 func _focus_first_selectable() -> void:
 	if item_container.get_child_count() > 0:
-		item_container.get_child(0).grab_focus()
+		(item_container.get_child(0) as ItemButton).focus_item()
 	else:
 		shop_button.grab_focus()
 

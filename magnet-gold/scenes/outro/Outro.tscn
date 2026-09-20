@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/outro/outro.gd" id="1_outro"]
+[ext_resource type="Texture2D" uid="uid://cfmubn70quvh0" path="res://shared assets/images/comic/comic-bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://clp3e47cs2g11" path="res://shared assets/images/comic/comic-outro-1.png" id="3_panel1"]
+[ext_resource type="FontVariation" uid="uid://cqdsw52v7oo8f" path="res://components/ui elements/silkscreen_button_font.tres" id="4_font"]
+
+[node name="Outro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_outro")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("2_bg")
+
+[node name="Panel1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 72)
+texture = ExtResource("3_panel1")
+
+[node name="EndLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -14.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
+theme_override_colors/font_outline_color = Color(0.13725491, 0.22352941, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("4_font")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "The End"
+horizontal_alignment = 2

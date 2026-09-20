@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cx4p1pxl1qee8"]
+
+[ext_resource type="Script" uid="uid://d3hucwqegrfjn" path="res://scenes/intro/intro.gd" id="1_intro"]
+[ext_resource type="Texture2D" uid="uid://cfmubn70quvh0" path="res://shared assets/images/comic/comic-bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://6ou4145usmny" path="res://shared assets/images/comic/comic-intro-1.png" id="3_panel1"]
+[ext_resource type="Texture2D" uid="uid://cj7bebipys6h5" path="res://shared assets/images/comic/comic-intro-2.png" id="4_panel2"]
+[ext_resource type="Texture2D" uid="uid://bj3vqc3738e8j" path="res://shared assets/images/comic/comic-intro-3.png" id="5_panel3"]
+[ext_resource type="Texture2D" uid="uid://mf00dgadbfai" path="res://shared assets/images/comic/comic-intro-4.png" id="6_panel4"]
+[ext_resource type="FontVariation" uid="uid://cqdsw52v7oo8f" path="res://components/ui elements/silkscreen_button_font.tres" id="7_font"]
+
+[node name="Intro" type="Control" unique_id=1184019639]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_intro")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=713763628]
+position = Vector2(80, 72)
+texture = ExtResource("2_bg")
+
+[node name="Panel1" type="Sprite2D" parent="." unique_id=1102597868]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 72)
+texture = ExtResource("3_panel1")
+
+[node name="Panel2" type="Sprite2D" parent="." unique_id=288808333]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 72)
+texture = ExtResource("4_panel2")
+
+[node name="Panel3" type="Sprite2D" parent="." unique_id=25674574]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 72)
+texture = ExtResource("5_panel3")
+
+[node name="Panel4" type="Sprite2D" parent="." unique_id=1363736830]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 72)
+texture = ExtResource("6_panel4")
+
+[node name="ContinueLabel" type="RichTextLabel" parent="." unique_id=1444025657]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -14.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
+theme_override_colors/font_outline_color = Color(0.13725491, 0.22352941, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("7_font")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Press Any Key"
+horizontal_alignment = 2
