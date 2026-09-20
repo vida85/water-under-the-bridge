@@ -21,6 +21,7 @@ const ITEM_BUTTON = preload("res://scenes/popups/item_button.tscn")
 const MAGNET_RESOURCE: MagnetResource = preload("uid://crh5dh2gulls8")
 const ARROW_TEXTURE = preload("uid://bvuekuopv8dq7")
 const ARROW_ACTIVE_TEXTURE = preload("uid://cr8ra0ywula1k")
+const SCROLLBAR_WIDTH: float = 2.0
 
 var item_button_slot: ItemButton
 var item_resources: Dictionary = {}
@@ -32,6 +33,8 @@ func _ready() -> void:
 	leave_button.pressed.connect(_on_leave_button)
 	tab_bar.tab_changed.connect(_on_tab_changed)
 	visibility_changed.connect(_on_visibility_changed)
+	sell_tab.get_v_scroll_bar().custom_minimum_size.x = SCROLLBAR_WIDTH
+	buy_tab.get_v_scroll_bar().custom_minimum_size.x = SCROLLBAR_WIDTH
 	show_inventory.call_deferred()
 	show_magnets.call_deferred()
 	_focus_first_in_active_tab.call_deferred()

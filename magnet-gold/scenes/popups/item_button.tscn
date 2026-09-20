@@ -21,7 +21,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("3_indicator")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 3
 
 [node name="Button" type="Button" parent="." unique_id=-2008025562]
 unique_name_in_owner = true
@@ -55,6 +55,8 @@ texture = ExtResource("2_tmsm8")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+clip_text = true
+text_overrun_behavior = 3
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -1)
 text = "Fork"
