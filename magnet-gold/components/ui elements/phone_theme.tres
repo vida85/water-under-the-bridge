@@ -8,10 +8,11 @@
 [ext_resource type="StyleBox" uid="uid://cmsgdck4ac8x0" path="res://components/ui elements/scroll_track_style.tres" id="6_scroll_track"]
 [ext_resource type="StyleBox" uid="uid://citq2tutlpowa" path="res://components/ui elements/scroll_grabber_style.tres" id="7_scroll_grabber"]
 [ext_resource type="StyleBox" uid="uid://bia813nxsrkrv" path="res://components/ui elements/scroll_grabber_focus_style.tres" id="8_scroll_grabber_focus"]
-[ext_resource type="StyleBox" path="res://components/ui elements/slider_track_style.tres" id="9_slider_track"]
-[ext_resource type="StyleBox" path="res://components/ui elements/slider_fill_style.tres" id="10_slider_fill"]
+[ext_resource type="StyleBox" uid="uid://csngbhlngkxtt" path="res://components/ui elements/slider_track_style.tres" id="9_slider_track"]
+[ext_resource type="StyleBox" uid="uid://ctukcvn8shbqr" path="res://components/ui elements/slider_fill_style.tres" id="10_slider_fill"]
 [ext_resource type="Texture2D" uid="uid://cksq2a7lbshgv" path="res://shared assets/images/textures/ui-slider-grabber.png" id="11_slider_grabber"]
 [ext_resource type="Texture2D" uid="uid://cpat0i36ekc7d" path="res://shared assets/images/textures/ui-slider-grabber-focus.png" id="12_slider_grabber_focus"]
+[ext_resource type="StyleBox" path="res://components/ui elements/slider_fill_focus_style.tres" id="13_slider_fill_focus"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
 texture = ExtResource("4_phone_tex")
@@ -23,6 +24,7 @@ texture_margin_bottom = 9.0
 [resource]
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("5_font")
+Button/styles/disabled = ExtResource("1_style")
 Button/styles/focus = ExtResource("3_focus")
 Button/styles/hover = ExtResource("3_focus")
 Button/styles/normal = ExtResource("1_style")
@@ -31,7 +33,7 @@ HSlider/icons/grabber = ExtResource("11_slider_grabber")
 HSlider/icons/grabber_disabled = ExtResource("11_slider_grabber")
 HSlider/icons/grabber_highlight = ExtResource("12_slider_grabber_focus")
 HSlider/styles/grabber_area = ExtResource("10_slider_fill")
-HSlider/styles/grabber_area_highlight = ExtResource("10_slider_fill")
+HSlider/styles/grabber_area_highlight = ExtResource("13_slider_fill_focus")
 HSlider/styles/slider = ExtResource("9_slider_track")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_panel")
 TabBar/font_sizes/font_size = 8
