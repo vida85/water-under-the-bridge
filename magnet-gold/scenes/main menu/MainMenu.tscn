@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://btfoco5birkmu" path="res://scenes/popups/indicator_button.gd" id="7_indicator_button"]
 [ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="8_jersey10"]
 [ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="9_sfx_preview"]
+[ext_resource type="Texture2D" uid="uid://cwy451308jtx2" path="res://shared assets/images/textures/ui-phone-power-icons.png" id="10_phone_power"]
+[ext_resource type="Texture2D" uid="uid://deoqjk01krm8c" path="res://shared assets/images/textures/ui-phone-camera.png" id="11_klu60"]
+[ext_resource type="Texture2D" uid="uid://cbeayfq32byn5" path="res://shared assets/images/textures/ui-phone-mic.png" id="12_mfq3f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_176rl"]
 line_spacing = -11.97
@@ -139,6 +142,37 @@ offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_phone_theme")
+
+[node name="PhonePowerIcon" type="TextureRect" parent="OptionsPopup" unique_id=1743896261]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("10_phone_power")
+stretch_mode = 2
+
+[node name="PhoneCam" type="TextureRect" parent="OptionsPopup" unique_id=1106005035]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -4)
+mouse_filter = 2
+texture = ExtResource("11_klu60")
+stretch_mode = 2
+
+[node name="PhoneMic" type="TextureRect" parent="OptionsPopup" unique_id=2145113470]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 5)
+mouse_filter = 2
+texture = ExtResource("12_mfq3f")
+stretch_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="OptionsPopup" unique_id=900285300]
 layout_mode = 2
