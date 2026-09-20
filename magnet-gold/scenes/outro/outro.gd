@@ -4,7 +4,9 @@ class_name Outro extends Control
 const MAIN_MENU_PATH = "uid://cy57xutg2kj7w"
 
 const FADE_DURATION: float = 2.0
+const GROW_DURATION: float = FADE_DURATION * 8
 const SHOW_DURATION: float = 4.0
+const MAX_SCALE: Vector2 = Vector2.ONE * 2
 
 @onready var panel: Sprite2D = $Panel1
 @onready var end_label: RichTextLabel = %EndLabel
@@ -24,8 +26,9 @@ func _play_sequence() -> void:
 	print("[Outro] sequence started")
 	tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(panel, "scale", Vector2.ONE*2, FADE_DURATION*8)
+	tween.tween_property(panel, "scale", MAX_SCALE, GROW_DURATION)
 	tween.tween_property(panel, "modulate:a", 1.0, FADE_DURATION)
+	tween.set_parallel(false)
 	tween.tween_interval(SHOW_DURATION)
 	tween.tween_callback(_show_end_text)
 
@@ -63,4 +66,5 @@ func _skip_to_end() -> void:
 	if tween:
 		tween.kill()
 	panel.modulate.a = 1.0
+	panel.scale = MAX_SCALE
 	_show_end_text()

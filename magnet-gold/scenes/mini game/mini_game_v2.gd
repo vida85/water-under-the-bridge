@@ -13,6 +13,7 @@ signal minigame_caught_nothing
 @onready var magnet: Sprite2D = %Magnet
 @onready var magnet_area: Area2D = %MagnetArea
 @onready var magnet_collision_shape: CollisionShape2D = %MagnetCollisionShape
+@onready var attraction_particles: GPUParticles2D = %AttractionParticles
 
 @onready var spawn_area: ReferenceRect = %SpawnArea
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
@@ -26,7 +27,7 @@ signal minigame_caught_nothing
 @onready var magnet_slide_sfx: AudioStreamPlayer2D = %MagnetSlideSFX
 @onready var coin_sfx: AudioStreamPlayer2D = %Coin_sfx
 
-@onready var coin_colection_area: Area2D = %CoinColectionArea
+@onready var coin_collection_area: Area2D = %CoinCollectionArea
 
 const NEW_SHADER_SHINE_MATERIAL = preload("uid://ce4ndjmb4u3kf")
 
@@ -59,7 +60,7 @@ var _quick_pull: bool = false
 
 func _ready() -> void:
 	magnet.visible = false
-	coin_colection_area.area_entered.connect(_on_magnet_entered)
+	coin_collection_area.area_entered.connect(_on_magnet_entered)
 	_turn_off_items()
 	_update_magnet_type_from_resource()
 	animation_player.play("popup")
@@ -73,8 +74,10 @@ func _update_magnet_type_from_resource() -> void:
 	var radius: float = magnet_resource.magnet_influence[GameState.current_magnet]
 	var texture: Texture2D = magnet_resource.magnet_textures[GameState.current_magnet]
 	magnet.texture = texture
+	magnet.position = magnet_resource.magnet_sprite_offsets[GameState.current_magnet]
 	magnet.z_index = -1
 	magnet_collision_shape.shape.radius = radius * 3
+	(attraction_particles.process_material as ParticleProcessMaterial).emission_sphere_radius = magnet_collision_shape.shape.radius
 	print("Radius of Magnet: ", radius)
 
 
