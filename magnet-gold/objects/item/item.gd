@@ -13,23 +13,26 @@ signal coin_has_faded_and_died
 # Item needs to exits in Layer 3
 const COLLISION_ITEM_LAYER: int = 3
 const COIN_TRANSITION_TIME: float = .33
+const SPARKLE_LARGE = preload("uid://dgoeuhk57gdmf")
+
 
 var item_sprite: Sprite2D
-var is_debug_on: bool = false
 
 var tween: Tween
 var is_item_stuck_to_magnet: bool
 
 
 func setup(item: Item) -> void:
+	if "heirloom" in item.name.to_lower():
+		sparkle_sprite.texture = SPARKLE_LARGE
+
 	item_sprite = Sprite2D.new()
 	var collision2D: CollisionShape2D = CollisionShape2D.new()
 	var shape: CircleShape2D = CircleShape2D.new()
 
 	shape.radius = item_resource.caught_radius
 	collision2D.shape = shape
-	#item_sprite.texture = item_resource.texture
-	#item_sprite.visible = false
+
 	name = item_resource.name
 
 	item.set_collision_layer_value(COLLISION_ITEM_LAYER, true)
@@ -38,21 +41,6 @@ func setup(item: Item) -> void:
 	item.add_child(item_sprite)
 
 	sparkle_ap.seek(randf() * sparkle_ap.get_animation("sparkle").length, true)
-
-
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("debug"):
-		#GameState.update_cash(200.0)
-
-
-#func _debug_mode() -> void:
-	#is_debug_on = not is_debug_on
-	#restore_debug_visuals()
-
-
-#func restore_debug_visuals() -> void:
-	#item_sprite.visible = is_debug_on
-	#sparkle_sprite.visible = not is_debug_on
 
 
 func show_item_sprite() -> void:

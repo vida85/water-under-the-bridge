@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3hucwqegrfjn" path="res://scenes/intro/intro.gd" id="1_intro"]
 [ext_resource type="Texture2D" uid="uid://cfmubn70quvh0" path="res://shared assets/images/comic/comic-bg.png" id="2_bg"]
+[ext_resource type="AudioStream" uid="uid://bndk8kewsbnor" path="res://shared assets/audio/music/TheDrop.mp3" id="2_rtfdg"]
 [ext_resource type="Texture2D" uid="uid://6ou4145usmny" path="res://shared assets/images/comic/comic-intro-1.png" id="3_panel1"]
 [ext_resource type="Texture2D" uid="uid://cj7bebipys6h5" path="res://shared assets/images/comic/comic-intro-2.png" id="4_panel2"]
 [ext_resource type="Texture2D" uid="uid://bj3vqc3738e8j" path="res://shared assets/images/comic/comic-intro-3.png" id="5_panel3"]
@@ -16,6 +17,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_intro")
+
+[node name="Song" type="AudioStreamPlayer" parent="." unique_id=1516989258]
+stream = ExtResource("2_rtfdg")
+autoplay = true
+bus = &"Music"
 
 [node name="Background" type="Sprite2D" parent="." unique_id=713763628]
 position = Vector2(80, 72)

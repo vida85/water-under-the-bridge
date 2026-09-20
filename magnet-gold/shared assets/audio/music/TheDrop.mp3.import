@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bndk8kewsbnor"
+path="res://.godot/imported/TheDrop.mp3-71cb8c9916dd7e29525784eef69de547.mp3str"
+
+[deps]
+
+source_file="res://shared assets/audio/music/TheDrop.mp3"
+dest_files=["res://.godot/imported/TheDrop.mp3-71cb8c9916dd7e29525784eef69de547.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

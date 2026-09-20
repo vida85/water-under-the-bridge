@@ -10,8 +10,6 @@ class_name MainGame extends Node2D
 
 @onready var game_ui: GameUi = %GameUi
 
-const OUTRO = preload("res://scenes/outro/Outro.tscn")
-
 
 func _ready() -> void:
 	# add something
@@ -32,9 +30,3 @@ func _ready() -> void:
 
 	player.magnet.ready_for_minigame.connect(game_ui.setup_minigame)
 	player.magnet.splash_emitted.connect(main_camera.add_shake)
-
-
-# TEMP: testing outro with key press
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_SPACE:
-		get_tree().change_scene_to_packed.call_deferred(OUTRO)
