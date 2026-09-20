@@ -23,6 +23,8 @@ func _ready() -> void:
 func _play_sequence() -> void:
 	print("[Outro] sequence started")
 	tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(panel, "scale", Vector2.ONE*2, FADE_DURATION*8)
 	tween.tween_property(panel, "modulate:a", 1.0, FADE_DURATION)
 	tween.tween_interval(SHOW_DURATION)
 	tween.tween_callback(_show_end_text)
