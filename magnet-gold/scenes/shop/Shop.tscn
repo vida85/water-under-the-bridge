@@ -30,15 +30,15 @@ grow_vertical = 2
 theme = ExtResource("7_theme")
 script = ExtResource("1_v61rp")
 
-[node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1936382102]
+[node name="Buy" type="AudioStreamPlayer" parent="." unique_id=1580517017]
 unique_name_in_owner = true
 stream = ExtResource("3_xjfbs")
 bus = &"Sfx"
 
-[node name="Buy" type="AudioStreamPlayer" parent="." unique_id=836676568]
+[node name="Sell" type="AudioStreamPlayer" parent="." unique_id=1400551176]
 unique_name_in_owner = true
 stream = ExtResource("4_6yl83")
-bus = &"Sfx"
+bus = &"Music"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=571949171]
 custom_minimum_size = Vector2(112, 140)

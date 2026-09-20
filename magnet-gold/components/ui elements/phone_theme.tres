@@ -5,9 +5,9 @@
 [ext_resource type="StyleBox" uid="uid://bmyy2uy3s44h" path="res://components/ui elements/button_focus_style.tres" id="3_focus"]
 [ext_resource type="Texture2D" uid="uid://cwcu75yx6d440" path="res://shared assets/images/textures/ui-phone.png" id="4_phone_tex"]
 [ext_resource type="FontVariation" uid="uid://cqdsw52v7oo8f" path="res://components/ui elements/silkscreen_button_font.tres" id="5_font"]
-[ext_resource type="StyleBox" path="res://components/ui elements/scroll_track_style.tres" id="6_scroll_track"]
-[ext_resource type="StyleBox" path="res://components/ui elements/scroll_grabber_style.tres" id="7_scroll_grabber"]
-[ext_resource type="StyleBox" path="res://components/ui elements/scroll_grabber_focus_style.tres" id="8_scroll_grabber_focus"]
+[ext_resource type="StyleBox" uid="uid://cmsgdck4ac8x0" path="res://components/ui elements/scroll_track_style.tres" id="6_scroll_track"]
+[ext_resource type="StyleBox" uid="uid://citq2tutlpowa" path="res://components/ui elements/scroll_grabber_style.tres" id="7_scroll_grabber"]
+[ext_resource type="StyleBox" uid="uid://bia813nxsrkrv" path="res://components/ui elements/scroll_grabber_focus_style.tres" id="8_scroll_grabber_focus"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
 texture = ExtResource("4_phone_tex")

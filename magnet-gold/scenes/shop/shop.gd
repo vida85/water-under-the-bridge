@@ -1,5 +1,6 @@
 class_name Shop extends Control
 
+signal leave_shop
 
 @onready var main_container: VBoxContainer = %MainContainer
 @onready var main_buy_container: VBoxContainer = %MainBuyContainer
@@ -164,6 +165,7 @@ func _remove_and_refocus(button: ItemButton, container: VBoxContainer) -> void:
 
 func _on_leave_button() -> void:
 	hide()
+	leave_shop.emit()
 
 
 func _on_item_hovered(description: String) -> void:

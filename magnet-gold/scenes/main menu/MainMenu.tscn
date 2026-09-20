@@ -80,7 +80,6 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1028818363]
 unique_name_in_owner = true
-theme = ExtResource("5_phone_theme")
 layout_mode = 2
 size_flags_vertical = 4
 script = ExtResource("7_indicator_button")
@@ -88,7 +87,6 @@ text = "play"
 
 [node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=375118447]
 unique_name_in_owner = true
-theme = ExtResource("5_phone_theme")
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("7_indicator_button")
