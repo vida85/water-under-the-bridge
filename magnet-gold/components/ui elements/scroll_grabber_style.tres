@@ -1,4 +1,4 @@
-[gd_resource type="StyleBoxTexture" format=3]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://citq2tutlpowa"]
 
 [ext_resource type="Texture2D" uid="uid://bubwxe7aa58os" path="res://shared assets/images/textures/ui-scroll-grabber.png" id="1_grabber"]
 

@@ -1,4 +1,4 @@
-[gd_resource type="StyleBoxTexture" format=3]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bia813nxsrkrv"]
 
 [ext_resource type="Texture2D" uid="uid://cfyamx7pk4l2u" path="res://shared assets/images/textures/ui-scroll-grabber-focus.png" id="1_grabber_focus"]
 
