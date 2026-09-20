@@ -78,7 +78,7 @@ func populate_scroll_container(items: Array) -> void:
 
 func _focus_first_selectable() -> void:
 	if item_container.get_child_count() > 0:
-		item_container.get_child(0).grab_focus()
+		(item_container.get_child(0) as ItemButton).focus_item()
 	else:
 		shop_button.grab_focus()
 

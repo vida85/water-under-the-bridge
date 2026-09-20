@@ -69,7 +69,7 @@ func _on_tab_changed(tab_idx: int) -> void:
 func _focus_first_in_active_tab() -> void:
 	var active_container: VBoxContainer = main_container if tab_bar.current_tab == 0 else main_buy_container
 	if active_container.get_child_count() > 0:
-		active_container.get_child(0).grab_focus()
+		(active_container.get_child(0) as ItemButton).focus_item()
 	else:
 		leave_button.grab_focus()
 
@@ -154,7 +154,7 @@ func _remove_and_refocus(button: ItemButton, container: VBoxContainer) -> void:
 
 	if container.get_child_count() > 0:
 		var next_index: int = clampi(index, 0, container.get_child_count() - 1)
-		container.get_child(next_index).grab_focus()
+		(container.get_child(next_index) as ItemButton).focus_item()
 	else:
 		leave_button.grab_focus()
 
