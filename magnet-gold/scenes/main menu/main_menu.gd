@@ -10,7 +10,7 @@ class_name MainMenu extends Control
 @onready var sfx_h_slider: HSlider = %SfxHSlider
 
 
-const HOME_BRIDGE = preload("uid://brkaifraddpx4")
+const INTRO = preload("res://scenes/intro/Intro.tscn")
 
 
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_packed.call_deferred(HOME_BRIDGE)
+	get_tree().change_scene_to_packed.call_deferred(INTRO)
 
 
 func _on_options_pressed() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6jsudnndbk2k"
-path="res://.godot/imported/sparklet.png-1a43dd319b2ab0dcfb8015e7d645caa4.ctex"
+uid="uid://mf00dgadbfai"
+path="res://.godot/imported/comic-intro-4.png-f9fa94eb64fda477f862b8f5e2b820d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shared assets/images/textures/sparklet.png"
-dest_files=["res://.godot/imported/sparklet.png-1a43dd319b2ab0dcfb8015e7d645caa4.ctex"]
+source_file="res://shared assets/images/comic/comic-intro-4.png"
+dest_files=["res://.godot/imported/comic-intro-4.png-f9fa94eb64fda477f862b8f5e2b820d8.ctex"]
 
 [params]
 
