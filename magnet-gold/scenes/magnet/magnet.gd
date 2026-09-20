@@ -128,5 +128,4 @@ func cast(strength: float, _min: float, _max: float) -> void:
 
 
 func update_magnet_type() -> void:
-	#magnet_sprite.texture = magnet_resource.magnet_textures[GameState.current_magnet]
 	magnet_shape.shape.radius = magnet_resource.magnet_influence[GameState.current_magnet]

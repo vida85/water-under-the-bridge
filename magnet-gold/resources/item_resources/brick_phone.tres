@@ -13,4 +13,5 @@ icon = ExtResource("1_ibluf")
 value = 2.99
 combo_item_id = &"brick_phone"
 caught_radius = 7.0
+responds_to_magnet_tier = 2
 metadata/_custom_type_script = "uid://qmywehrbkm6d"
