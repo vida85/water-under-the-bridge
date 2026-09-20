@@ -5,6 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://dqjmlemu4qmy8" path="res://shared assets/audio/music/first_song.mp3" id="3_4nwu2"]
 [ext_resource type="FontFile" uid="uid://c7xiwktiwt2qx" path="res://shared assets/fonts/Silkscreen-Bold.ttf" id="4_fxkxh"]
 [ext_resource type="Theme" uid="uid://bje0fb4plrk45" path="res://components/ui elements/phone_theme.tres" id="5_phone_theme"]
+[ext_resource type="Texture2D" uid="uid://cfmubn70quvh0" path="res://shared assets/images/comic/comic-bg.png" id="6_comic_bg"]
+[ext_resource type="Script" path="res://scenes/popups/indicator_button.gd" id="7_indicator_button"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4nwu2"]
 font_size = 6
@@ -40,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_comic_bg")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=711328960]
 custom_minimum_size = Vector2(0, 50)
@@ -78,16 +81,15 @@ layout_mode = 2
 [node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=1028818363]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("5_phone_theme")
+script = ExtResource("7_indicator_button")
 text = "play"
 
 [node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer2/VBoxContainer/VBoxContainer" unique_id=375118447]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("5_phone_theme")
+script = ExtResource("7_indicator_button")
 text = "options"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer2/VBoxContainer" unique_id=692420038]

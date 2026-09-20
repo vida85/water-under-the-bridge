@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://hj1xt68kr6c2" path="res://objects/item/item.gd" id="1_onjwb"]
 [ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="3_b7w6f"]
 [ext_resource type="Texture2D" uid="uid://b26q1gaoy1w0h" path="res://scenes/magnet/textures/splash.png" id="3_j5lnw"]
-[ext_resource type="Texture2D" uid="uid://c6jsudnndbk2k" path="res://shared assets/images/textures/sparklet.png" id="4_sparkle"]
+[ext_resource type="Texture2D" uid="uid://c6jsudnndbk2k" path="res://shared assets/images/textures/sparkle.png" id="4_sparkle"]
 
 [sub_resource type="Animation" id="Animation_sparkle_reset"]
 length = 0.001

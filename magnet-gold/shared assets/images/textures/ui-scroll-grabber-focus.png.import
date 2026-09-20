@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6jsudnndbk2k"
-path="res://.godot/imported/sparklet.png-1a43dd319b2ab0dcfb8015e7d645caa4.ctex"
+uid="uid://cfyamx7pk4l2u"
+path="res://.godot/imported/ui-scroll-grabber-focus.png-f5008ae1a665ca7121c24181b7fe5c2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shared assets/images/textures/sparklet.png"
-dest_files=["res://.godot/imported/sparklet.png-1a43dd319b2ab0dcfb8015e7d645caa4.ctex"]
+source_file="res://shared assets/images/textures/ui-scroll-grabber-focus.png"
+dest_files=["res://.godot/imported/ui-scroll-grabber-focus.png-f5008ae1a665ca7121c24181b7fe5c2e.ctex"]
 
 [params]
 
