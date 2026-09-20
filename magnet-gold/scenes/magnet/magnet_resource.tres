@@ -20,6 +20,11 @@ magnet_textures = Dictionary[int, Texture2D]({
 1: ExtResource("2_xenhq"),
 2: ExtResource("3_vyri4")
 })
+magnet_sprite_offsets = Dictionary[int, Vector2]({
+0: Vector2(0, -3.5),
+1: Vector2(0, -5),
+2: Vector2(0, -7)
+})
 magnet_icons = Dictionary[int, Texture2D]({
 0: ExtResource("5_icon1"),
 1: ExtResource("6_icon2"),

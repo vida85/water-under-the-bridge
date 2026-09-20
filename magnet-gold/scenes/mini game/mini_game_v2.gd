@@ -13,6 +13,7 @@ signal minigame_caught_nothing
 @onready var magnet: Sprite2D = %Magnet
 @onready var magnet_area: Area2D = %MagnetArea
 @onready var magnet_collision_shape: CollisionShape2D = %MagnetCollisionShape
+@onready var attraction_particles: GPUParticles2D = %AttractionParticles
 
 @onready var spawn_area: ReferenceRect = %SpawnArea
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
@@ -73,8 +74,10 @@ func _update_magnet_type_from_resource() -> void:
 	var radius: float = magnet_resource.magnet_influence[GameState.current_magnet]
 	var texture: Texture2D = magnet_resource.magnet_textures[GameState.current_magnet]
 	magnet.texture = texture
+	magnet.position = magnet_resource.magnet_sprite_offsets[GameState.current_magnet]
 	magnet.z_index = -1
 	magnet_collision_shape.shape.radius = radius * 3
+	(attraction_particles.process_material as ParticleProcessMaterial).emission_sphere_radius = magnet_collision_shape.shape.radius
 	print("Radius of Magnet: ", radius)
 
 
