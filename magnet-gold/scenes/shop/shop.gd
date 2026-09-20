@@ -57,6 +57,9 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_right"):
 		tab_bar.current_tab = 1
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("pull_up_quickly"):
+		leave_button.pressed.emit()
+		get_viewport().set_input_as_handled()
 
 
 func _on_tab_changed(tab_idx: int) -> void:
