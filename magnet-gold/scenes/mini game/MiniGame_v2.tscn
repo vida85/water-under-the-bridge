@@ -106,6 +106,9 @@ radial_accel_max = -40.0
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkvaj"]
+size = Vector2(16, 16)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_176rl"]
 normal = Vector2(0, 1)
 
@@ -160,7 +163,7 @@ unique_name_in_owner = true
 [node name="MagnetArea" type="Area2D" parent="." unique_id=590136882]
 unique_name_in_owner = true
 position = Vector2(80, -22.61)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 
 [node name="MagnetSFX" type="AudioStreamPlayer2D" parent="MagnetArea" unique_id=512273163]
@@ -215,6 +218,15 @@ preprocess = 0.9
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_attract")
 
+[node name="MagBod" type="Area2D" parent="MagnetArea" unique_id=121000711]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetArea/MagBod" unique_id=1287406681]
+position = Vector2(0, 0.11000061)
+shape = SubResource("RectangleShape2D_pkvaj")
+debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
+
 [node name="MagnetStartPosition" type="Marker2D" parent="." unique_id=838112582]
 unique_name_in_owner = true
 position = Vector2(80, 118)
@@ -223,11 +235,11 @@ position = Vector2(80, 118)
 unique_name_in_owner = true
 position = Vector2(134, 7)
 
-[node name="CoinColectionArea" type="Area2D" parent="." unique_id=1377229465]
+[node name="CoinCollectionArea" type="Area2D" parent="." unique_id=1377229465]
 unique_name_in_owner = true
 position = Vector2(81, 7)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinColectionArea" unique_id=1137135873]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCollectionArea" unique_id=1137135873]
 shape = SubResource("WorldBoundaryShape2D_176rl")
