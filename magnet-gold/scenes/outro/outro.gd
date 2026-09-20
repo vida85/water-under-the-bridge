@@ -1,11 +1,6 @@
 class_name Outro extends Control
 
-# change_scene_to_file(), not preload()+change_scene_to_packed(): MainMenu ->
-# Intro -> MainGame -> Outro -> MainMenu is a preload cycle. Since MainMenu.tscn
-# is run/main_scene, preloading it here would have it still mid-load higher up
-# the same boot-time load chain, so Godot hands back a broken PackedScene and
-# instantiate() silently fails. Resolving the path only when this code actually
-# runs avoids that entirely, since MainMenu is already fully loaded by then.
+# change_scene_to_file() avoids a preload cycle back to MainMenu (which preloads Intro -> MainGame -> Outro).
 const MAIN_MENU_PATH = "uid://cy57xutg2kj7w"
 
 const FADE_DURATION: float = 2.0
@@ -48,8 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if finished_showing:
-		# Accept echo (held-key) events here so exiting isn't blocked by whatever
-		# key the player used to trigger/skip the outro still being held down.
+		# Accept echoed (held-key) events so a still-held trigger key doesn't block exiting.
 		print("[Outro] exiting to main menu")
 		var err: Error = get_tree().change_scene_to_file(MAIN_MENU_PATH)
 		print("[Outro] change_scene_to_file result=", err)
