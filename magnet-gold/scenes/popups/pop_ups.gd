@@ -119,9 +119,7 @@ func _on_item_unhovered() -> void:
 
 func _clear_items() -> void:
 	for child in item_container.get_children():
-		# remove_child immediately, since queue_free() alone leaves the node
-		# as a child until end of frame — get_child(0) right after this call
-		# would otherwise still return the old, about-to-be-freed button.
+		# remove_child now since queue_free() alone would leave it as a child until end of frame.
 		item_container.remove_child(child)
 		child.queue_free()
 	item_resources.clear()

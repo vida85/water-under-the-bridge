@@ -44,8 +44,7 @@ var new_position: Vector2
 var items_acquired: Array[Item]
 var magnet_speed: float = 10.0
 var _has_exited_screen: bool = false
-# snapshot of items_acquired at the moment it's handed off/cleared in
-# _on_screen_exited(), so _exit_tree() still knows which items to free.
+# snapshot of items_acquired so _exit_tree() still knows what to free after it's cleared.
 var _items_handed_off: Array[Item] = []
 
 
@@ -185,10 +184,7 @@ func _on_magnet_entered(_area: Area2D) -> void:
 
   
 func _on_screen_exited() -> void:
-	# screen_exited can fire more than once (the magnet/items can drift back
-	# on/off screen since process/physics_process are never stopped otherwise),
-	# which would re-emit all_items_acquired with the same items and double
-	# them into GameState.inventory. Only the first exit should count.
+	# screen_exited can re-fire, so guard against handling the exit twice.
 	if _has_exited_screen:
 		return
 	_has_exited_screen = true
@@ -197,9 +193,7 @@ func _on_screen_exited() -> void:
 
 	await get_tree().create_timer(1.0 if not _quick_pull or items_acquired.is_empty() else 2.0).timeout
 
-	# Reparent acquired items out of this scene's tree before it starts
-	# tearing itself down, so nothing downstream (e.g. populate_scroll_container
-	# reading item_resource off them) can ever race against them being freed.
+	# Reparent acquired items out before this scene tears itself down, so nothing downstream can read them mid-free.
 	for item: Item in items_acquired:
 		item.reparent(items_original_parent, false)
 		item.hide()
@@ -209,8 +203,7 @@ func _on_screen_exited() -> void:
 	if items_acquired.is_empty():
 		minigame_caught_nothing.emit.call_deferred()
 	else:
-		# Pass a copy so items_acquired can be safely cleared below without
-		# affecting the array the deferred signal emission will read from.
+		# Pass a copy so clearing items_acquired below doesn't affect the deferred emit.
 		all_items_acquired.emit.call_deferred(items_acquired.duplicate())
 
 	minigame_ended.emit.call_deferred()
