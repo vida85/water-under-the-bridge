@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://clp3e47cs2g11" path="res://shared assets/images/comic/comic-outro-1.png" id="3_panel1"]
 [ext_resource type="FontVariation" uid="uid://cqdsw52v7oo8f" path="res://components/ui elements/silkscreen_button_font.tres" id="4_font"]
 [ext_resource type="Texture2D" uid="uid://cg346rf5jd8n7" path="res://shared assets/images/textures/ui_cash_bg.png" id="5_cash_bg"]
-[ext_resource type="FontFile" uid="uid://bgsg3rtqcy2o" path="res://shared assets/fonts/Handjet-Light.ttf" id="6_cash_font"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cash"]
-font = ExtResource("6_cash_font")
 font_size = 8
 font_color = Color(0.8352941, 0.84705883, 0.81960785, 1)
-stacked_outline_count = 1
-stacked_outline_0/size = 6
-stacked_outline_0/color = Color(0.13725491, 0.22352941, 0.2, 1)
 
 [node name="Outro" type="Control" unique_id=727441937]
 layout_mode = 3
@@ -90,6 +85,8 @@ texture = ExtResource("5_cash_bg")
 [node name="MarginContainer2" type="MarginContainer" parent="CashHUD/MarginContainer" unique_id=447428018]
 layout_mode = 2
 theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_bottom = 2
 
 [node name="CashLabel" type="Label" parent="CashHUD/MarginContainer/MarginContainer2" unique_id=2147243041]
 unique_name_in_owner = true

@@ -249,6 +249,7 @@ offset_bottom = 139.0
 z_index = 10
 material = SubResource("CanvasItemMaterial_jj0sy")
 position = Vector2(76, 67)
+amount = 32
 texture = ExtResource("23_2bkwo")
 lifetime = 7.0
 randomness = 1.0

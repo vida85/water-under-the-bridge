@@ -16,6 +16,7 @@ const INTRO = preload("res://scenes/intro/Intro.tscn")
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	GameState.reset()
 	options_popup.hide()
 
