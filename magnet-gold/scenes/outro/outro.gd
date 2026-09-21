@@ -27,13 +27,11 @@ func _ready() -> void:
 func _play_sequence() -> void:
 	print("[Outro] sequence started")
 	tween = create_tween()
-	tween.set_parallel()
-	tween.tween_property(panel, "scale", MAX_SCALE, GROW_DURATION)
 	tween.tween_property(panel, "modulate:a", 1.0, FADE_DURATION)
 	tween.set_parallel(false)
 	tween.tween_interval(SHOW_DURATION)
 	tween.tween_callback(_show_end_text)
-
+	
 
 func _show_end_text() -> void:
 	print("[Outro] _show_end_text - finished_showing set to true")

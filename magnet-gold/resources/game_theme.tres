@@ -38,6 +38,7 @@ region_rect = Rect2(0, 0, 16, 16)
 [resource]
 default_font = ExtResource("2_mfept")
 default_font_size = 8
+Button/colors/font_color = Color(0.8392157, 0.84705883, 0.81960785, 1)
 Button/styles/focus = SubResource("StyleBoxTexture_mfept")
 Button/styles/normal = SubResource("StyleBoxTexture_4qhqp")
 Button/styles/pressed = SubResource("StyleBoxTexture_bhhdj")

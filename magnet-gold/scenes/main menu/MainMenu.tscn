@@ -15,9 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cbeayfq32byn5" path="res://shared assets/images/textures/ui-phone-mic.png" id="12_mfq3f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_176rl"]
-line_spacing = -11.97
+line_spacing = 3.68
 font = ExtResource("4_fxkxh")
-font_size = 21
 font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_options"]
@@ -101,6 +100,9 @@ the
 Bridge"
 label_settings = SubResource("LabelSettings_176rl")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="ContentMargin" unique_id=70083351]
+layout_mode = 2
+
 [node name="PlayButton" type="Button" parent="." unique_id=1028818363]
 unique_name_in_owner = true
 layout_mode = 0
@@ -122,9 +124,6 @@ offset_bottom = 140.0
 theme = ExtResource("5_phone_theme")
 text = "options"
 script = ExtResource("7_indicator_button")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ContentMargin" unique_id=70083351]
-layout_mode = 2
 
 [node name="OptionsPopup" type="PanelContainer" parent="." unique_id=940043548]
 unique_name_in_owner = true
