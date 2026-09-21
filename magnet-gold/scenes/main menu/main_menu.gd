@@ -16,6 +16,7 @@ const INTRO = preload("res://scenes/intro/Intro.tscn")
 
 
 func _ready() -> void:
+	GameState.reset()
 	options_popup.hide()
 
 	play_button.pressed.connect(_on_play_pressed)

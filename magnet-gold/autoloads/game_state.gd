@@ -19,3 +19,10 @@ func update_items_to_dict(items: Array[Item]) -> void:
 func update_cash(value: float) -> void:
 	current_money_earned += value
 	cash_value_changed.emit(current_money_earned)
+
+
+func reset() -> void:
+	current_magnet = Magnets.Type.BASIC
+	current_money_earned = 0.0
+	inventory.clear()
+	cash_value_changed.emit(current_money_earned)
