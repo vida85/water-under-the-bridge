@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cd723xk681vxy" path="res://shared assets/images/textures/logo-colored.png" id="6_bgkgy"]
 [ext_resource type="Texture2D" uid="uid://cfmubn70quvh0" path="res://shared assets/images/comic/comic-bg.png" id="6_comic_bg"]
 [ext_resource type="Script" uid="uid://btfoco5birkmu" path="res://scenes/popups/indicator_button.gd" id="7_indicator_button"]
-[ext_resource type="FontFile" uid="uid://btdc3pvuifnim" path="res://shared assets/fonts/Jersey10-Regular.ttf" id="8_jersey10"]
 [ext_resource type="AudioStream" uid="uid://dp8l0nqgtkg5e" path="res://shared assets/audio/sfx/bell_sfx00057510.mp3" id="9_sfx_preview"]
 [ext_resource type="Texture2D" uid="uid://cwy451308jtx2" path="res://shared assets/images/textures/ui-phone-power-icons.png" id="10_phone_power"]
 [ext_resource type="Texture2D" uid="uid://deoqjk01krm8c" path="res://shared assets/images/textures/ui-phone-camera.png" id="11_klu60"]
@@ -20,20 +19,13 @@ font = ExtResource("4_fxkxh")
 font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_options"]
-font = ExtResource("8_jersey10")
-font_size = 12
 font_color = Color(0.8392157, 0.84705883, 0.81960785, 1)
-stacked_outline_count = 2
-stacked_outline_0/size = 4
-stacked_outline_0/color = Color(0.13725491, 0.22352941, 0.2, 1)
-stacked_outline_1/size = 1
-stacked_outline_1/color = Color(0.8392157, 0.84705883, 0.81960785, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4nwu2"]
-font_size = 6
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_fxkxh"]
-font_size = 6
+font_size = 8
 
 [node name="MainMenu" type="Control" unique_id=1547466342]
 layout_mode = 3
