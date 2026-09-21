@@ -13,5 +13,5 @@ icon = ExtResource("1_da1h1")
 value = 7.62
 combo_item_id = &"bell"
 caught_radius = 4.0
-responds_to_magnet_tier = Array[int]([0])
+responds_to_magnet_tier = 1
 metadata/_custom_type_script = "uid://qmywehrbkm6d"

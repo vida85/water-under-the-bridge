@@ -225,7 +225,6 @@ popup_items_caught = NodePath("Popups")
 shop = NodePath("Shop")
 
 [node name="Popups" parent="GameUi" unique_id=2144600210 instance=ExtResource("3_xdeye")]
-debug = false
 
 [node name="Shop" parent="GameUi" unique_id=1355205205 instance=ExtResource("6_xyo56")]
 

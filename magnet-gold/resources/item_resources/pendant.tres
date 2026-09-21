@@ -15,4 +15,5 @@ combo_bonus_value = 2.0
 combo_item_id = &"pendant"
 combo_item_ids = Array[StringName]([&"bracelet"])
 caught_radius = 3.0
+responds_to_magnet_tier = 1
 metadata/_custom_type_script = "uid://qmywehrbkm6d"
