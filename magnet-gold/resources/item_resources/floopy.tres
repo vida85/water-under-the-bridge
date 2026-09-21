@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_bg22k")
 name = "Floppy"
-item_description = "My Dad had one of these, I'll show him"
+item_description = "Dad had one of these, I'll show him."
 texture = ExtResource("3_bg22k")
 icon = ExtResource("1_4emq2")
 value = 1.25

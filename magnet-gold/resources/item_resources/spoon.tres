@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_wr60f")
 name = "Spoon"
-item_description = "A fancy spoon... I wanna know who the owner of this spoon!"
+item_description = "A fancy spoon... I wanna know who the owner is!"
 texture = ExtResource("3_dipot")
 icon = ExtResource("4_icon")
 value = 3.0

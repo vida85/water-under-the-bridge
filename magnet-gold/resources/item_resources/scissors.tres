@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_phagh")
 name = "Scissors"
-item_description = "These look really nice, wow not even dirty! "
+item_description = "Looks really nice, wow not even dirty!"
 texture = ExtResource("2_76jmk")
 icon = ExtResource("4_icon")
 value = 6.45
