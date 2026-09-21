@@ -43,6 +43,10 @@ var new_position: Vector2
 
 var items_acquired: Array[Item]
 var magnet_speed: float = 10.0
+var _has_exited_screen: bool = false
+# snapshot of items_acquired at the moment it's handed off/cleared in
+# _on_screen_exited(), so _exit_tree() still knows which items to free.
+var _items_handed_off: Array[Item] = []
 
 
 const COIN_A_ITEM = preload("uid://dxtn2uaofbsdw")
@@ -101,13 +105,15 @@ func _on_area_entered(area: Area2D) -> void:
 			coins.append(item)
 			item.set_deferred("monitorable", false)
 
-			# After a small amount let item get stuck to magnet 
+			# After a small amount let item get stuck to magnet
 			await get_tree().create_timer(2.0).timeout
+			if not is_instance_valid(self) or not is_instance_valid(item) or not is_instance_valid(magnet_area):
+				return
 			item.is_item_stuck_to_magnet = true
 			item.reparent(magnet_area)
 
 		if item not in coins:
-			items_acquired.append.call_deferred(item)
+			items_acquired.append(item)
 
 		if items_acquired.is_empty():
 			return
@@ -128,7 +134,7 @@ func _on_area_exited(area: Area2D) -> void:
 			return
 
 		if is_instance_valid(area):
-			items_acquired.erase.call_deferred(area)
+			items_acquired.erase(area)
 			print("|----------> Item lost ", area)
 
 
@@ -179,13 +185,36 @@ func _on_magnet_entered(_area: Area2D) -> void:
 
   
 func _on_screen_exited() -> void:
+	# screen_exited can fire more than once (the magnet/items can drift back
+	# on/off screen since process/physics_process are never stopped otherwise),
+	# which would re-emit all_items_acquired with the same items and double
+	# them into GameState.inventory. Only the first exit should count.
+	if _has_exited_screen:
+		return
+	_has_exited_screen = true
+	set_process(false)
+	set_physics_process(false)
+
 	await get_tree().create_timer(1.0 if not _quick_pull or items_acquired.is_empty() else 2.0).timeout
+
+	# Reparent acquired items out of this scene's tree before it starts
+	# tearing itself down, so nothing downstream (e.g. populate_scroll_container
+	# reading item_resource off them) can ever race against them being freed.
+	for item: Item in items_acquired:
+		item.reparent(items_original_parent, false)
+		item.hide()
+
+	_items_handed_off = items_acquired.duplicate()
+
 	if items_acquired.is_empty():
 		minigame_caught_nothing.emit.call_deferred()
 	else:
-		all_items_acquired.emit.call_deferred(items_acquired)
+		# Pass a copy so items_acquired can be safely cleared below without
+		# affecting the array the deferred signal emission will read from.
+		all_items_acquired.emit.call_deferred(items_acquired.duplicate())
 
 	minigame_ended.emit.call_deferred()
+	items_acquired.clear()
 
 
 func _exit_tree() -> void:
@@ -194,7 +223,9 @@ func _exit_tree() -> void:
 	print("=========================")
 	for idx in range(items.size()):
 		var _item: Item = items[idx]
-		if _item in items_acquired:
+		if _item in _items_handed_off:
+			# already reparented out of this tree in _on_screen_exited(); safe to free now.
+			_item.queue_free()
 			continue
 		else:
 			if items_original_locations.is_empty():

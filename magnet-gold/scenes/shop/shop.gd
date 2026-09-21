@@ -133,9 +133,13 @@ func show_magnets() -> void:
 
 
 func _on_sell_item_pressed(item_resource: ItemResource, button: ItemButton) -> void:
+	if not GameState.inventory.has(item_resource):
+		return
+
 	sell.play()
+	var quantity: int = GameState.inventory[item_resource]
 	GameState.inventory.erase(item_resource)
-	GameState.update_cash(item_resource.value)
+	GameState.update_cash(item_resource.value * quantity)
 	item_resources.erase(item_resource)
 	_remove_and_refocus(button, main_container)
 
