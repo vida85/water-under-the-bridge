@@ -4,7 +4,7 @@ signal cash_value_changed(value: float)
 
 
 var current_magnet: Magnets.Type = Magnets.Type.BASIC
-var current_money_earned: float = 200.0
+var current_money_earned: float = 0.0
 var inventory: Dictionary[ItemResource, int]
 
 
