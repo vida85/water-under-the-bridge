@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_oqq3n")
 name = "Lock"
-item_description = "This must be for the treasure chest!"
+item_description = "This must be for a treasure chest!"
 texture = ExtResource("3_oqq3n")
 icon = ExtResource("1_2vumv")
 value = 3.0

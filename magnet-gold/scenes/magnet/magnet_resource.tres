@@ -40,7 +40,7 @@ magnet_prices = Dictionary[int, float]({
 2: 67.99
 })
 magnet_descriptions = Dictionary[int, String]({
-1: "A stronger pull with a wider reach for snagging more treasure.",
-2: "Maximum range and power. Nothing escapes the Pro magnet."
+1: "A stronger pull with a wider reach.",
+2: "Maximum range and power."
 })
 metadata/_custom_type_script = "uid://bneq7a7weyotw"

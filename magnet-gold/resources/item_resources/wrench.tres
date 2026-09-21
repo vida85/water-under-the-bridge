@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_hhjgo")
 name = "Wrench"
-item_description = "A wrench! This is nice, a useful tool for something I think!"
+item_description = "A wrench! This is a useful tool!"
 texture = ExtResource("3_5ihtr")
 icon = ExtResource("4_icon")
 value = 8.63

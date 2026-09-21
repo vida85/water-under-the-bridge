@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_21sbv")
 name = "Fork"
-item_description = "What a fork! Look like someone had a fancy dinner... long ago."
+item_description = "Someone had a fancy dinner... long ago."
 texture = ExtResource("3_mney7")
 icon = ExtResource("4_icon")
 value = 2.5

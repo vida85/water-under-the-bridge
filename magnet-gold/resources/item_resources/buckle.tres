@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_yxsa2")
 name = "Buckle"
-item_description = "Ha, mine is better but this one has history..."
+item_description = "Mine is better, but this one has history..."
 texture = ExtResource("3_yxsa2")
 icon = ExtResource("1_8hv2d")
 value = 4.62

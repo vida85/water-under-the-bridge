@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_7gqo7")
 name = "Key"
-item_description = "A key, I wonder what this was used for? Maybe a hidden Treasure chest!"
+item_description = "A key, I wonder what this was for?"
 texture = ExtResource("2_bp02r")
 icon = ExtResource("4_icon")
 value = 4.75

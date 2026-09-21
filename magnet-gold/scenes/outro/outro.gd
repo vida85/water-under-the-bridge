@@ -10,6 +10,8 @@ const MAX_SCALE: Vector2 = Vector2.ONE * 2
 
 @onready var panel: Sprite2D = $Panel1
 @onready var end_label: RichTextLabel = %EndLabel
+@onready var cash_hud: HBoxContainer = %CashHUD
+@onready var cash_label: Label = %CashLabel
 
 var tween: Tween
 var finished_showing: bool = false
@@ -37,6 +39,8 @@ func _show_end_text() -> void:
 	print("[Outro] _show_end_text - finished_showing set to true")
 	finished_showing = true
 	end_label.show()
+	cash_label.text = "$ " + ("%.2f" % GameState.current_money_earned)
+	cash_hud.show()
 
 
 func _unhandled_input(event: InputEvent) -> void:
